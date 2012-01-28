@@ -5,9 +5,9 @@ html {
   background: #FCFCF9 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKUlEQVQIW2NkAILv37//5+TkZASxQYARXQAsCJOF0SBFKIIwXXBBZGMAFTYT6gJ5KIkAAAAASUVORK5CYII=) repeat;
 }
 
-a, a:visited { color: #2D699B; text-decoration: none; font-weight: bold; }
+a { color: #F87715; text-decoration: none; }
 a:hover { text-decoration: underline; }
-a:visited { text-decoration: line-through; }
+a:visited { color: #F83715; }
 
 .limwidth {
   padding: 0 1em;
@@ -51,6 +51,7 @@ nav.limwidth {
       background: #333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKUlEQVQIW2NkAAJ9ff3/Fy9eZASxQYARXQAsCJOF0SBFKIIwXXBBZGMAhi8Rkpz+MHUAAAAASUVORK5CYII=) repeat;
       color: white;
       text-align: left;
+      text-decoration: none;
     }
       nav .active .item, nav .item:hover {
         background-color: #222;
@@ -76,11 +77,6 @@ i {
   .glance .list > * {
     margin-left: .5em;
   }
-  .glance .label {
-    font-weight: bold;
-    margin: 0;
-    margin-top: .7em;
-  }
   .glance .label:first-child {
     margin-top: 0;
   }
@@ -89,15 +85,44 @@ i {
     width: 6em;
     font-weight: normal;
     color: #AAA;
-    margin-top: .4em,
   }
   .glance .sublabel + p {
     margin: 0;
     margin-left: 6em;
-    margin-top: .4em;
   }
   .glance :first-child > .sublabel {
     margin-top: 0;
+  }
+  .glance { font-size: 14px; }
+  .glance .label {
+    font-weight: bold;
+    padding: .3em .5em;
+    border: 1px solid #EAEAEA;
+    border-bottom-color: #DADADA;
+
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ffffff 0%, #FAFAFA 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffffff), color-stop(100%,#FAFAFA)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* IE10+ */
+    background: linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* W3C */
+
+    color: #5D99CB;
+    margin: 0;
+    margin-top: 1em;
+    position: relative;
+  }
+  .glance dd {
+    background: white;
+    border: 1px solid #EAEAEA;
+    border-top: none;
+    border-bottom: 1px dotted #F0F0F0;
+    padding: .5em;
+    color: #555;
+  }
+  .glance .last {
+    border-bottom: 1px solid #EAEAEA;
   }
 
 .columns {
@@ -236,16 +261,6 @@ footer {
     }
 }
 @media screen and (min-width: 500px) {
-  .glance .thumb {
-    display: inline-block;
-    float: right;
-    width: 200px;
-    height: 200px;
-    background: url('../gfx/me-tiny.png') no-repeat;
-    margin-left: 10px;
-    margin-top: .5em;
-    margin-bottom: 1em;
-  }
   .site .thumb-img {
     display: inline-block;
     float: right;
@@ -268,11 +283,11 @@ footer {
 }
 @media screen and (min-width: 650px) {
   .glance .thumb {
+    display: inline-block;
     width: 200px;
     height: 445px;
     float: left;
-    margin-right: 10px;
-    margin-left: 0;
+    margin: .5em 10px 1em 0;
     background-image: url('../gfx/me-slim.png');
   }
   .glance .list { margin-left: 220px; }
@@ -331,7 +346,6 @@ footer {
     padding: 1em 2em;
   }
   .glance .list { margin-left: 420px; }
-  .glance .list dd { margin-left: 0; }
   .glance .thumb {
     width: 400px;
     height: 494px;
