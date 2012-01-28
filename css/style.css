@@ -70,29 +70,6 @@ i {
 
 .glance {
 }
-  .glance .tinythumb {
-    display: none;
-    float: right;
-    width: 200px;
-    margin-left: 10px;
-    margin-top: .5em;
-    margin-bottom: 1em;
-  }
-  .glance .thumb {
-    display: none;
-    float: left;
-    margin-right: 10px;
-    margin-top: .5em;
-    margin-bottom: 1em;
-  }
-  .glance .bigthumb {
-    display: none;
-    float: left;
-    width: 400px;
-    margin-right: 20px;
-    margin-top: .5em;
-    margin-bottom: 1em;
-  }
   .glance .list {
     margin-left: 0;
   }
@@ -259,7 +236,16 @@ footer {
     }
 }
 @media screen and (min-width: 500px) {
-  .glance .tinythumb { display: inline-block; }
+  .glance .thumb {
+    display: inline-block;
+    float: right;
+    width: 200px;
+    height: 200px;
+    background: url('../gfx/me-tiny.png') no-repeat;
+    margin-left: 10px;
+    margin-top: .5em;
+    margin-bottom: 1em;
+  }
   .site .thumb-img {
     display: inline-block;
     float: right;
@@ -281,8 +267,14 @@ footer {
   }
 }
 @media screen and (min-width: 650px) {
-  .glance .tinythumb { display: none }
-  .glance .thumb { width: 200px; display: inline-block; }
+  .glance .thumb {
+    width: 200px;
+    height: 445px;
+    float: left;
+    margin-right: 10px;
+    margin-left: 0;
+    background-image: url('../gfx/me-slim.png');
+  }
   .glance .list { margin-left: 220px; }
   .site + .site {
     margin-top: 5em;
@@ -340,8 +332,13 @@ footer {
   }
   .glance .list { margin-left: 420px; }
   .glance .list dd { margin-left: 0; }
-  .glance .thumb { display: none; }
-  .glance .bigthumb { display: inline-block; }
+  .glance .thumb {
+    width: 400px;
+    height: 494px;
+    margin-right: 20px;
+    margin-left: 0;
+    background-image: url('../gfx/me.png');
+  }
 }
 @media screen and (min-width: 930px) {
   .contact .unimportant {

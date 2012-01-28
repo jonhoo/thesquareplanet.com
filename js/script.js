@@ -41,7 +41,6 @@ $(window).on('popstate', function(e) {
       to = nto;
     }
   }
-  console.log(to);
   $(".item[href='#" + to.attr('id') + "']").closest('.item-inline').addClass('active').siblings().removeClass('active');
   pages.scrollTo(to, 150);
 });
