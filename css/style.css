@@ -201,7 +201,7 @@ footer {
     }
     .site + .site {
       margin-top: 2em;
-      border-top: 1px solid #5D99CB;
+      border-top: 1px solid #8DC9FB;
       padding-top: 2em;
     }
       .site .thumb {
@@ -210,8 +210,8 @@ footer {
         z-index: 10;
         background: white;
         padding: .5em;
-        border: 2px solid #B3B3B3;
-        box-shadow: 3px 3px 7px #555;
+        border: 1px solid #DDD;
+        box-shadow: 2px 2px 5px #777;
         margin-left: 1em;
         margin-bottom: 1em;
       }
@@ -234,8 +234,8 @@ footer {
           .site h3 small {
             display: block;
             color: #5D99CB;
-            text-transform: uppercase;
             font-size: .5em;
+            font-weight: normal;
           }
         .site .thumb + .thumb {
           display: none;
