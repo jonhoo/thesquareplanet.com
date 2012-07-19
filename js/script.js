@@ -77,10 +77,6 @@ function step() {
     }
   });
 
-  if (passed === sites.length) {
-    $('#sitelist .site.passed').removeClass('passed');
-  }
-
   requestAnimationFrame(step);
 }
 requestAnimationFrame(step);
