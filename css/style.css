@@ -75,6 +75,12 @@ i {
   .glance .list {
     margin-left: 0;
   }
+  .glance article {
+    margin-bottom: 10px;
+  }
+  .glance article > div > p {
+    margin: .5em 0;
+  }
   .glance article h1 {
     font-size: 2em;
     margin: 0;
@@ -82,7 +88,7 @@ i {
   .glance article i {
     display: none;
   }
-  .glance article ul, .glance article dl {
+  .glance article ul, .glance article dl, .glance article > div {
     background: white;
     border: 1px solid #DDD;
     padding: 10px;
@@ -111,13 +117,6 @@ i {
       margin: 0;
       margin-left: 6em;
     }
-
-#spur {
-  font-size: 1.3em;
-  display: block;
-  text-align: center;
-  padding: .5em 0;
-}
 
 .columns {
   -webkit-column-count: 1;
@@ -366,7 +365,7 @@ footer {
     white-space: nowrap;
   }
   .page {
-    padding-top: 134px;
+    padding-top: 124px;
     position: relative;
     top: -104px;
     display: inline-block;
@@ -402,8 +401,8 @@ footer {
     padding: 0;
   }
   section h1 {
-    font-size: 5em;
-    margin: 10px 0;
+    font-size: 2em;
+    margin: 0 0 10px;
   }
   .site {
     padding: 1em 0;
@@ -424,9 +423,8 @@ footer {
     .glance article:nth-child(2n) { margin-left: 1%; }
     .glance .full {
       width: 100% !important;
-      margin-left: 0;
+      margin-left: 0 !important;
     }
-  #spur { font-size: 2em; padding: 1em 0; }
   .site.passed .thumb {
     visibility: hidden;
   }
