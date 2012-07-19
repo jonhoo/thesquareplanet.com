@@ -70,60 +70,54 @@ i {
 }
 
 .glance {
+  font-size: 14px;
 }
   .glance .list {
     margin-left: 0;
   }
-  .glance .list > * {
-    margin-left: .5em;
-  }
-  .glance .label:first-child {
-    margin-top: 0;
-  }
-  .glance .sublabel {
-    float: left;
-    width: 6em;
-    font-weight: normal;
-    color: #AAA;
-  }
-  .glance .sublabel + p {
+  .glance article h1 {
+    font-size: 2em;
     margin: 0;
-    margin-left: 6em;
   }
-  .glance :first-child > .sublabel {
-    margin-top: 0;
+  .glance article i {
+    display: none;
   }
-  .glance { font-size: 14px; }
-  .glance .label {
-    font-weight: bold;
-    padding: .3em .5em;
-    border: 1px solid #EAEAEA;
-    border-bottom-color: #DADADA;
-
-    background: #ffffff; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #ffffff 0%, #FAFAFA 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffffff), color-stop(100%,#FAFAFA)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* IE10+ */
-    background: linear-gradient(-45deg, #ffffff 0%,#FAFAFA 100%); /* W3C */
-
-    color: #5D99CB;
-    margin: 0;
-    margin-top: 1em;
-    position: relative;
-  }
-  .glance dd {
+  .glance article ul, .glance article dl {
     background: white;
-    border: 1px solid #EAEAEA;
-    border-top: none;
-    border-bottom: 1px dotted #F0F0F0;
-    padding: .5em;
-    color: #555;
+    border: 1px solid #DDD;
+    padding: 10px;
+    list-style-type: none;
+    margin-top: 5px;
+    line-height: 25px;
   }
-  .glance .last {
-    border-bottom: 1px solid #EAEAEA;
-  }
+  .glance ul {}
+    .glance ul .split {
+      border-top: 1px dotted #DDD;
+      margin: 12px 0;
+    }
+    .glance ul .head {
+      color: #DFDFDF;
+      font-size: 20px;
+      float: right;
+    }
+  .glance dl {}
+    .glance dt {
+      clear: left;
+      float: left;
+      width: 6em;
+      color: #999;
+    }
+    .glance dd {
+      margin: 0;
+      margin-left: 6em;
+    }
+
+#spur {
+  font-size: 1.3em;
+  display: block;
+  text-align: center;
+  padding: .5em 0;
+}
 
 .columns {
   -webkit-column-count: 1;
@@ -310,6 +304,7 @@ footer {
     -ms-column-count: 2;
     column-count: 2;
   }
+  .glance article i { display: inline; }
 }
 @media screen and (min-width: 750px) {
   nav .item { font-size: 15px; }
@@ -406,12 +401,32 @@ footer {
     margin: 0 auto;
     padding: 0;
   }
-  section h1 {
+  section h1 {
     font-size: 5em;
+    margin: 10px 0;
   }
   .site {
     padding: 1em 0;
   }
+  .glance .list {
+    letter-spacing: -4px;
+    word-spacing: -4px;
+  }
+  .glance article {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+    box-sizing: border-box;
+    letter-spacing: normal;
+    word-spacing: normal;
+  }
+    .glance article:nth-child(n) { width: 49.5%; }
+    .glance article:nth-child(2n) { margin-left: 1%; }
+    .glance .full {
+      width: 100% !important;
+      margin-left: 0;
+    }
+  #spur { font-size: 2em; padding: 1em 0; }
   .site.passed .thumb {
     visibility: hidden;
   }
@@ -426,3 +441,6 @@ footer {
     visibility: visible;
   }
 }
+
+.glance .thumb { display: none; background: none; }
+.glance .list { margin-left: 0; }
