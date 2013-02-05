@@ -69,7 +69,7 @@ nav.limwidth {
       text-align: left;
       text-decoration: none;
     }
-      nav .active .item, nav .item:hover, nav .item:focus {
+      .js nav .active .item, nav .item:hover, nav .item:focus {
         background-color: #222;
       }
       nav .item:focus { outline: none; }
@@ -385,17 +385,23 @@ footer {
     vertical-align: top;
     width: 100%;
     border-top: none;
-    transition: transform .3s linear;
-    -webkit-transition: -webkit-transform .3s linear;
-    -moz-transition: -moz-transform .3s linear;
-    -ms-transition: -ms-transform .3s linear;
-    -o-transition: -o-transform .3s linear;
-    transform: translateX(-100%);
-    -webkit-transform: translateX(-100%);
-    -moz-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    -o-transform: translateX(-100%);
   }
+    .js .page {
+      transition: transform .3s linear;
+      -webkit-transition: -webkit-transform .3s linear;
+      -moz-transition: -moz-transform .3s linear;
+      -ms-transition: -ms-transform .3s linear;
+      -o-transition: -o-transform .3s linear;
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+    }
+    .no-js .page { visibility: hidden; }
+    .no-js .page.target { visibility: visible; }
+    .no-js .page:target { visibility: visible; }
+    .no-js .page:target ~ .page.target { visibility: hidden; }
     .page + .page {
       margin-left: -100%;
     }
@@ -407,15 +413,12 @@ footer {
       -o-transform: translateX(0%);
     }
     .page.target ~ .page {
-      transform: translateX(100%);
-      -webkit-transform: translateX(100%);
-      -moz-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-      -o-transform: translateX(100%);
+      transform: translateX(-100%);
+      -webkit-transform: translateX(-100%);
+      -moz-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      -o-transform: translateX(-100%);
     }
-  #sitelist {
-    padding-bottom: 200px;
-  }
   .site .thumb {
     margin-top: 0;
   }
