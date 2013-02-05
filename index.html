@@ -39,6 +39,7 @@
     </nav>
   </header>
   <div id="pages">
+    <p><a href="#" class="toplink">Back to top</a></p>
     <section class="page" id="more">
       <a href="#" class="toplink">Back to top</a>
       <div class="limwidth">
@@ -381,7 +382,6 @@
         </ul> 
       </div> 
     </section>
-    <p><a href="#" class="toplink">Back to top</a></p>
   </div>
 
   <footer>
@@ -392,6 +392,7 @@
       <p>Member of the <a href="http://internetdefenseleague.org">Internet Defense League</a></p>
     </div>
   </footer>
+  <span id="ispaged"><!-- display: block when we are paged --></span>
 
   <!-- Internet Defense League -->
   <!--
@@ -415,7 +416,10 @@
      */
     var pages = document.querySelectorAll('.page');
     var tabs = document.querySelectorAll('nav .item');
+    var ispaged = document.getElementById('ispaged');
     document.body.addEventListener('click', function(e) {
+      if (ispaged.style.display !== 'block') { return; }
+
       if (e.target.tagName.toUpperCase() == 'A') {
         var h = e.target.getAttribute('href');
         if (h.charAt(0) == '#') {

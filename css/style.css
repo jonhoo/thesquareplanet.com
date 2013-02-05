@@ -77,9 +77,8 @@ nav.limwidth {
 .page {
   padding: 2.5em 0;
 }
-.page + .page {
-  border-top: 2px solid black;
-}
+.page { border-top: 2px solid black; }
+.page:last-child { border-top: none; }
 
 i {
   font-style: normal;
@@ -354,8 +353,12 @@ footer {
     font-size: 13px;
   }
 }
+#ispaged { display: none; }
+#pages { display: -webkit-flex; display: flex; flex-direction: column-reverse; }
 @media screen and (min-width: 950px) {
+  #ispaged { display: block; }
   #pages {
+    display: block;
     position: relative;
     width: 100%;
     overflow: hidden;
