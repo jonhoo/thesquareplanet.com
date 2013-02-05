@@ -355,6 +355,40 @@ footer {
 }
 #ispaged { display: none; }
 #pages {
+  /* what a mess...
+   * For the record, here is what led us to this:
+   *  1. :target requires # in URL
+   *  2. # in URL jumps to the given element
+   *  3. jumps interfere with transitions
+   *  4. JavaScript must be used to avoid jumps by preventDefault() + set class
+   *  5. Using JavaScript to set classes means users without JS can't navigate
+   *  6. To let users without JS navigate, we need to style elements based on
+   *     siblings of :target
+   *  7. Sibling selectors only work on succeeding siblings
+   *  8. One page has to be shown on page load
+   *  9. This one page has to be last in the HTML so we can override its style
+   *     with :target ~ .page
+   *  10. This means the first page we want to show has to be last
+   *  11. On mobile, we want it to be at the top
+   *  12. Which means we have to reorder it on mobile
+   *  13. Flexbox is the only real way of achieving that
+   *  14. Flexbox is not only still draft, but there are *two* drafts with
+   *      support
+   *  15. Thus we need to specify both types of flexbox rules
+   *  16. And since it's a draft, we need all vendor prefixes.
+   */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: -o-box;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-box-orient: vertical;
+  -o-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -ms-box-direction: reverse;
+  -o-box-direction: reverse;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
