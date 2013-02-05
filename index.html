@@ -418,7 +418,7 @@
     var tabs = document.querySelectorAll('nav .item');
     var ispaged = document.getElementById('ispaged');
     document.body.addEventListener('click', function(e) {
-      if (ispaged.style.display !== 'block') { return; }
+      if (window.getComputedStyle(ispaged).getPropertyValue('display') !== 'block') { return; }
 
       if (e.target.tagName.toUpperCase() == 'A') {
         var h = e.target.getAttribute('href');
