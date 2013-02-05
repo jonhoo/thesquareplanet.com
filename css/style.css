@@ -271,14 +271,6 @@ footer {
   }
 }
 @media screen and (min-width: 650px) {
-  .glance .thumb {
-    display: inline-block;
-    width: 200px;
-    height: 445px;
-    float: left;
-    margin: .5em 10px 1em 0;
-    background-image: url('../gfx/me-slim.png');
-  }
   .glance .list { margin-left: 220px; }
   .site + .site {
     margin-top: 5em;
@@ -352,13 +344,6 @@ footer {
     padding: 1em 2em;
   }
   .glance .list { margin-left: 420px; }
-  .glance .thumb {
-    width: 400px;
-    height: 494px;
-    margin-right: 20px;
-    margin-left: 0;
-    background-image: url('../gfx/me.png');
-  }
 }
 @media screen and (min-width: 930px) {
   .contact .unimportant {
@@ -469,5 +454,4 @@ footer {
     }
 }
 
-.glance .thumb { display: none; background: none; }
 .glance .list { margin-left: 0; }
