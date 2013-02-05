@@ -1,6 +1,21 @@
-::-moz-selection { background: #2D699B; color: #fff; text-shadow: none; }
-::selection { background: #2D699B; color: #fff; text-shadow: none; }
+/** Basic normalization **/
+html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html, button, input, select, textarea { font-family: sans-serif; }
+body { margin: 0; }
+p { margin: 1em 0; }
+img { border: 0; vertical-align: top; -ms-interpolation-mode: bicubic; }
+html, button, input, select, textarea { color: #222; }
+body { font-size: 1em; line-height: 1.4; }
+::-moz-selection { background: #b3d4fc; text-shadow: none; }
+::selection { background: #b3d4fc; text-shadow: none; }
 
+/** Convenience classes **/
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+.hidden { display: none !important; visibility: hidden; }
+
+/** Main styles **/
 html {
   background: #FCFCF9 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKUlEQVQIW2NkAILv37//5+TkZASxQYARXQAsCJOF0SBFKIIwXXBBZGMAFTYT6gJ5KIkAAAAASUVORK5CYII=) repeat;
 }
@@ -44,6 +59,7 @@ header {
 nav.limwidth {
   padding: 0;
 }
+  nav ul { margin: 0; padding: 0; }
     nav .item {
       display: block;
       padding: .9em 1.5em;
@@ -126,7 +142,6 @@ i {
 
 .contact {
   list-style-type: none;
-  vertical-align: middle;
   margin: 0;
   padding: 0;
   padding-top: 1em;
@@ -136,7 +151,7 @@ i {
   .contact li {
     display: inline-block;
     line-height: 32px;
-    vertical-align: middle;
+    vertical-align: top;
   }
     .contact .unimportant {
       display: none;
