@@ -428,12 +428,14 @@ footer {
     width: 100%;
     border-top: none;
   }
-    .js .page {
+    .stable .page {
       transition: transform .3s linear;
       -webkit-transition: -webkit-transform .3s linear;
       -moz-transition: -moz-transform .3s linear;
       -ms-transition: -ms-transform .3s linear;
       -o-transition: -o-transform .3s linear;
+    }
+    .js .page {
       transform: translateX(100%);
       -webkit-transform: translateX(100%);
       -moz-transform: translateX(100%);

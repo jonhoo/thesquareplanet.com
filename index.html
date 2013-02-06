@@ -11,6 +11,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    var html = document.getElementsByTagName('html')[0];
+    html.classList.remove('no-js');
+    html.classList.add('js');
+  </script>
 </head>
 <body>
   <header>
@@ -484,9 +489,7 @@
     window.onhashchange = onhashchange;
     window.onpopstate = onhashchange;
     onhashchange();
-    var html = document.getElementsByTagName('html')[0];
-    html.classList.remove('no-js');
-    html.classList.add('js');
+    html.classList.add('stable');
   </script>
 </body>
 </html>
