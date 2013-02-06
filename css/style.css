@@ -253,6 +253,7 @@ footer {
     display: inline-block;
     float: right;
     width: 200px;
+    height: auto;
   }
   .site h3 {
     margin-right: 240px;
