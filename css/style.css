@@ -10,9 +10,7 @@ body { font-size: 1em; line-height: 1.4; }
 ::selection { background: #b3d4fc; text-shadow: none; }
 
 /** Convenience classes **/
-.clearfix:before, .clearfix:after { content: ""; display: table; }
-.clearfix:after { clear: both; }
-.clearfix { *zoom: 1; }
+.clearfix { overflow: hidden; *zoom: 1; }
 .hidden { display: none !important; visibility: hidden; }
 .ir { background-color: transparent; border: 0; overflow: hidden; *text-indent: -9999px; }
 .ir:before { content: ""; display: block; width: 0; height: 150%; }
@@ -105,9 +103,6 @@ i {
   }
   .glance article {
     margin-bottom: 10px;
-  }
-  .glance article > div > p {
-    margin: .5em 0;
   }
   .glance article h1 {
     font-size: 2em;
@@ -237,9 +232,6 @@ footer {
             font-size: .5em;
             font-weight: normal;
           }
-        .site .thumb + .thumb {
-          display: none;
-        }
 
 .toplink {
   font-weight: normal;
@@ -322,7 +314,7 @@ footer {
     margin-left: 0;
     width: auto;
   }
-    .contact li .icon {
+    .contact .icon {
       -webkit-transition: opacity .2s ease-in-out;
       -moz-transition: opacity .2s ease-in-out;
       -ms-transition: opacity .2s ease-in-out;
@@ -330,8 +322,8 @@ footer {
       transition: opacity .2s ease-in-out;
       opacity: 0.4;
     }
-    .contact li a:hover .icon,
-    .contact li a:focus .icon {
+    .contact a:hover .icon,
+    .contact a:focus .icon {
       opacity: 1;
     }
   .toplink { display: none; }
