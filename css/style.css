@@ -30,9 +30,9 @@ html {
   background: #FCFCF9 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKUlEQVQIW2NkAILv37//5+TkZASxQYARXQAsCJOF0SBFKIIwXXBBZGMAFTYT6gJ5KIkAAAAASUVORK5CYII=) repeat;
 }
 
-a { color: #F87715; text-decoration: none; }
+a { color: #0C6FA9; text-decoration: none; }
 a:hover { text-decoration: underline; }
-a:visited { color: #F83715; }
+a:visited { color: #9D598B; }
 
 .limwidth {
   padding: 0 1em;
@@ -228,7 +228,7 @@ footer {
           }
           .site h3 small {
             display: block;
-            color: #5D99CB;
+            color: #0C6FA9;
             font-size: .5em;
             font-weight: normal;
           }
