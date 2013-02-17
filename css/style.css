@@ -315,7 +315,6 @@ footer {
     .contact a:focus .icon {
       opacity: 1;
     }
-  .toplink { display: none; }
 }
 @media screen and (min-width: 65em) {
   .site .thumb {
@@ -334,7 +333,7 @@ footer {
   }
   .glance .list { margin-left: 420px; }
 }
-@media screen and (min-width: 930px) {
+@media screen and (min-width: 70em) {
   .contact .unimportant {
     display: inline-block;
   }
@@ -390,8 +389,9 @@ footer {
   -o-flex-direction: column-reverse;
   flex-direction: column-reverse;
 }
-@media screen and (min-width: 950px) {
+@media screen and (min-width: 80em) {
   #ispaged { display: block; }
+  .toplink { display: none; }
   #pages {
     display: block;
     position: relative;
@@ -461,9 +461,9 @@ footer {
     column-count: 3;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 85em) {
   .limwidth {
-    width: 1024px;
+    max-width: 1024px;
     margin: 0 auto;
     padding: 0;
   }
