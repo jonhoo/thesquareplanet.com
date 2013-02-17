@@ -60,7 +60,6 @@ header {
     font-size: 19px;
     text-align: center;
   }
-  header h1 span {}
     header h1 span:before {
       content: "::";
       color: #2D699B;
@@ -73,7 +72,6 @@ nav.limwidth {
     nav .item {
       display: block;
       padding: .9em 1.5em;
-      font-size: 13px;
       background: #333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKUlEQVQIW2NkAAJ9ff3/Fy9eZASxQYARXQAsCJOF0SBFKIIwXXBBZGMAhi8Rkpz+MHUAAAAASUVORK5CYII=) repeat;
       color: white;
       text-align: left;
@@ -95,9 +93,7 @@ i {
   color: #AAA;
 }
 
-.glance {
-  font-size: 14px;
-}
+.glance { }
   .glance .list {
     margin-left: 0;
   }
@@ -126,7 +122,7 @@ i {
     }
     .glance ul .head {
       color: #DFDFDF;
-      font-size: 20px;
+      font-size: 1.3em;
       float: right;
     }
   .glance dl {}
@@ -201,7 +197,6 @@ footer {
     }
       .site .thumb {
         position: relative;
-        float: right;
         z-index: 10;
         background: white;
         padding: .5em;
@@ -243,7 +238,7 @@ footer {
   margin: -1.5em 0 1em;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 30em) {
   nav { text-align: center; }
   nav .item-inline, nav .item-inline.item { display: inline-block; }
     nav .item-inline + .item-inline { margin-left: .1em; }
@@ -251,21 +246,18 @@ footer {
       border-bottom-right-radius: 2px;
       border-bottom-left-radius: 2px;
     }
-}
-@media screen and (min-width: 500px) {
   .site .thumb-img {
     display: inline-block;
-    float: right;
-    width: 200px;
+    max-width: 80%;
     height: auto;
   }
-  .site h3 {
-    margin-right: 240px;
-  }
 }
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 40em) {
   header h1 {
-    font-size: 20px;
+    font-size: 2em;
+  }
+  .site .thumb {
+    float: right;
   }
   .site .thumb-img {
     width: 250px;
@@ -274,7 +266,7 @@ footer {
     margin-right: 290px;
   }
 }
-@media screen and (min-width: 650px) {
+@media screen and (min-width: 45em) {
   .glance .list { margin-left: 220px; }
   .site + .site {
     margin-top: 5em;
@@ -287,7 +279,7 @@ footer {
     margin-right: 340px;
   }
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 50em) {
   .columns {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -297,13 +289,10 @@ footer {
   }
   .glance article i { display: inline; }
 }
-@media screen and (min-width: 750px) {
-  nav .item { font-size: 15px; }
-}
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 60em) {
   nav { text-align: right; }
   header h1 {
-    font-size: 29px;
+    font-size: 2.1em;
   }
   header h1 {
     float: left;
@@ -328,7 +317,7 @@ footer {
     }
   .toplink { display: none; }
 }
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 65em) {
   .site .thumb {
     float: left;
     margin: 2em 3em 0 0;
@@ -351,7 +340,7 @@ footer {
   }
   nav .item {
     padding: .5em .95em;
-    font-size: 13px;
+    font-size: 1em;
   }
 }
 #ispaged { display: none; }
