@@ -71,6 +71,7 @@ nav.limwidth {
   nav ul { margin: 0; padding: 0; }
     nav .item {
       display: block;
+      font-size: .9em;
       padding: .9em 1.5em;
       background: #333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAKUlEQVQIW2NkAAJ9ff3/Fy9eZASxQYARXQAsCJOF0SBFKIIwXXBBZGMAhi8Rkpz+MHUAAAAASUVORK5CYII=) repeat;
       color: white;
@@ -339,7 +340,6 @@ footer {
   }
   nav .item {
     padding: .5em .95em;
-    font-size: 1em;
   }
 }
 #ispaged { display: none; }
