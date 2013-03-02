@@ -246,7 +246,7 @@ footer {
 }
 @media screen and (min-width: 40em) {
   header h1 {
-    font-size: 2em;
+    font-size: 1.85em;
   }
   .site .thumb {
     float: right;
@@ -283,9 +283,6 @@ footer {
 }
 @media screen and (min-width: 60em) {
   nav { text-align: right; }
-  header h1 {
-    font-size: 2.1em;
-  }
   header h1 {
     float: left;
   }
