@@ -14,13 +14,7 @@ body { font-size: 1em; line-height: 1.4; }
 .hidden { display: none !important; visibility: hidden; }
 .ir { background-color: transparent; border: 0; overflow: hidden; *text-indent: -9999px; }
 .ir:before { content: ""; display: block; width: 0; height: 150%; }
-.icon { display: inline-block; width: 32px; height: 32px; vertical-align: top; background-position: center center; background-repeat: no-repeat; }
-  .icon-facebook{ background-image: url('../gfx/icons/facebook.svg'); }
-  .icon-github{ background-image: url('../gfx/icons/github.svg'); }
-  .icon-linkedin{ background-image: url('../gfx/icons/linkedin.svg'); }
-  .icon-mail{ background-image: url('../gfx/icons/mail.svg'); }
-  .icon-twitter{ background-image: url('../gfx/icons/twitter.svg'); }
-  .icon-wordpress{ background-image: url('../gfx/icons/wordpress.svg'); }
+.icon { display: inline-block; width: 32px; height: 32px; vertical-align: top; }
 
 /** Main styles **/
 html {
