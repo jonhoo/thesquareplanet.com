@@ -1,13 +1,21 @@
 /** Basic normalization **/
 html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-html, button, input, select, textarea { font-family: sans-serif; }
+html, button, input, select, textarea {
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.5;
+}
 body { margin: 0; }
 p { margin: 1em 0; }
 img { border: 0; vertical-align: top; -ms-interpolation-mode: bicubic; }
-html, button, input, select, textarea { color: #222; }
+html, button, input, select, textarea { color: rgb(20,20,18); }
 body { font-size: 1em; line-height: 1.4; }
 ::-moz-selection { background: #b3d4fc; text-shadow: none; }
 ::selection { background: #b3d4fc; text-shadow: none; }
+h1,h2,h3,h4,h5,h6 {
+  font-family: Bitter,Georgia,serif;
+  font-weight: normal;
+  line-height: 1.3;
+}
 
 /** Convenience classes **/
 .clearfix { overflow: hidden; *zoom: 1; }
@@ -49,7 +57,7 @@ header {
     vertical-align: middle;
     margin-top: 0;
     margin-bottom: 0;
-    line-height: 32px;
+    line-height: 36px;
     font-size: 19px;
     text-align: center;
   }
@@ -95,7 +103,7 @@ i {
     margin-bottom: 10px;
   }
   .glance article h1 {
-    font-size: 2em;
+    font-size: 1.7em;
     margin: 0;
   }
   .glance article i {
@@ -108,6 +116,7 @@ i {
     list-style-type: none;
     margin-top: 5px;
     line-height: 25px;
+    font-size: .8em;
   }
   .glance ul {}
     .glance ul .split {
@@ -131,7 +140,9 @@ i {
       margin-left: 6em;
     }
 
-.columns { }
+.columns {
+  font-size: .9em;
+}
   .columns p:first-child {
     margin-top: 0;
   }
@@ -140,15 +151,14 @@ i {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  padding-top: 1em;
   width: 100%;
   text-align: center;
 }
   .contact li {
     display: inline-block;
-    line-height: 32px;
-    vertical-align: top;
+    line-height: 36px;
   }
+  .contact .icon { vertical-align: middle; }
     .contact .unimportant {
       display: none;
     }
@@ -195,7 +205,6 @@ footer {
         background: white;
         padding: .5em;
         border: 1px solid #DDD;
-        box-shadow: 2px 2px 5px #777;
         margin-left: 1em;
         margin-bottom: 1em;
       }
@@ -204,6 +213,7 @@ footer {
         }
         .site p {
           text-align: left;
+          font-size: .9em;
         }
         .site h3 {
           text-align: center;
@@ -312,8 +322,8 @@ footer {
     float: left;
     margin: 2em 3em 0 0;
     margin-right: 16px;
-    margin-top: 2em;
     padding: 1em;
+    top: 1em;
   }
   .site h3 {
     margin-right: 0;
@@ -442,13 +452,6 @@ footer {
     }
   #sitelist div {
     margin-left: 450px;
-  }
-  .columns {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    -ms-column-count: 3;
-    -o-column-count: 3;
-    column-count: 3;
   }
 }
 @media screen and (min-width: 85em) {
