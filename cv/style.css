@@ -52,13 +52,7 @@ body {
       .resume .section > .content p:last-child { margin-bottom: 0; }
 
     .resume .contact {
-      position: absolute;
-      top: 1em;
-      right: 2em;
-      clear: none;
       color: #555;
-      width: 40%;
-      padding-bottom: 0;
     }
       .resume .contact > .content {
         margin-left: 0;
@@ -72,16 +66,15 @@ body {
       }
       .contact h2 { display: none; }
       .contact .label {
-        float: right;
+        float: left;
         width: 5em;
-        margin-left: 1em;
-        text-align: left;
-        color: #BBB;
-      }
-      .contact .content {
-        display: block;
+        margin-right: 1em;
         text-align: right;
-        float: right;
+        color: #BBB;
+        vertical-align: top;
+      }
+      .contact span.content {
+        float: left;
       }
         .main-address .content { white-space: pre; }
   .listing { }
@@ -100,11 +93,9 @@ body {
       font-size: .9em;
     }
     .listing .dates {
-      margin-top: -2em;
       font-family: sans-serif;
       font-size: .8em;
       line-height: 2;
-      float: right;
       color: #888;
     }
       .listing .grouped .dates { display: none; }
@@ -130,11 +121,9 @@ body {
     .language, .skill {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      float: left;
-      width: 50%;
-      padding: .5em 3%;
-      border-right: 3px solid white;
-      border-bottom: 3px solid white;
+      padding: .5em 1em;
+      margin: 1em .5em 0;
+      max-width: 30em;
       background: #F7F7F7;
     }
       .skill { width: 25%; }
@@ -146,7 +135,42 @@ body {
        .proficiency::before { content: "("; }
        .proficiency::after { content: ")"; }
 
-@media print {
+@media (min-width:45em) {
+  .resume .contact {
+    position: absolute;
+    top: 1em;
+    right: 2em;
+    clear: none;
+    color: #555;
+    width: 40%;
+    padding-bottom: 0;
+  }
+    .contact .label {
+      float: right;
+      margin-right: 0;
+      margin-left: 1em;
+      text-align: left;
+    }
+    .contact span.content {
+      text-align: right;
+      float: right;
+    }
+  .language, .skill {
+    float: left;
+    width: 50%;
+    margin: 0;
+    max-width: auto;
+    padding: .5em 3%;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+  }
+    .skill { width: 25%; }
+  .listing .dates {
+    margin-top: -2em;
+    float: right;
+  }
+}
+@media print, (max-width:60em) {
   .resume .section h2 {
     float: none;
     width: auto;
@@ -164,6 +188,8 @@ body {
     padding-top: 0;
     margin: 0;
   }
+}
+@media print {
   body { padding: 0; }
 }
 
