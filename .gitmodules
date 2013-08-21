@@ -1,0 +1,3 @@
+[submodule "gfx/icons/webicons"]
+	path = gfx/icons/webicons
+	url = git@github.com:adamfairhead/webicons.git
