@@ -135,7 +135,7 @@ body {
        .proficiency::before { content: "("; }
        .proficiency::after { content: ")"; }
 
-@media (min-width:45em) {
+@media print, (min-width:45em) {
   .resume .contact {
     position: absolute;
     top: 1em;
