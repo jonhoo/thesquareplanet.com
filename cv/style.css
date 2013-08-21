@@ -91,7 +91,8 @@ body {
       font-family: Bitter, Georgia, serif;
       font-size: .9em;
     }
-    .listing .dates {
+    .listing .dates,
+    .listing-stats {
       font-family: sans-serif;
       font-size: .8em;
       line-height: 2;
@@ -103,6 +104,10 @@ body {
         cursor: crosshair;
         color: #0C6FA9;
       }
+    .listing-stats {
+      font-weight: bold;
+      float: right;
+    }
     .listing-description {
       padding: .5em 1em;
       margin: 1em .5em 0;
@@ -169,6 +174,9 @@ body {
   .listing .dates {
     margin-top: -2em;
     float: right;
+  }
+  .listing-stats {
+    margin-top: -.2em;
   }
 }
 @media print, (max-width:60em) {
