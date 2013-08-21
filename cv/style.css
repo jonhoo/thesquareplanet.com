@@ -1,0 +1,173 @@
+body {
+  font-size: 1em;
+  font-family: Georgia, serif;
+  color: #222;
+  line-height: 1.5;
+  padding: 2em 0;
+}
+
+.resume {
+  max-width: 50em;
+  padding: 0 2em;
+  margin: 0 auto;
+  position: relative;
+}
+  .resume a { color: #0C6FA9; }
+  .resume .name {
+    font-size: 3.2em;
+    margin-top: 0;
+    color: #0C6FA9;
+    margin-right: 40%;
+    font-weight: normal;
+    font-family: Bitter, Georgia, serif;
+  }
+    .resume .headline {
+      display: block;
+      font-size: .5em;
+      color: #444;
+    }
+  .resume .section {
+    clear: both;
+    overflow: hidden;
+    padding-bottom: 2em;
+  }
+    .resume .section:last-child { padding-bottom: 0; }
+    .resume .contact + .section { padding-top: 1em; }
+    .resume .section.page-break { padding-bottom: 0; page-break-before: always; }
+    .resume .section h2 {
+      float: left;
+      width: 20%;
+      text-align: right;
+      font-weight: normal;
+      font-family: Bitter, Georgia, serif;
+      color: #0C6FA9;
+      margin: 0;
+    }
+    .resume .section > .content {
+      margin-left: 20%;
+      padding-left: 2em;
+      padding-top: .3em;
+    }
+      .resume .section > .content p:first-child { margin-top: 0; }
+      .resume .section > .content p:last-child { margin-bottom: 0; }
+
+    .resume .contact {
+      position: absolute;
+      top: 1em;
+      right: 2em;
+      clear: none;
+      color: #555;
+      width: 40%;
+      padding-bottom: 0;
+    }
+      .resume .contact > .content {
+        margin-left: 0;
+        padding-left: 0;
+        padding-top: 0;
+        font-size: .8em;
+        font-family: sans-serif;
+      }
+      .contact .content > div {
+        overflow: hidden;
+      }
+      .contact h2 { display: none; }
+      .contact .label {
+        float: right;
+        width: 5em;
+        margin-left: 1em;
+        text-align: left;
+        color: #BBB;
+      }
+      .contact .content {
+        display: block;
+        text-align: right;
+        float: right;
+      }
+        .main-address .content { white-space: pre; }
+  .listing { }
+    .resume .listing .content > div + div {
+      margin-top: 1.2em;
+      page-break-inside: avoid;
+    }
+    .listing-title {
+      line-height: 1.4;
+      font-size: 1.1em;
+      font-family: Bitter, Georgia, serif;
+    }
+    .listing-type {
+      color: #666;
+      font-family: Bitter, Georgia, serif;
+      font-size: .9em;
+    }
+    .listing .dates {
+      margin-top: -2em;
+      font-family: sans-serif;
+      font-size: .8em;
+      line-height: 2;
+      float: right;
+      color: #888;
+    }
+      .listing .grouped .dates { display: none; }
+      .listing .grouped .count {
+        display: block;
+        cursor: crosshair;
+        color: #0C6FA9;
+      }
+    .listing-description {
+      padding: .5em 1em;
+      margin: 1em .5em 0;
+      max-width: 30em;
+      background: #F7F7F7;
+      color: #444;
+    }
+  .languages-list, .skills-list {
+    list-style-type: none;
+    clear: both;
+    padding: 0;
+    padding-top: .5em;
+    page-break-inside: avoid;
+  }
+    .language, .skill {
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      float: left;
+      width: 50%;
+      padding: .5em 3%;
+      border-right: 3px solid white;
+      border-bottom: 3px solid white;
+      background: #F7F7F7;
+    }
+      .skill { width: 25%; }
+     .language-name {}
+     .proficiency {
+       color: #AAA;
+       text-transform: lowercase;
+     }
+       .proficiency::before { content: "("; }
+       .proficiency::after { content: ")"; }
+
+@media print {
+  .resume .section h2 {
+    float: none;
+    width: auto;
+    text-align: left;
+    margin: 0;
+  }
+  .resume .section > .content {
+    margin-left: 0;
+    padding-left: 1em;
+  }
+  .resume .section {
+    padding-bottom: 1em;
+  }
+  .languages-list, .skills-list {
+    padding-top: 0;
+    margin: 0;
+  }
+  body { padding: 0; }
+}
+
+@page {
+  size: auto;
+  margin: 15mm 5mm;
+}
