@@ -115,14 +115,14 @@ body {
       background: #F7F7F7;
       color: #444;
     }
-  .languages-list, .skills-list {
+  .hobbies-list {
     list-style-type: none;
     clear: both;
     padding: 0;
     padding-top: .5em;
     page-break-inside: avoid;
   }
-    .language, .skill {
+    .hobby {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       padding: .5em 1em;
@@ -130,13 +130,6 @@ body {
       max-width: 30em;
       background: #F7F7F7;
     }
-     .language-name {}
-     .proficiency {
-       color: #AAA;
-       text-transform: lowercase;
-     }
-       .proficiency::before { content: "("; }
-       .proficiency::after { content: ")"; }
 
 @media print, (min-width:45em) {
   .resume .name {
@@ -161,7 +154,7 @@ body {
       text-align: right;
       float: right;
     }
-  .language, .skill {
+  .hobby {
     float: left;
     width: 33%;
     margin: 0;
@@ -170,7 +163,6 @@ body {
     border-right: 3px solid white;
     border-bottom: 3px solid white;
   }
-    .skill { width: 25%; }
   .listing .dates {
     margin-top: -2em;
     float: right;
@@ -193,7 +185,7 @@ body {
   .resume .section {
     padding-bottom: 1em;
   }
-  .languages-list, .skills-list {
+  .hobbies-list {
     padding-top: 0;
     margin: 0;
   }
