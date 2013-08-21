@@ -17,7 +17,6 @@ body {
     font-size: 3.2em;
     margin-top: 0;
     color: #0C6FA9;
-    margin-right: 40%;
     font-weight: normal;
     font-family: Bitter, Georgia, serif;
   }
@@ -136,6 +135,9 @@ body {
        .proficiency::after { content: ")"; }
 
 @media print, (min-width:45em) {
+  .resume .name {
+    margin-right: 40%;
+  }
   .resume .contact {
     position: absolute;
     top: 1em;
