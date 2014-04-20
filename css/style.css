@@ -65,10 +65,7 @@ a abbr { border-bottom: none; }
 	.article p {
 		margin: 0;
 		padding: 0;
-		padding-left: 1em;
-		margin-left: 1em;
-		border-left: .3em solid #F0F0F0;
-		color: #222;
+		color: #444;
 	}
 	.article .authors,
 	.article .journal {
@@ -91,7 +88,6 @@ a abbr { border-bottom: none; }
 		display: block;
 		padding: 0;
 		float: none;
-		margin-top: -.5em;
 	}
 	.site .thumb {
 		display: none;
