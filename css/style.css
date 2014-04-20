@@ -162,14 +162,21 @@ header {
 			color: black;
 		}
 		.links a {
-			display: block;
 			text-align: center;
-			padding: .5rem 1rem;
+			font-size: .7rem;
+			padding: .5em 1em;
 			border-bottom: 1px solid #F0F0F0;
 		}
+@media screen and (min-width: 21em) {
+		.links a { font-size: .8rem; }
+}
+@media screen and (min-width: 23em) {
+		.links a { font-size: .9rem; }
+}
 @media screen and (min-width: 25em) {
 		.links a {
 			display: inline-block;
+			font-size: 1rem;
 			padding: 0.5rem 1rem;
 			border-bottom: none;
 		}
@@ -260,7 +267,7 @@ article {
 	margin: 2em auto;
 	margin-top: 0;
 	max-width: 37em;
-	width: 80%;
+	width: 90%;
 	line-height: 2;
 }
 	article p { text-align: left; }
