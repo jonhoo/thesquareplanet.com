@@ -67,3 +67,72 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/jonhoo
 
 ==================================================================
+==================================================================
+https://keybase.io/jonhoo
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://tsp.io
+  * I am jonhoo (https://keybase.io/jonhoo) on keybase.
+  * I have a public key with fingerprint 0EB8 140B 1294 C265 5DDD  BF0C D64A C9D6 7176 DC71
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "0eb8140b1294c2655dddbf0cd64ac9d67176dc71",
+            "host": "keybase.io",
+            "key_id": "d64ac9d67176dc71",
+            "uid": "e9eed673402231d0ac45a1c450087000",
+            "username": "jonhoo"
+        },
+        "service": {
+            "hostname": "tsp.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1398862476,
+    "expire_in": 157680000,
+    "prev": "44548e8c657ebb6981dfc3ca5e23d0d75263198fc4a210983a46278770ffed2f",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+owGbwMvMwMV4zevktcKyO4WMpw+8TmIITvi0uVopKT+lUsmqWik7FUylZealpxYV
+FGXmlShZKRmkJlkYmhgkGRpZmiQbmZmapqSkJKUZJKeYmSQmW6aYmRuam6Ukmxsq
+6Shl5BeDdACNSUosTtXLzAeKATnxmSlAUSzqS8ESqZapqUBhYxMDIyNjwxSDxGQT
+00RDIGFgYGFuYGAAUlicWpSXmJsKVJ2Vn5eRn69Uq6MEFCvLTE4FuRhkMVS+pLgA
+YnFBUX5JfnJ+DlAso6SkoNgKpKeksgCkqDw1KR6qPT4pMy8F6GGgjrLUouLM/Dwl
+K0OgyuSSTJB5hsaWFhZmRibmZjpKqRUFmUWp8ZkgFabmZhZAtxmA7EktAxppYmJq
+YpFqkWxmap6alGRmaWGYkpZsnJxommpknGKQYm5qZGZsaGmRlmySaGRoYGlhnGhi
+ZmRuYW5ukJaWmmKUpgTyUGFevpKVKdCZielAI4sz0/MSS0qLUpVquTqZZFgYGLkY
+2FiZQHHGwMUpAIvJdyz8f6V9Dp/e7vY6jGv1WY0GpgWP06cENhyZ7KTbXF/3766c
+yS4nG1WvhNnZWx3jtgvnfOO7Y/9u+1FHFlvVA+veS/MJbS0Oy+muOPfzcVHC9Eln
+qlPnPYs7MNdm7V75l6w3pR0U14n1rwxJr5j8/ZOdQMMl971L5L/c83VrD7dwT0rS
+M2nSuBH37BDfmoef77hfOajHNXeq2lSZaR8fBkx+OHtq55upLx8HhDOKfZ6Q5H6i
+R3rhv03LzGYpMJkGBodq5MhuC+bJmWIt0az1NlD9x4ZvMT+2P9mYKp7w8tP7V1Er
+bmtm/1k0Mci3SmD1Dw+emuUMt9fvnxO2oOmxgu2Dlp/xb9Z77BNhllfxPtmYkjDl
+nswTlzqmaTfKp842YZcwDOHhiFglmGI76fN0k5T9a9xW815d1zfr9ae4+4H9j88r
+Vru7+toyZM0M80t0Wyf13U7F89WN94wbi7jWzrr17EVyNeOMIJ8ICXaGZLf7Vy9N
+c+cUn7O2QN7b/80Etej/Gl+m9K/d4Cg0Q958vTOzQWbU18eLp53fFdm40SM2qFle
+cmOw1mmT1r7UWr/KZa2z5t3T/fim/frlrysrF5RE3Fm1YVZrUIriHR/hj8GBwnEh
+O8+9E971tm+b/cKFBm9aUvpOBIhHvjbsuxXp6n5vgWhRa2OzgfHdvopyHTG95/xP
+G9Zf+L0ug2Gx3tOjTqkn+0Vd68zVvf594WFhAwA=
+=plC1
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jonhoo
+
+==================================================================
