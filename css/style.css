@@ -72,7 +72,7 @@ a abbr { border-bottom: none; }
 		display: block;
 	}
 	.article .authors {
-		font-style: italic;
+		color: #222;
 	}
 	.article .journal {
 	}
