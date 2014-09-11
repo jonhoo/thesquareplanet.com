@@ -40,7 +40,7 @@ a abbr { border-bottom: none; }
 	list-style-type: none;
 	padding: 0;
 }
-	.article { }
+	.article { position: relative; }
 	.article h3, .site h3 {
 		margin-bottom: 0;
 		font-weight: normal;
@@ -67,6 +67,20 @@ a abbr { border-bottom: none; }
 		padding: 0;
 		color: #444;
 	}
+	.article .award {
+		float: left;
+		padding-right: .5em;
+		position: relative;
+		top: .2em;
+	}
+@media screen and (min-width: 50em) {
+	.article .award {
+		position: absolute;
+		top: 4px;
+		left: -48px;
+		width: 36px;
+	}
+}
 	.article .authors,
 	.article .journal {
 		display: block;
