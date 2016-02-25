@@ -1,0 +1,138 @@
+==================================================================
+https://keybase.io/jonhoo
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://thesquareplanet.com
+  * I am jonhoo (https://keybase.io/jonhoo) on keybase.
+  * I have a public key with fingerprint 0EB8 140B 1294 C265 5DDD  BF0C D64A C9D6 7176 DC71
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "0eb8140b1294c2655dddbf0cd64ac9d67176dc71",
+            "host": "keybase.io",
+            "key_id": "d64ac9d67176dc71",
+            "uid": "e9eed673402231d0ac45a1c450087000",
+            "username": "jonhoo"
+        },
+        "service": {
+            "hostname": "thesquareplanet.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1398862185,
+    "expire_in": 157680000,
+    "prev": "a633b12b80ea613de694c9900bb1c880097de2638ec6bdcc0f3417b59c86770c",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+owGbwMvMwMV4zevktcKyO4WMpw/8SGIITvhYWq2UlJ9SqWRVrZSdCqbSMvPSU4sK
+ijLzSpSslAxSkywMTQySDI0sTZKNzExNU1JSktIMklPMTBKTLVPMzA3NzVKSzQ2V
+dJQy8otBOoDGJCUWp+pl5gPFgJz4zBSgKBb1pWCJVMvUVKCwsYmBkZGxYYpBYrKJ
+aaIhkDAwsDA3MDAAKSxOLcpLzE0Fqs7Kz8vIz1eq1VECipVlJqeCXAyyGCpfkpFa
+XFiaWJRakJOYl1qil5yfCzSgoCi/JD85PweoIKOkpKDYCmRASWUBSEd5alI81Kz4
+pMy8FKDvgTrKUouKM/PzlKwMgSqTSzJBhhsaW1pYmBkZWpjqKKVWFGQWpcZnglSY
+mptZAB1qALIntQxoZKKZsTEwwJIsDFITzQyNU1LNgGFnaWlgkJRkmGwBVGtpnpJq
+ZGZskZpslpSSnGyQZmxiaJ5kaplsYWZubpCsBPJdYV6+kpUJ0JmJ6UAjizPT8xJL
+SotSlWq5OplkWBgYuRjYWJlAEcjAxSkAi9b/ywQY2vlkg7Xn6h8/4iH0z3Hp/Glt
+PjcZed3ex73YvkRk5aH1utN2H/i0mSct8d7Bjwt7uo+v23LW5Ku28/mpPJnO5j0L
+T8wObJUy3q2jemH1G+an/E92NVtbdv/cnBUV7jfvbFirjX7f4Te5N+IMXkR5pxn/
+mLqja/G7jfYySjtviwV+4+/0eOaT1bB/4urD/xT+/XNi7Zu3eUU6xxJ39rwlK+Ov
+K1R8E/f3+PJFTO6daVPBZ2WB3s4bJ7k8c/fxvl7ybc7aLZqlIowWnYk2nLF5Oq3f
+41ymbXX9fjXEcJpy88cTu08z9tm8bRKfw5dt4JH1J+7L0cZD1gpHU5dH39PfX/Ss
+z9SsW1T8FcPzE1vSPlT8sJgse+zU1iKVc+r33G+efXTp2P3KKZNDLx3cOufAaYn0
+41O2f7uSoN2/dsPnVyyv1odf0jsi9CEgQ47Lf+9+9VLdPoGA0hXZq+stLZ22snXx
+/9xeJn3udfTG1kP73Sf5n/L44efk0JX+S7ucw30+0/arrNeCNLxP7lDX0TefMMfG
+sl9R23fhXp7MTc9OMAuIv1tyYk85z+Tzvxlnq/QuYNwUtKErxfZCkMlliSJNA9mY
+gnPnAt6+en5QevLP5leTlfrOPfT+l3Dr2Nxi/t/Ny+pqlp2/pBL4fC/vqbk68jUZ
+rUZp2ReTV3T5zDqkaKC49JHnNVPfA3a2zUb/+W5UN5yc3LZlbeFCp9NaUgA=
+=9cRv
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jonhoo
+
+==================================================================
+==================================================================
+https://keybase.io/jonhoo
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://tsp.io
+  * I am jonhoo (https://keybase.io/jonhoo) on keybase.
+  * I have a public key with fingerprint 0EB8 140B 1294 C265 5DDD  BF0C D64A C9D6 7176 DC71
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "0eb8140b1294c2655dddbf0cd64ac9d67176dc71",
+            "host": "keybase.io",
+            "key_id": "d64ac9d67176dc71",
+            "uid": "e9eed673402231d0ac45a1c450087000",
+            "username": "jonhoo"
+        },
+        "service": {
+            "hostname": "tsp.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1398862476,
+    "expire_in": 157680000,
+    "prev": "44548e8c657ebb6981dfc3ca5e23d0d75263198fc4a210983a46278770ffed2f",
+    "seqno": 5,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2.0.22 (GNU/Linux)
+
+owGbwMvMwMV4zevktcKyO4WMpw+8TmIITvi0uVopKT+lUsmqWik7FUylZealpxYV
+FGXmlShZKRmkJlkYmhgkGRpZmiQbmZmapqSkJKUZJKeYmSQmW6aYmRuam6Ukmxsq
+6Shl5BeDdACNSUosTtXLzAeKATnxmSlAUSzqS8ESqZapqUBhYxMDIyNjwxSDxGQT
+00RDIGFgYGFuYGAAUlicWpSXmJsKVJ2Vn5eRn69Uq6MEFCvLTE4FuRhkMVS+pLgA
+YnFBUX5JfnJ+DlAso6SkoNgKpKeksgCkqDw1KR6qPT4pMy8F6GGgjrLUouLM/Dwl
+K0OgyuSSTJB5hsaWFhZmRibmZjpKqRUFmUWp8ZkgFabmZhZAtxmA7EktAxppYmJq
+YpFqkWxmap6alGRmaWGYkpZsnJxommpknGKQYm5qZGZsaGmRlmySaGRoYGlhnGhi
+ZmRuYW5ukJaWmmKUpgTyUGFevpKVKdCZielAI4sz0/MSS0qLUpVquTqZZFgYGLkY
+2FiZQHHGwMUpAIvJdyz8f6V9Dp/e7vY6jGv1WY0GpgWP06cENhyZ7KTbXF/3766c
+yS4nG1WvhNnZWx3jtgvnfOO7Y/9u+1FHFlvVA+veS/MJbS0Oy+muOPfzcVHC9Eln
+qlPnPYs7MNdm7V75l6w3pR0U14n1rwxJr5j8/ZOdQMMl971L5L/c83VrD7dwT0rS
+M2nSuBH37BDfmoef77hfOajHNXeq2lSZaR8fBkx+OHtq55upLx8HhDOKfZ6Q5H6i
+R3rhv03LzGYpMJkGBodq5MhuC+bJmWIt0az1NlD9x4ZvMT+2P9mYKp7w8tP7V1Er
+bmtm/1k0Mci3SmD1Dw+emuUMt9fvnxO2oOmxgu2Dlp/xb9Z77BNhllfxPtmYkjDl
+nswTlzqmaTfKp842YZcwDOHhiFglmGI76fN0k5T9a9xW815d1zfr9ae4+4H9j88r
+Vru7+toyZM0M80t0Wyf13U7F89WN94wbi7jWzrr17EVyNeOMIJ8ICXaGZLf7Vy9N
+c+cUn7O2QN7b/80Etej/Gl+m9K/d4Cg0Q958vTOzQWbU18eLp53fFdm40SM2qFle
+cmOw1mmT1r7UWr/KZa2z5t3T/fim/frlrysrF5RE3Fm1YVZrUIriHR/hj8GBwnEh
+O8+9E971tm+b/cKFBm9aUvpOBIhHvjbsuxXp6n5vgWhRa2OzgfHdvopyHTG95/xP
+G9Zf+L0ug2Gx3tOjTqkn+0Vd68zVvf594WFhAwA=
+=plC1
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jonhoo
+
+==================================================================

@@ -1,0 +1,17 @@
+---
+layout: post
+title: HTC Hero
+date: '2009-09-21 14:48:28'
+---
+
+I just received my brand new HTC Hero today, and full of excitement I immediately unwrapped and booted the new phone. This was a [pre-update](http://www.softsailor.com/news/6605-htc-hero-getting-software-update-which-gives-back-speed.html) phone, so the first order of business was to update the firmware.
+
+Since I run Windows 7, I had to follow the following [workaround](http://www.mydigitallife.info/2009/08/24/workaround-for-htc-hero-sync-problem-in-windows-7/) to properly install HTC Sync and connect my phone to the computer, but this was nothing but a minor speedbump. After pulling my contacts of the phone, I updated and rebooted the phone. There is no such thing as the smell of a newly flashed phone!
+
+Next order of business was syncing my contact list with Facebook, something was surprisingly simple. Either you can mass-sync, or you can go through each one if you, like me, do not find the sync all button at first glance.... Then, Gmail and Twitter was soon synced, and finally, I connected my email. Everything went seamlessly, and you can easily see that HTC put a great deal of thought into their Sense UI. Furthermore, Android provides a great foundation upon which to build such a system.
+
+The only thing I find annoying after using my phone for a day is the lack of a way to convert "Phone" contacts into "Google" contacts that are automatically synced to Gmail contacts. There is a piece of software on the Market called "ContactSync" which does exactly this, but there have been reported stability issues with the HTC Hero ( though allegedly the problem is not with the software itself, but the Google Sync software which cannot handle more than a certain number of contacts ).
+
+To finish off; if you are considering buying a HTC Hero - do it. You will not regret!
+
+PS: Just remember to check if a microSD card is included. It is supposed to be, but for some reason mine did not have one which disables a couple of cool features like Footprints, the Camera and downloading attachments/files from the web/email.
