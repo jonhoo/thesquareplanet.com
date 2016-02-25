@@ -1,363 +1,301 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+---
+layout: default
+title: Webdev
+tagline: Webdev portfolio
+permalink: /webdev/
+---
 
-		<title>Jon Gjengset</title>
-		<meta name="description" content="PhD Student, Software Engineer and problem solver" />
-
-		<link rel="stylesheet" media="(min-width: 50em)" href='//fonts.googleapis.com/css?family=Cinzel' />
-		<link rel="stylesheet" href="css/style.css" />
-
-		<meta property="og:image" content="https://secure.gravatar.com/avatar/d4646d0d4f5f724283f4ae05d2792845.jpg?s=800" />
-		<meta name="author" content="Jon Gjengset <jon@thesquareplanet.com>" />
-		<meta name="canonical" content="http://thesquareplanet.com/portfolio.html" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-	<body>
-		<header>
-			<nav>
-				<div class="links">
-					<a href="index.html">About</a>
-					<a href="research.html">Research</a>
-					<a class="active" href="portfolio.html">Portfolio</a>
-					<a href="cv/">Resumé</a>
-				</div>
-				<div class="contact">
-					<a target="_blank" href="blog/">
-						<img class="icon" src="gfx/icons/wordpress.svg" alt="Wordpress" />
-					</a>
-					<a target="_blank" href="https://www.facebook.com/jonhoo">
-						<img class="icon" src="gfx/icons/facebook.svg" alt="Facebook" />
-					</a>
-					<a target="_blank" href="https://www.linkedin.com/in/jonhoo">
-						<img class="icon" src="gfx/icons/linkedin.svg" alt="LinkedIn" />
-					</a>
-					<a target="_blank" href="https://www.github.com/jonhoo">
-						<img class="icon" src="gfx/icons/github.svg" alt="GitHub" />
-					</a>
-					<a target="_blank" href="https://www.twitter.com/jonhoo">
-						<img class="icon" src="gfx/icons/twitter.svg" alt="Twitter" />
-					</a>
-					<a href="mailto:jon@thesquareplanet.com">
-						<img class="icon" src="gfx/icons/mail.svg" alt="Email" />
-					</a>
-				</div>
-			</nav>
-			<h2>Webdev portfolio</h2>
-		</header>
-		<article>
-			<ul class="sites">
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/ucle.png" alt="ucle.co" />
-			    <div>
-			      <h3><a target="_blank" href="http://ucle.co">UCL Entrepreneurs Society</a>
-				<i>February 2013 to August 2013</i>
-			      </h3>
-			      <p>
-			      The old website for the UCL Entrepreneurs Society was a
-			      non-responsive Tumblr blog. For the new site, WordPress was used
-			      instead, and the frontend was rewritten as a fully responsive
-			      WordPress theme. In addition to making it easier to add and edit
-			      blog posts for members of the committee, the new site also allows
-			      editing the sidebar, custom pages, the slideshow and other
-			      non-bloggy aspects of the page.
-			      </p>
-			      <p>
-			      One issue with this site was building a responsive theme where the
-			      sidebar was also flexible. This was difficult because most social
-			      plugins aren't made to be non-responsive, and even more so by the
-			      fact that the admins of the site can add content to the sidebar at
-			      will. The solution isn't perfect, but I believe the end user
-			      experience turned out good.
-			      </p>
-			      <p>
-			      The site was designed by me and tweaked by members of the
-			      committee when it was presented to them. The color scheme is in
-			      line with the society's, as is the explicity use of case in
-			      headers. Note that the design is em-based, not px-based, so it
-			      should scale well when zoomed, not just when resized.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/oslofashionawards-v2.png" alt="oslofashionawards.com" />
-			    <div>
-			      <h3><a target="_blank" href="http://oslofashionawards.com">Oslo Fashion Awards v2</a>
-				<i>February 2013</i>
-			      </h3>
-			      <p>
-			      This new version of the Oslo Fashion Awards site was more than a
-			      mere redesign. The entire backend was changed to WordPress and
-			      then site was redeveloped from the bottom up as a WordPress theme.
-			      </p>
-			      <p>
-			      The site is mostly responsive (responsive videos are still a pain)
-			      like all the sites I make, and the administrators can change
-			      almost every part of the site. The menus in the header, in the
-			      footer and the infobox can be dynamically changed, the content of
-			      every page can be edited (including the front page media box).
-			      </p>
-			      <p>
-			      Once again the design was supplied by Oslo Fashion Awards, and
-			      although it is mostly straightforward, there were some interesting
-			      challenges. One detail that proved particularly interesting
-			      (although it isn't noticeable to the average user) is the
-			      background image. The effect is only visible on really large
-			      screens (&gt; 2600px wide), but it was a good intellectual
-			      challenge. See if you can figure out what it does!
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/vgtv.png" alt="www.vgtv.no" />
-			    <div>
-			      <h3><a target="_blank" href="http://www.vgtv.no">VGTV</a>
-				<i>November 2011 to June 2012 (Aptoma)</i>
-			      </h3>
-			      <p>
-				I was tasked with developing a new, completely redesigned version of Norway's biggest online video portal.
-				The new site was designed by <a href="http://www.makingwaves.no">Making Waves</a> for VG, and then implemented by me.
-			      </p>
-			      <p>
-				The site is fully responsive, as it should be, and is implemented solely in JavaScript using the API from Aptoma's video solution <a href="http://aptoma.no/drvideo">DrVideo</a>
-				This allows for very easy development and deployment, as well as giving additional flexibility in rendering logic depending on the user's device.
-				It also utilizes both Flash and HTML5 video playback, and is integrated with several ad and statistics systems including <a href="http://www.videoplaza.com/">Videoplaza</a> and <a href="http://www.atinternet.com/en/">Xiti</a>.
-			      </p>
-			      <p>
-				After my departure from Aptoma, development was handed over to VG's internal development team.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/blindfilm-v2.png" alt="www.blindfilm.no" />
-			    <div>
-			      <h3><a target="_blank" href="http://www.blindfilm.no">Blind Film v2</a>
-				<i>June 2012</i>
-			      </h3>
-			      <p>
-				A complete redesign and restructuring of the website for the video production company Blind Film.
-			      </p>
-			      <p>
-				Equipped with an administration panel and Vimeo import, it allows the company full control over what videos to feature and categorization of these.
-			      </p>
-			      <p>
-				The frontend was designed by Torgeir H. Riseth, the founder of Blind Film, in cooperation with me, and implemented by yours truly.
-				It is fully responsive all the way down to mobile screens, and, per the user's request, has a lot of smooth animations and transitions to make the user experience a bit more fancy than a "regular" site.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/aftenposten-bilag.png" alt="bilag.aftenposten.no" />
-			    <div>
-			      <h3><a target="_blank" href="http://bilag.aftenposten.no">Aftenposten annonsørbilag</a>
-				<i>May 2012 (Aptoma)</i>
-			      </h3>
-			      <p>
-				Aftenposten approached Aptoma, wanting to establish a site where they could let advertisers publish news-like stories which would be featured on the frontpage of the newspaper.
-			      </p>
-			      <p>
-				Having created a similar solution for Ekstrabladet in Denmark, I developed the site, using <a href="http://aptoma.no/drpublish">DrPublish</a> from Aptoma as a backend for content and developing a standalone administration tool for managing ads, tracking codes and such.
-			      </p>
-			      <p>
-				The site is responsive, extremely flexible (each advertiser can skin their own section individually and supply HTML content for several key positions on the site) and built to scale really well using <abbr title="Edge-Site Includes">ESI</abbr>, Varnish and a purge-on-update strategy.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/ekstrabladet-works.png" alt="ekstrabladet.dk" />
-			    <div>
-			      <h3><a target="_blank" href="http://www.ekstrabladet.dk">Modules for Ekstra Bladet</a>
-				<i>January to May 2012 (Aptoma)</i>
-			      </h3>
-			      <p>
-				Ekstrabladet, a large Danish tabloid, was looking for a way of enriching their articles with maps, image grids, slideshows and other non-text snippets.
-				Through discussions with Aptoma, we established an editorial development team consisting of myself, <a href="http://larskjensen.dk/lars">Lars K. Jensen</a> <i>(journalist)</i> and <a href="http://www.andersbergmann.dk/hvem.php">Anders Bergmann</a> <i>(designer &amp; developer)</i> who were going to develop such modules.
-			      </p>
-			      <p>
-				I then developed a module framework that allowed rapid prototyping and deployment of such tools, as well as modules for embedding maps with user suggestions, timelines, images with hotzones, etc.
-				This was very successful, and many of the modules are in use in articles at ekstrabladet.dk today.
-			      </p>
-			      <p>
-				For a more thorough description of this team, and examples of the modules, have a look at Lars' <a href="http://medieblogger.dk/2012/05/25/hvad-laver-det-redaktionelle-udviklingsteam-pa-ekstrabladet-dk-egentlig/">write-up about the project</a>.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/meg.png" alt="Meg Rylance" />
-			    <div>
-			      <h3><a href="http://www.megrylance.com">Portfolio of Meg Rylance</a>
-				<i>December 2011</i>
-			      </h3>
-			      <p>
-				An online portfolio for Australian editor Meg Rylance, including videos fetched directly from Vimeo with thumbnails and inline player, customized contact form and full testimonials page
-			      </p>
-			      <p>
-				The page is written in pure HTML+JS, and has no backend code (and thus no administration) for the time being.
-				It uses CSS3 transitions to achieve a pleasant animation when opening/closing a page.
-			      </p>
-			      <p>
-				  The client wanted a bold design that was still easy on the eye once a page was opened, and the big black bar contrasting with the orange background works well to achieve this effect.
-				  When a page is opened, the black bar is still visible, but the orange is muted by only appearing as a slim stripe on either side of the content.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/fotland.png" alt="www.torgeirfotland.com" />
-			    <div>
-			      <h3><a href="http://www.torgeirfotland.com/" target="_blank">Portfolio of Torgeir Fotland</a>
-				<i>February 2011</i>
-			      </h3>
-			      <p>
-				A simple, static portfolio for Norwegian cinematographer Torgeir Fotland featuring his latest videos, photos, as well as his rental gear.
-			      </p>
-			      <p>
-				This is a single-page, multi-view site, in which each section of the page is horizontally adjacent to the previous one, making moving from one section to the next an act of scrolling left-to-right. Using the jQuery scrollTo library, the page remains accessible (anchor links to particular sections still work as expected), while still giving a smooth scroll effect to users with JavaScript.
-			      </p>
-			      <p>
-				As per the clients request, the page is quite wide, since netbooks and the like were not in the website target group.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/produktavdelingen.png" alt="Produktavdelingen" />
-			    <div>
-			      <h3><a target="_blank" href="http://www.produktavdelingen.no">Produktavdelingen</a>
-				<i>Development handed over October 2011</i>
-			      </h3>
-			      <p>
-				This page was designed by <a href="http://awknard.com/">Awknard</a>, and required a Wordpress-based backend, custom fonts and a dynamically changing logo in the center of the page.
-			      </p>
-			      <p>
-				One of the client's requirements was that the admin panel had to be very simple and preferably familiar. I ended up using WordPress for the underlying administration panel, and write a custom frontend using the WordPress API.
-			      </p>
-			      <p>
-				The site features a menu with optional sub-items that open inline lightbox-like boxes (<a href="http://www.colorpowered.com/colorbox/">ColorBox</a>), all manageable from inside WordPress. It also allows custom author names for external editors, multi-column popup content and image uploading for articles.
-			      </p>
-			      <p>
-				The designer wished the page to look as though it was on a sheet of paper resting on a flat surface, but did not want an extensive use of images on the site. CSS3 is therefore employed in compatible browsers for drop shadows, font smoothing and multi-columnization.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/subgarden.png" alt="Subgarden Studios" />
-			    <div>
-			      <h3><a target="_blank" href="#">Subgarden Studios</a>
-				<i>Discontinued</i>
-			      </h3>
-			      <p>
-				A website made for a sound production studio called Subgarden Studios. The design is a collaboration between me and Torgeir Riseth who runs <a href="http://www.blindfilm.no">Blind Film</a>. It contains several pages, but everything is loaded through AJAX.
-			      </p>
-			      <p>
-				The site sports a javascript-driven sound playing engine for track playback, inline page editing and post creation. It also features an image gallery, simple rich-text editing syntax for each post including bold, italic and underline typeface and links.
-			      </p>
-			      <p>
-				Each post also supports attachments that are displayed based on their type. Images are shown as slideshows beneath the post, sound clips in a self-developed javascript-driven player through <a href="http://www.schillmania.com/projects/soundmanager2/">SoundManager2</a> and external embedded content can also be included and is shown in a lightbox-like popup.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/oksnoen.png" alt="www.oksnoen.no" />
-			    <div>
-			      <h3><a target="_blank" href="http://oksnoen.no">Oksnøen summer camp</a>
-				<i>October, 2009</i>
-			      </h3>
-			      <p>
-				This website was developed in the summer of 2009 for a Norwegian summer camp for children between the ages of 7 and 15 at which I have been working for the past 5 years.
-			      </p>
-			      <p>
-				The previous website was completely static HTML and used frames and javascript navigation. Whenever the page needed updating, the owners had to call the original developer and have him hand code the changes
-			      </p>
-			      <p>
-				The new site is dynamic from start to finish, with section-dependent styling (separate color scheme for each section), word-like administration of pages (with add and delete as well). It also sports a news feed at the bottom of the front page for giving updates.
-			      </p>
-			      <p>
-				In Fall 2011, the site was rewritten completely again to accomodate for a new online booking system with support for online payment. Due to business decisions, the online payment solution was abandoned, but the site still operates on the rewritten code.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/blindfilm.png" alt="www.blindfilm.no" />
-			    <div>
-			      <h3><a target="_blank" href="http://www.blindfilm.no">Blind Film</a>
-				<i>Feburary, 2010</i>
-			      </h3>
-			      <p>
-				A friend of mine from Norway told me about a design for a website for his film company Blind Film which he felt like he was never going to complete because he did not have the knowledge to create such a site. After showing him some of my work, he agreed to let me build a prototype.
-			      </p>
-			      <p>
-				As I began with the prototype, I quickly found that I enjoyed building the site, and considering it was quite small, I began to implement the entire site design. Two days later, the site was finished - complete with administration and dynamic content.
-			      </p>
-			      <p>
-				The site features a lot of animation (using jQuery), vimeo integration, and an AJAX driven administration interface. The user does not have to go to a separate page for administration of content, but can simply edit on-site. Login and logout is hidden, but accessed simply by using a key seqence.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/internationalfriend.png" alt="www.internationalfriend.com" />
-			    <div>
-			      <h3><a target="_blank" href="http://internationalfriend.com">International Friend</a>
-				<i>Discontinued as of June, 2010</i>
-			      </h3>
-			      <p>
-				InternationalFriend is a project between me and a couple of friends that is still under development. It aims to create a global online community for young people; a community where teenagers can find all they would ever need on the internet.
-			      </p>
-			      <p>
-				The current InternationalFriend site is developed in PHP and PostgreSQL by <a target="_blank" href="http://www.facebook.com/JonasBA">Jonas B. Amundsen</a> and me, and designed by <a target="_blank" href="http://juliusocean.deviantart.com/">Owen Frazer Wray</a>. It is based on a homegrown CMS-like system, and allows full group-based administration of all content
-			      </p>
-			      <p>
-				We are currently developing the next release, and this will be done with the <a target="_blank" href="http://www.yiiframework.com">Yii PHP Framework</a>, will be a lot more dynamic that the current one (more AJAX). Furthermore, it will contain a lot more of the social aspect that the site is currently missing.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/miljeteig.png" alt="www.miljeteig.org" />
-			    <div>
-			      <h3><a target="_blank" href="http://www.miljeteig.org">Portfolio of Per Miljeteig</a>
-				<i>April, 2009</i>
-			      </h3>
-			      <p>
-				Per Miljeteig is a Norwegian photographer who was in the need of a new website since his old one was completely static, and the old webmaster had passed away. We agreed to do a redesign as well so that he could determine the look of his own portfolio.
-			      </p>
-			      <p>
-				The new site allows him to upload his own images and create albums through a simple admin interface. It also allows for editing the various text pages around the page through a word-like editor.
-			      </p>
-			    </div>
-			  </li>
-			  <li class="site clearfix">
-			    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/oslofashionawards-v1.png" alt="old.oslofashionawards.no" />
-			    <div>
-			      <h3><a target="_blank" href="http://old.oslofashionawards.no">Oslo Fashion Awards</a>
-				<i>September, 2008 - February, 2013</i>
-			      </h3>
-			      <p>
-				Oslo Fashion Awards came to me with a site design, and wanted me to script the page. They also required a simple way of adding new articles, as well as the occasional video. This is now done through a very simplistic admin interface.
-			      </p>
-			      <p>
-				Though several parts of this site is static, such as the sponsors and tour pages which do in fact change ever so often, the customer was very happy with the result. I have plans for making an admin interface for the remaining pages as well, but the customer does not require this yet, so...
-			      </p>
-			    </div>
-			  </li>
-        </ul>
-		</article>
-		<footer>
-		<p>
-			<a href="jongjengset.ssh.pub">
-				<abbr title="f4:4c:af:09:c6:55:c8:b4:b6:00:2c:ae:80:02:f7:0a">0x8002F70A</abbr>
-				(SSH)
-			</a>
-			&ndash;
-			<a href="jongjengset.gpg.asc">
-				<abbr title="0EB8 140B 1294 C265 5DDD BF0C D64A C9D6 7176 DC71">0x7176DC71</abbr>
-				(PGP)
-			</a>
-		</p>
-		<p>Icons by <a href="http://fairheadcreative.com/blog/fc-webicons-set-launched/">Fairhead Creative</a></p>
-		</footer>
-		<script>var clicky_site_ids = [100842013];</script>
-		<script src="https://static.getclicky.com/js" async></script>
-		<noscript><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100842013ns.gif" /></noscript>
-	</body>
-</html>
+<article>
+	<ul class="sites">
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/ucle.png" alt="ucle.co" />
+	    <div>
+	      <h3><a target="_blank" href="http://ucle.co">UCL Entrepreneurs Society</a>
+		<i>February 2013 to August 2013</i>
+	      </h3>
+	      <p>
+	      The old website for the UCL Entrepreneurs Society was a
+	      non-responsive Tumblr blog. For the new site, WordPress was used
+	      instead, and the frontend was rewritten as a fully responsive
+	      WordPress theme. In addition to making it easier to add and edit
+	      blog posts for members of the committee, the new site also allows
+	      editing the sidebar, custom pages, the slideshow and other
+	      non-bloggy aspects of the page.
+	      </p>
+	      <p>
+	      One issue with this site was building a responsive theme where the
+	      sidebar was also flexible. This was difficult because most social
+	      plugins aren't made to be non-responsive, and even more so by the
+	      fact that the admins of the site can add content to the sidebar at
+	      will. The solution isn't perfect, but I believe the end user
+	      experience turned out good.
+	      </p>
+	      <p>
+	      The site was designed by me and tweaked by members of the
+	      committee when it was presented to them. The color scheme is in
+	      line with the society's, as is the explicity use of case in
+	      headers. Note that the design is em-based, not px-based, so it
+	      should scale well when zoomed, not just when resized.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/oslofashionawards-v2.png" alt="oslofashionawards.com" />
+	    <div>
+	      <h3><a target="_blank" href="http://oslofashionawards.com">Oslo Fashion Awards v2</a>
+		<i>February 2013</i>
+	      </h3>
+	      <p>
+	      This new version of the Oslo Fashion Awards site was more than a
+	      mere redesign. The entire backend was changed to WordPress and
+	      then site was redeveloped from the bottom up as a WordPress theme.
+	      </p>
+	      <p>
+	      The site is mostly responsive (responsive videos are still a pain)
+	      like all the sites I make, and the administrators can change
+	      almost every part of the site. The menus in the header, in the
+	      footer and the infobox can be dynamically changed, the content of
+	      every page can be edited (including the front page media box).
+	      </p>
+	      <p>
+	      Once again the design was supplied by Oslo Fashion Awards, and
+	      although it is mostly straightforward, there were some interesting
+	      challenges. One detail that proved particularly interesting
+	      (although it isn't noticeable to the average user) is the
+	      background image. The effect is only visible on really large
+	      screens (&gt; 2600px wide), but it was a good intellectual
+	      challenge. See if you can figure out what it does!
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/vgtv.png" alt="www.vgtv.no" />
+	    <div>
+	      <h3><a target="_blank" href="http://www.vgtv.no">VGTV</a>
+		<i>November 2011 to June 2012 (Aptoma)</i>
+	      </h3>
+	      <p>
+		I was tasked with developing a new, completely redesigned version of Norway's biggest online video portal.
+		The new site was designed by <a href="http://www.makingwaves.no">Making Waves</a> for VG, and then implemented by me.
+	      </p>
+	      <p>
+		The site is fully responsive, as it should be, and is implemented solely in JavaScript using the API from Aptoma's video solution <a href="http://aptoma.no/drvideo">DrVideo</a>
+		This allows for very easy development and deployment, as well as giving additional flexibility in rendering logic depending on the user's device.
+		It also utilizes both Flash and HTML5 video playback, and is integrated with several ad and statistics systems including <a href="http://www.videoplaza.com/">Videoplaza</a> and <a href="http://www.atinternet.com/en/">Xiti</a>.
+	      </p>
+	      <p>
+		After my departure from Aptoma, development was handed over to VG's internal development team.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/blindfilm-v2.png" alt="www.blindfilm.no" />
+	    <div>
+	      <h3><a target="_blank" href="http://www.blindfilm.no">Blind Film v2</a>
+		<i>June 2012</i>
+	      </h3>
+	      <p>
+		A complete redesign and restructuring of the website for the video production company Blind Film.
+	      </p>
+	      <p>
+		Equipped with an administration panel and Vimeo import, it allows the company full control over what videos to feature and categorization of these.
+	      </p>
+	      <p>
+		The frontend was designed by Torgeir H. Riseth, the founder of Blind Film, in cooperation with me, and implemented by yours truly.
+		It is fully responsive all the way down to mobile screens, and, per the user's request, has a lot of smooth animations and transitions to make the user experience a bit more fancy than a "regular" site.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/aftenposten-bilag.png" alt="bilag.aftenposten.no" />
+	    <div>
+	      <h3><a target="_blank" href="http://bilag.aftenposten.no">Aftenposten annonsørbilag</a>
+		<i>May 2012 (Aptoma)</i>
+	      </h3>
+	      <p>
+		Aftenposten approached Aptoma, wanting to establish a site where they could let advertisers publish news-like stories which would be featured on the frontpage of the newspaper.
+	      </p>
+	      <p>
+		Having created a similar solution for Ekstrabladet in Denmark, I developed the site, using <a href="http://aptoma.no/drpublish">DrPublish</a> from Aptoma as a backend for content and developing a standalone administration tool for managing ads, tracking codes and such.
+	      </p>
+	      <p>
+		The site is responsive, extremely flexible (each advertiser can skin their own section individually and supply HTML content for several key positions on the site) and built to scale really well using <abbr title="Edge-Site Includes">ESI</abbr>, Varnish and a purge-on-update strategy.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/ekstrabladet-works.png" alt="ekstrabladet.dk" />
+	    <div>
+	      <h3><a target="_blank" href="http://www.ekstrabladet.dk">Modules for Ekstra Bladet</a>
+		<i>January to May 2012 (Aptoma)</i>
+	      </h3>
+	      <p>
+		Ekstrabladet, a large Danish tabloid, was looking for a way of enriching their articles with maps, image grids, slideshows and other non-text snippets.
+		Through discussions with Aptoma, we established an editorial development team consisting of myself, <a href="http://larskjensen.dk/lars">Lars K. Jensen</a> <i>(journalist)</i> and <a href="http://www.andersbergmann.dk/hvem.php">Anders Bergmann</a> <i>(designer &amp; developer)</i> who were going to develop such modules.
+	      </p>
+	      <p>
+		I then developed a module framework that allowed rapid prototyping and deployment of such tools, as well as modules for embedding maps with user suggestions, timelines, images with hotzones, etc.
+		This was very successful, and many of the modules are in use in articles at ekstrabladet.dk today.
+	      </p>
+	      <p>
+		For a more thorough description of this team, and examples of the modules, have a look at Lars' <a href="http://medieblogger.dk/2012/05/25/hvad-laver-det-redaktionelle-udviklingsteam-pa-ekstrabladet-dk-egentlig/">write-up about the project</a>.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/meg.png" alt="Meg Rylance" />
+	    <div>
+	      <h3><a href="http://www.megrylance.com">Portfolio of Meg Rylance</a>
+		<i>December 2011</i>
+	      </h3>
+	      <p>
+		An online portfolio for Australian editor Meg Rylance, including videos fetched directly from Vimeo with thumbnails and inline player, customized contact form and full testimonials page
+	      </p>
+	      <p>
+		The page is written in pure HTML+JS, and has no backend code (and thus no administration) for the time being.
+		It uses CSS3 transitions to achieve a pleasant animation when opening/closing a page.
+	      </p>
+	      <p>
+		  The client wanted a bold design that was still easy on the eye once a page was opened, and the big black bar contrasting with the orange background works well to achieve this effect.
+		  When a page is opened, the black bar is still visible, but the orange is muted by only appearing as a slim stripe on either side of the content.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/fotland.png" alt="www.torgeirfotland.com" />
+	    <div>
+	      <h3><a href="http://www.torgeirfotland.com/" target="_blank">Portfolio of Torgeir Fotland</a>
+		<i>February 2011</i>
+	      </h3>
+	      <p>
+		A simple, static portfolio for Norwegian cinematographer Torgeir Fotland featuring his latest videos, photos, as well as his rental gear.
+	      </p>
+	      <p>
+		This is a single-page, multi-view site, in which each section of the page is horizontally adjacent to the previous one, making moving from one section to the next an act of scrolling left-to-right. Using the jQuery scrollTo library, the page remains accessible (anchor links to particular sections still work as expected), while still giving a smooth scroll effect to users with JavaScript.
+	      </p>
+	      <p>
+		As per the clients request, the page is quite wide, since netbooks and the like were not in the website target group.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/produktavdelingen.png" alt="Produktavdelingen" />
+	    <div>
+	      <h3><a target="_blank" href="http://www.produktavdelingen.no">Produktavdelingen</a>
+		<i>Development handed over October 2011</i>
+	      </h3>
+	      <p>
+		This page was designed by <a href="http://awknard.com/">Awknard</a>, and required a Wordpress-based backend, custom fonts and a dynamically changing logo in the center of the page.
+	      </p>
+	      <p>
+		One of the client's requirements was that the admin panel had to be very simple and preferably familiar. I ended up using WordPress for the underlying administration panel, and write a custom frontend using the WordPress API.
+	      </p>
+	      <p>
+		The site features a menu with optional sub-items that open inline lightbox-like boxes (<a href="http://www.colorpowered.com/colorbox/">ColorBox</a>), all manageable from inside WordPress. It also allows custom author names for external editors, multi-column popup content and image uploading for articles.
+	      </p>
+	      <p>
+		The designer wished the page to look as though it was on a sheet of paper resting on a flat surface, but did not want an extensive use of images on the site. CSS3 is therefore employed in compatible browsers for drop shadows, font smoothing and multi-columnization.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/subgarden.png" alt="Subgarden Studios" />
+	    <div>
+	      <h3><a target="_blank" href="#">Subgarden Studios</a>
+		<i>Discontinued</i>
+	      </h3>
+	      <p>
+		A website made for a sound production studio called Subgarden Studios. The design is a collaboration between me and Torgeir Riseth who runs <a href="http://www.blindfilm.no">Blind Film</a>. It contains several pages, but everything is loaded through AJAX.
+	      </p>
+	      <p>
+		The site sports a javascript-driven sound playing engine for track playback, inline page editing and post creation. It also features an image gallery, simple rich-text editing syntax for each post including bold, italic and underline typeface and links.
+	      </p>
+	      <p>
+		Each post also supports attachments that are displayed based on their type. Images are shown as slideshows beneath the post, sound clips in a self-developed javascript-driven player through <a href="http://www.schillmania.com/projects/soundmanager2/">SoundManager2</a> and external embedded content can also be included and is shown in a lightbox-like popup.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/oksnoen.png" alt="www.oksnoen.no" />
+	    <div>
+	      <h3><a target="_blank" href="http://oksnoen.no">Oksnøen summer camp</a>
+		<i>October, 2009</i>
+	      </h3>
+	      <p>
+		This website was developed in the summer of 2009 for a Norwegian summer camp for children between the ages of 7 and 15 at which I have been working for the past 5 years.
+	      </p>
+	      <p>
+		The previous website was completely static HTML and used frames and javascript navigation. Whenever the page needed updating, the owners had to call the original developer and have him hand code the changes
+	      </p>
+	      <p>
+		The new site is dynamic from start to finish, with section-dependent styling (separate color scheme for each section), word-like administration of pages (with add and delete as well). It also sports a news feed at the bottom of the front page for giving updates.
+	      </p>
+	      <p>
+		In Fall 2011, the site was rewritten completely again to accomodate for a new online booking system with support for online payment. Due to business decisions, the online payment solution was abandoned, but the site still operates on the rewritten code.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/blindfilm.png" alt="www.blindfilm.no" />
+	    <div>
+	      <h3><a target="_blank" href="http://www.blindfilm.no">Blind Film</a>
+		<i>Feburary, 2010</i>
+	      </h3>
+	      <p>
+		A friend of mine from Norway told me about a design for a website for his film company Blind Film which he felt like he was never going to complete because he did not have the knowledge to create such a site. After showing him some of my work, he agreed to let me build a prototype.
+	      </p>
+	      <p>
+		As I began with the prototype, I quickly found that I enjoyed building the site, and considering it was quite small, I began to implement the entire site design. Two days later, the site was finished - complete with administration and dynamic content.
+	      </p>
+	      <p>
+		The site features a lot of animation (using jQuery), vimeo integration, and an AJAX driven administration interface. The user does not have to go to a separate page for administration of content, but can simply edit on-site. Login and logout is hidden, but accessed simply by using a key seqence.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/internationalfriend.png" alt="www.internationalfriend.com" />
+	    <div>
+	      <h3><a target="_blank" href="http://internationalfriend.com">International Friend</a>
+		<i>Discontinued as of June, 2010</i>
+	      </h3>
+	      <p>
+		InternationalFriend is a project between me and a couple of friends that is still under development. It aims to create a global online community for young people; a community where teenagers can find all they would ever need on the internet.
+	      </p>
+	      <p>
+		The current InternationalFriend site is developed in PHP and PostgreSQL by <a target="_blank" href="http://www.facebook.com/JonasBA">Jonas B. Amundsen</a> and me, and designed by <a target="_blank" href="http://juliusocean.deviantart.com/">Owen Frazer Wray</a>. It is based on a homegrown CMS-like system, and allows full group-based administration of all content
+	      </p>
+	      <p>
+		We are currently developing the next release, and this will be done with the <a target="_blank" href="http://www.yiiframework.com">Yii PHP Framework</a>, will be a lot more dynamic that the current one (more AJAX). Furthermore, it will contain a lot more of the social aspect that the site is currently missing.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/miljeteig.png" alt="www.miljeteig.org" />
+	    <div>
+	      <h3><a target="_blank" href="http://www.miljeteig.org">Portfolio of Per Miljeteig</a>
+		<i>April, 2009</i>
+	      </h3>
+	      <p>
+		Per Miljeteig is a Norwegian photographer who was in the need of a new website since his old one was completely static, and the old webmaster had passed away. We agreed to do a redesign as well so that he could determine the look of his own portfolio.
+	      </p>
+	      <p>
+		The new site allows him to upload his own images and create albums through a simple admin interface. It also allows for editing the various text pages around the page through a word-like editor.
+	      </p>
+	    </div>
+	  </li>
+	  <li class="site clearfix">
+	    <img class="thumb thumb-img" width="400" height="400" src="gfx/sites/oslofashionawards-v1.png" alt="old.oslofashionawards.no" />
+	    <div>
+	      <h3><a target="_blank" href="http://old.oslofashionawards.no">Oslo Fashion Awards</a>
+		<i>September, 2008 - February, 2013</i>
+	      </h3>
+	      <p>
+		Oslo Fashion Awards came to me with a site design, and wanted me to script the page. They also required a simple way of adding new articles, as well as the occasional video. This is now done through a very simplistic admin interface.
+	      </p>
+	      <p>
+		Though several parts of this site is static, such as the sponsors and tour pages which do in fact change ever so often, the customer was very happy with the result. I have plans for making an admin interface for the remaining pages as well, but the customer does not require this yet, so...
+	      </p>
+	    </div>
+	  </li>
+</ul>
+</article>

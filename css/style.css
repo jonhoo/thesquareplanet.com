@@ -131,7 +131,7 @@ a abbr { border-bottom: none; }
 		margin-top: 3em;
 	}
 
-header {
+.header {
 	text-align: center;
 	font-family: Cinzel, serif;
 	font-size: 1rem;
@@ -236,40 +236,40 @@ header {
 		}
 }
 		.contact a:hover img { opacity: 1; }
-	header h1, header h2 {
+	.header h1, .header h2 {
 		font-weight: normal;
 		padding: 0 5%;
 	}
-	header h1 {
+	.header h1 {
 		font-size: 2em;
 		text-transform: uppercase;
 		margin: 0;
 	}
-	header h2 {
+	.header h2 {
 		font-size: 2em;
 		margin: 0;
 		margin-top: 1em;
 	}
-	#index header h2 {
+	#index .header h2 {
 		margin: 0;
 		font-size: 1em;
 	}
 @media screen and (min-width: 30em) {
-	header h1 {
+	.header h1 {
 		font-size: 3em;
 	}
 }
 @media screen and (min-width: 50em) {
-	header h1, header h2 {
+	.header h1, .header h2 {
 		padding: 0;
 	}
-	header h1 {
+	.header h1 {
 		font-size: 5em;
 	}
-	header h2 {
+	.header h2 {
 		font-size: 2em;
 	}
-	#index header h2 { font-size: 2em; }
+	#index .header h2 { font-size: 2em; }
 }
 article {
 	font-family: sans-serif;
@@ -318,9 +318,9 @@ footer {
 
 
 @media print {
-	header nav { display: none; }
-	header h1 { font-size: 2em; }
-	header h2 { font-size: 1em; }
+	.header nav { display: none; }
+	.header h1 { font-size: 2em; }
+	.header h2 { font-size: 1em; }
 	.article p { color: black; }
 	.site .thumb { display: none; }
 	footer { display: none; }

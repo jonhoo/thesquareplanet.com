@@ -1,0 +1,44 @@
+<header class="header">
+	<nav>
+		<div class="links">
+			{% assign current = nil %}
+			{% if page.url == "/" %}
+				{% assign current = 'active' %}
+			{% endif %}
+			<a class="{{ current }}" href="/">About</a>
+			{% for my_page in site.pages %}
+				{% if my_page.title %}
+					{% assign current = nil %}
+					{% if page.url == my_page.url %}
+						{% assign current = 'active' %}
+					{% endif %}
+					<a class="{{ current }}" href="{{ my_page.url }}">{{ my_page.title }}</a>
+				{% endif %}
+			{% endfor %}
+			<a class="" href="cv/">Resumé</a>
+		</div>
+		<div class="contact">
+			<a target="_blank" href="https://www.facebook.com/jonhoo">
+				<img class="icon" src="gfx/icons/facebook.svg" alt="Facebook" />
+			</a>
+			<a target="_blank" href="https://www.linkedin.com/in/jonhoo">
+				<img class="icon" src="gfx/icons/linkedin.svg" alt="LinkedIn" />
+			</a>
+			<a target="_blank" href="https://www.github.com/jonhoo">
+				<img class="icon" src="gfx/icons/github.svg" alt="GitHub" />
+			</a>
+			<a target="_blank" href="https://www.twitter.com/jonhoo">
+				<img class="icon" src="gfx/icons/twitter.svg" alt="Twitter" />
+			</a>
+			<a href="mailto:jon@thesquareplanet.com">
+				<img class="icon" src="gfx/icons/mail.svg" alt="Email" />
+			</a>
+		</div>
+	</nav>
+	{% if page.index %}
+	<h1>{{ site.title | escape }}</h1>
+	{% endif %}
+	{% if page.tagline %}
+	<h2>{{ page.tagline | escape }}</h2>
+	{% endif %}
+</header>

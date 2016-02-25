@@ -1,0 +1,13 @@
+---
+layout: post
+title: Coding is boring, engineering isn't
+date: '2013-01-03 01:53:58'
+---
+
+I've always considered myself a programmer, a coder. I came up with ideas, or other people did, and I wrote the code needed to make them work. Only recently have I realized that not only is programmer not sufficient to describe what I do, it is not even what I want to be doing.
+
+This realization started to dawn on me after reading a (quite interesting) [article by Patrick McKenzie](http://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer) I was referred to by a friend. I can highly recommend having a read through if you haven't seen it already. The article goes into some depth about what working with software development entails, and, amongst other things, points out that what we do as developers is far more than just writing code. In fact, most of the hard work we do has little to do with code. Anyone can code. Being able to write code does not mean you can develop good software. In fact, if all you can do is write code you should definitely not be creating software!
+
+What I've come to realize is that not only is coding not what I do most of, nor the most important skill I have, but coding is my least favorite part of the development process. Writing code is boring. Figuring out what the client wants is interesting (albeit frustrating at times). Determining how to create the best experience for the users is interesting. Coming up with a good technical design for you application, database and APIs is interesting. Writing for-loops, ifs, variable assignments and functions is not. The implementation, while important - without the code you have nothing but an idea - is simply not interesting. Nor is it challenging. It is just something that has to be done to complete the design you have in your head.
+
+Now, I'm not saying there is not an art to programming? Far from it. What I am saying is that the art of programming lies in the thinking you do before writing the code, not in the writing itself. To be a good developer, you need to be more than just a programmer, you need to be an engineer - you have to discuss, plan, predict, design, evaluate and re-design; you have to think. Engineering is about solving problems, thinking deeply about every aspect of a system and figuring out the best way of doing things. That is the part of development I love, and the part I consider art.
