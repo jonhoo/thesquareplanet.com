@@ -1,3 +1,4 @@
 _site/
 public/
 vendor/
+.bundle/
