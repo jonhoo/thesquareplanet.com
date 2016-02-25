@@ -7,3 +7,4 @@ url: "https://thesquareplanet.com"
 
 # Build settings
 markdown: kramdown
+exclude: [Gemfile, Gemfile.lock, vendor, _site, public]

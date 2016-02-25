@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "Building static files using jekyll..."
+cd $OPENSHIFT_REPO_DIR && bundle exec jekyll build -d public
