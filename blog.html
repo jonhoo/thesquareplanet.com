@@ -5,17 +5,13 @@ tagline: Random musings
 permalink: /blog/
 ---
 
-<article>
-	<ul class="sites">
-		{% for post in site.posts %}
-		<li class="site clearfix">
-			<div>
-				<h3><a href="{{ post.url }}">{{ post.title }}</a>
-					<i>{{ post.date | date: "%b %-d, %Y" }}</i>
-				</h3>
-				<p>{{ post.excerpt }}</p>
-			</div>
-		</li>
-		{% endfor %}
-	</ul>
+<section>
+	{% for post in site.posts %}
+		<article class="blog-post clearfix">
+			<h3><a href="{{ post.url }}">{{ post.title }}</a>
+				<i>{{ post.date | date: "%b %-d, %Y" }}</i>
+			</h3>
+			<p>{{ post.excerpt }}</p>
+		</article>
+	{% endfor %}
 </article>

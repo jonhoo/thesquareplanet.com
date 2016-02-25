@@ -1,23 +1,17 @@
 ---
 layout: default
 ---
-<article itemscope itemtype="http://schema.org/BlogPosting">
-	<ul class="sites">
-		<li class="site clearfix">
-			<div>
-				<h3 itemprop="name headline">{{ page.title }}
-					<i itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</i>
-					<span style="display:none"
-						itemprop="author"
-						itemscope
-						itemtype="http://schema.org/Person">
-						<span itemprop="name">Jon Gjengset</span>
-					</span>
-				</h3>
-				<div itemprop="articleBody">
-					{{ content }}
-				</div>
-			</div>
-		</li>
-	</ul>
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post">
+	<h3 itemprop="name headline">{{ page.title }}
+		<i itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</i>
+		<span style="display:none"
+			itemprop="author"
+			itemscope
+			itemtype="http://schema.org/Person">
+			<span itemprop="name">Jon Gjengset</span>
+		</span>
+	</h3>
+	<div itemprop="articleBody">
+		{{ content }}
+	</div>
 </article>
