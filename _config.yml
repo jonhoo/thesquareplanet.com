@@ -4,6 +4,7 @@ description: >
   PhD Student, Software Engineer and problem solver
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://thesquareplanet.com"
+permalink: /blog/:title/
 
 # Build settings
 markdown: kramdown
