@@ -393,7 +393,72 @@ to date.
 
 ### Did Paxos fare better?
 
+Judging from the feedback from our students, the first Raft lab was
+considerably more work than the equivalent Paxos lab from last year.
+Students reported that while Raft was fairly easy to *understand*,
+actually *implementing* it in the lab, and getting all the corner cases
+correct, was both hard and extremely time-consuming. Admittedly, there
+are some differences, namely that the Raft implementation also adds
+sticky leader and persistence, but we do not believe those features
+contribute particularly to Raft's implementation complexity. 
+
+We originally switched to Raft because we believed that it would be
+easier for the students to follow a complete design, than fiddling with
+how to construct a log out of Paxos' single-value agreement. Since there
+aren't any particularly good, complete descriptions of how to build
+replicated state machines on top of Paxos, students had to cook up a
+scheme themselves, which is an error-prone process.
+
+Although Raft does give an end-to-end algorithm, and a very thorough
+description of it, I think what has made it harder for students to
+implement, is that Raft is tricky to build in a piece-wise fashion. It
+is almost an all-or-nothing affair; either you follow every rule in the
+paper to the letter, or you missed one somewhere and your entire
+implementation is broken (and often in subtle and hard-to-debug ways).
+The net result of this is that students ended up spending more time
+debugging this lab than they did the Paxos lab, simply because at some
+point they knew one "part" of their Paxos was correct (like single-value
+agreement), and so could ignore that while debugging.
+
+A natural question to ask then is: is Raft still "better" or "easier"
+than Paxos from an educational point of view? While distributed
+consensus is inherently complicated, the Raft authors have tried very
+hard to make a protocol that is easily digestible and understandable, at
+least in the general case, and they have arguably succeeded in doing
+that. However, in the 6.824 lab, and when writing distributed systems in
+"the real world", you are forced to tackle all the many nasty corner
+cases, and that requires thinking very carefully about the tiniest
+details in the underlying algorithm.
+
+Raft may be straightforward in the general case, but when you have to
+reason about what happens when you have a healing a minority partition
+with an old leader and a majority partition with a new leader, things
+are bound to get tricky. No matter how "simple" the algorithm is,
+reasoning about why it's correct in all these cases (and correctly
+implementing all the vital components) is hard. What helps Paxos-based
+designs here is that they are *layered*. For any given bug, you can
+usually decide whether the bug is in your single-value agreement (i.e.,
+Paxos), or in your log construction, which reduces the cognitive load of
+debugging. In fact, you test these components separately, so that you
+can home in on where your bugs are much faster than if everything is
+integrated in a single protocol.
+
+That all said, one might argue that the Raft approach here is much
+safer, and what we should be teaching students -- when students come up
+with their own distributed algorithms, it is quite hard to determine
+whether they are *always* correct. Exposing them to a well
+though-through, end-to-end algorithm like Raft teaches them about all
+the things you need to consider if you really want correct behavior in
+every case. And maybe the added implementation complexity is the price
+we have to pay for that.
+
 ### Applications on top of Raft
+
+Duplicate detection.
+
+Start can return same i.
+
+Four way deadlock.
 
 ### Student top Raft Q&A
 
@@ -411,5 +476,3 @@ https://piazza.com/class/igs35ab0zvja8?cid=226
 https://piazza.com/class/igs35ab0zvja8?cid=242
 https://piazza.com/class/igs35ab0zvja8?cid=393
 https://piazza.com/class/igs35ab0zvja8?cid=425
-
-Four way deadlock.
