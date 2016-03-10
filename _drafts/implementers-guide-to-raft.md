@@ -454,11 +454,65 @@ we have to pay for that.
 
 ### Applications on top of Raft
 
-Duplicate detection.
+When building a service on top of Raft (such as the key/value store in
+the [second 6.824 Raft
+lab](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html), the
+interaction between the service and the Raft log can be tricky to get
+right. This section details some aspects of the development process that
+we have found students to be confused about.
 
-Start can return same i.
+#### Applying client operations
 
-Four way deadlock.
+The first point of confusion is usually how one would even implement an
+application in terms of a replicated log. Students will often start by
+having their service, whenever it receives a client request, send that
+request to the leader, wait for Raft to apply something, do the
+operation the client asked for, and then return to the client. While
+this would be fine in a single-client system, it does not work for
+concurrent clients.
+
+Instead, the service should be constructed as a state machine where
+client operations transition the machine from one state to another.
+There's a loop somewhere that takes one client operation at the time (in
+the same order on all servers -- this is where Raft comes in), and
+applies each one to the state machine in order. This loop should be the
+*only* part of your code that touches the application state (the
+key/value mapping in our case). This means that your client-facing RPC
+methods should simply submit the client's operation to Raft, and then
+*wait* for that operation to be applied by this "applier loop". Only
+when the client's command comes up should it be executed, and any return
+values read out. Note that *this includes read requests*!
+
+This brings up another issue that many students faced: how do you know
+when a client operation has completed? In the case of no failures, this
+is simple -- you just wait for the thing you put into the log to come
+back out (i.e., be passed to `apply()`). When that happens, you return
+the result to the client. However, what happens if there are failures?
+For example, you may have been the leader when the client initially
+contacted you, but someone else has since been elected, and the client
+request you put in the log has been discarded. Clearly you need to have
+the client try again, but how do you know when to tell them about the
+error?
+
+One simple way to solve this problem is to record where in the Raft log
+the client's operation appears when you insert it. Once the operation at
+that index is sent to `apply()`, you can tell whether or not the
+client's operation succeeded based on whether the operation that came up
+for that index is in fact the one you put there. If it isn't, a failure
+has happened and an error can be returned to the client.
+
+#### Duplicate detection
+
+As soon as you have clients retry operations in the face of errors, you
+need some kind of duplicate detection scheme -- if a client sends an
+`APPEND` to your server, doesn't hear back, and so re-sends it to the
+next server, your `apply()` function needs to ensure that the `APPEND`
+isn't executed twice. To do so, you need some kind of unique identifier
+for each client request, so that you can recognize if you have seen, and
+more importantly, applied, a particular operation in the past.
+Furthermore, this state needs to be a part of your state machine so that
+all your Raft servers eliminate the *same* duplicates.
+
 
 ### Student top Raft Q&A
 
