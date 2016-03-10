@@ -198,11 +198,12 @@ buggy. So will the second. And third. And fourth. In general, each one
 will be less buggy than the previous one, and, from experience, most of
 your bugs will be a result of not faithfully following Figure 2.
 
-When debugging, Raft, there are generally three main sources of bugs:
-livelocks, incorrect or incomplete RPC handlers, and failure to follow
-The Rules. Deadlocks are also a common problem, but the can generally be
-debugged by watching all your locks and unlocks, and figuring out which
-locks you aren't releasing. Let us consider each of these three in turn:
+When debugging, Raft, there are generally four main sources of bugs:
+livelocks, incorrect or incomplete RPC handlers, failure to follow The
+Rules, and term confusion. Deadlocks are also a common problem, but the
+can generally be debugged by watching all your locks and unlocks, and
+figuring out which locks you aren't releasing. Let us consider each of
+these three in turn:
 
 #### Livelocks
 
@@ -326,6 +327,22 @@ that is too high, as this may cause the `commitIndex` to be moved too
 far forward. This is why `matchIndex` is initialized to -1 (i.e., we
 agree on no prefix), and only updated when a follower *positively
 acknowledges* an `AppendEntries` RPC.
+
+#### Term confusion
+
+Term confusion refers to servers getting confused by RPCs that come from
+old terms. In general, this is not a problem when receiving an RPC,
+since the rules in Figure 2 say exactly what you should do when you see
+an old term. However, Figure 2 generally doesn't discuss what you should
+do when you get old RPC *replies*. From experience, we have found that
+by far the simplest thing to do is to first record the term in the reply
+(it may be higher than your current term), and then to compare the
+current term with the term you sent in your original RPC. If the two are
+different, drop the reply and return. *Only* if the two terms are the
+same should you continue processing the reply. There may be further
+optimizations you can do here with some clever protocol reasoning, but
+this approach seems to work well. And *not* doing it leads down a long,
+winding path of blood, sweat, tears and despair.
 
 #### An aside on optimizations
 
