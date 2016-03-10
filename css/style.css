@@ -48,6 +48,12 @@ a abbr { border-bottom: none; }
 		line-height: 2;
 		color: black;
 	}
+	.blog-post h4 {
+		font-weight: bold;
+		font-size: 100%;
+		line-height: 2;
+		color: black;
+	}
 		.article h3 { font-size: 115%; }
 		.article h3 a, .site h3 a, .blog-post h3 a {
 			color: inherit;
@@ -63,10 +69,36 @@ a abbr { border-bottom: none; }
 			padding-left: .5em;
 			font-size: 1rem;
 		}
+		.blog-post em {
+			color: #800;
+			font-style: normal;
+			font-weight: 500;
+		}
 	.article p {
 		margin: 0;
 		padding: 0;
 		color: #666;
+	}
+	/* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
+	.blog-post blockquote {
+		background: #f9f9f9;
+		border-left: 10px solid #c76c0c;
+		margin: 1.5em 10px;
+		padding: 0.5em 10px;
+	}
+	.blog-post blockquote:before {
+		font-family: serif;
+		color: #ccc;
+		content: open-quote;
+		font-size: 4em;
+		line-height: 0.1em;
+		margin-right: 0.1em;
+		vertical-align: -0.4em;
+		content: "\201C";
+	}
+	.blog-post blockquote p {
+		display: inline;
+		font-size: 90%;
 	}
 	.article .award {
 		float: left;
