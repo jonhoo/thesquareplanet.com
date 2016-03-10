@@ -513,6 +513,140 @@ more importantly, applied, a particular operation in the past.
 Furthermore, this state needs to be a part of your state machine so that
 all your Raft servers eliminate the *same* duplicates.
 
+#### Hairy corner-cases
+
+If your implementation follows the general outline given above, there
+are at least two subtle issues you are likely to run into that may be
+hard to identify without some serious debugging. To save you some time,
+here they are:
+
+**Re-appearing indices**:
+Say that your Raft library has some method `Start()` that takes a
+command, and return the index at which that command was placed in the
+log (so that you know when to return to the client, as discussed above).
+You might assume that you will never see `Start()` return the same index
+twice, or at the very least, that if you see the same index again, the
+command that first returned that index must have failed. Neither of
+these things are true.
+
+Consider the following scenario:
+You have five servers, S1 through S5. Initially, S1 is the leader, and
+its log is empty. Two client operations (C1 and C2) arrive on S1, and
+`Start()` return 1 for the first, and 2 for the second. S1 sends out an
+`AppendEntries` to S2 containing C1 and C2, but all its other messages
+are lost. Next, S3 steps forward as a candidate. S1 and S2 won't vote
+for S3, but S3, S4, and S5 all will, so S3 becomes the leader. Another
+client request, C3 comes in to S3. S3 calls `Start()` (which returns 1),
+and sends an `AppendEntries` to S1, who discards C1 and C2 from its log,
+and adds C3. S3 then fails before sending `AppendEntries` to any other
+servers. Next, S2 steps forward, and because its log is up-to-date, it
+is elected leader. Another client request, C4, arrives at S1, which then
+calls `Start()`. `Start()` returns 2 (which was also returned for
+`Start(C2)`. All of S1's `AppendEntries` are dropped, and S2 steps
+forward. S1 and S3 won't vote for S2, but S2, S4, and S5 all will, so S2
+becomes leader. A client request C5 comes in to S2, `Start()` is called,
+and returns 3. S2 then successfully sends `AppendEntries` to all the
+servers, which S2 reports back to the servers by including an updated
+`leaderCommit = 3` in the next heartbeat. Since S2's log is `[C1 C2
+C5]`, this means that the entry that committed (and was applied at all
+servers, including S1) at index 2 is C2. This despite the fact that C4
+was the last client operation to have returned index 2 at S1.
+
+**The four-way deadlock**:
+All credit for finding this goes to [Steven
+Allen](http://stebalien.com/), another 6.824 TA. He found the following
+nasty four-way deadlock that you can easily get into when building
+applications on top of Raft.
+
+Your Raft code, however it is structured, likely has a `Start()`-like
+function that allows the application to add new commands to the Raft
+log. It also likely has a loop that, when `commitIndex` is updated,
+calls `apply()` on the application for every element in the log between
+`lastApplied` and `commitIndex`. These routines probably both take some
+lock `a`. In your Raft-based application, you probably call Raft's
+`Start()` function somewhere in your RPC handlers, and you have some
+code somewhere else that is informed whenever Raft applies a new log
+entry. Since these two need to communicate (i.e., the RPC method needs
+to know when the operation it put into the log completes), they both
+probably take some lock `b`.
+
+In Go, these four code segments probably look something like this:
+
+```go
+func (a *App) RPC(args interface{}, reply interface{}) {
+    // ...
+    a.mutex.Lock()
+    i := a.raft.Start(args)
+    // update some data structure so that apply knows to poke us later
+    a.mutex.Unlock()
+    // wait for apply to poke us
+    return
+}
+```
+
+```go
+func (r *Raft) Start(cmd interface{}) int {
+    r.mutex.Lock()
+    // do things to start agreement on this new command
+    // store index in the log where cmd was placed
+    r.mutex.Unlock()
+    return index
+}
+```
+
+```go
+func (a *App) apply(index int, cmd interface{}) {
+    a.mutex.Lock()
+    switch cmd := cmd.(type) {
+    case GetArgs:
+        // do the get
+	// see who was listening for this index
+	// poke them all with the result of the operation
+    // ...
+    }
+    a.mutex.Unlock()
+}
+```
+
+```go
+func (r *Raft) AppendEntries(...) {
+    // ...
+    r.mutex.Lock()
+    // ...
+    for r.lastApplied < r.commitIndex {
+      r.lastApplied++
+      r.app.apply(r.lastApplied, r.log[r.lastApplied])
+    }
+    // ...
+    r.mutex.Unlock()
+}
+```
+
+Consider now if the system is in the following state:
+
+ - `App.RPC` has just taken `a.mutex` and called `Raft.Start`
+ - `Raft.Start` is waiting for `r.mutex`
+ - `Raft.AppendEntries` is holding `r.mutex`, and has just called
+   `App.apply`
+
+We now have a deadlock, because:
+
+ - `Raft.AppendEntries` won't release the lock until `App.apply` returns.
+ - `App.apply` can't return until it gets `a.mutex`.
+ - `a.mutex` won't be released until `App.RPC` returns.
+ - `App.RPC` won't return until `Raft.Start` returns.
+ - `Raft.Start` can't return until it gets `r.mutex`.
+ - `Raft.Start` has to wait for `Raft.AppendEntries`.
+
+There are a couple of ways to get around this problem. The easiest one
+is to take `a.mutex` *after* calling `a.raft.Start` in `App.RPC`.
+However, this means that `App.apply` may be called for the operation
+that `App.RPC` just called `Raft.Start` on *before* `App.RPC` has a
+chance to record the fact that it wishes to be notified.
+Another scheme that may yield a neater design is to have a single,
+dedicated thread calling `r.app.apply` from `Raft`. This thread could be
+notified every time `commitIndex` is updated, and would then not need to
+hold a lock in order to apply, breaking the deadlock.
 
 ### Student top Raft Q&A
 
