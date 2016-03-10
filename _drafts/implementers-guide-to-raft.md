@@ -650,17 +650,17 @@ hold a lock in order to apply, breaking the deadlock.
 
 ### Student top Raft Q&A
 
-https://piazza.com/class/igs35ab0zvja8?cid=140
-https://piazza.com/class/igs35ab0zvja8?cid=142
-https://piazza.com/class/igs35ab0zvja8?cid=147
-https://piazza.com/class/igs35ab0zvja8?cid=170
-https://piazza.com/class/igs35ab0zvja8?cid=174
-https://piazza.com/class/igs35ab0zvja8?cid=184
-https://piazza.com/class/igs35ab0zvja8?cid=188
-https://piazza.com/class/igs35ab0zvja8?cid=207
-https://piazza.com/class/igs35ab0zvja8?cid=211
-https://piazza.com/class/igs35ab0zvja8?cid=223
-https://piazza.com/class/igs35ab0zvja8?cid=226
-https://piazza.com/class/igs35ab0zvja8?cid=242
-https://piazza.com/class/igs35ab0zvja8?cid=393
-https://piazza.com/class/igs35ab0zvja8?cid=425
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=140)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=142)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=147)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=170)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=174)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=184)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=188)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=207)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=211)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=223)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=226)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=242)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=393)
+[Q](https://piazza.com/class/igs35ab0zvja8?cid=425)
