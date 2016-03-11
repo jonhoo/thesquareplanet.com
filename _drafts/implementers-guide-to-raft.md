@@ -344,6 +344,15 @@ optimizations you can do here with some clever protocol reasoning, but
 this approach seems to work well. And *not* doing it leads down a long,
 winding path of blood, sweat, tears and despair.
 
+A related, but not identical problem is that of assuming that your state
+has not changed between when you sent the RPC, and when you received the
+reply. A good example of this is setting `matchIndex = nextIndex - 1`,
+or `matchIndex = len(log)` when you receive a response to an RPC. This
+is *not* safe, because both of those values could have been updated
+since when you sent the RPC. Instead, the correct thing to do is update
+`matchIndex` to be `prevLogIndex + len(entries[])` from the arguments
+you sent in the RPC originally.
+
 #### An aside on optimizations
 
 The Raft paper includes a couple of optional features of interest. In
