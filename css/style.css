@@ -48,11 +48,16 @@ a abbr { border-bottom: none; }
 		line-height: 2;
 		color: black;
 	}
+	.blog-post h3 {
+		margin-top: 3em;
+	}
 	.blog-post h4 {
 		font-weight: bold;
 		font-size: 100%;
 		line-height: 2;
 		color: black;
+		margin-top: 2em;
+		margin-bottom: -.5em;
 	}
 		.article h3 { font-size: 115%; }
 		.article h3 a, .site h3 a, .blog-post h3 a {
@@ -73,6 +78,16 @@ a abbr { border-bottom: none; }
 			color: #800;
 			font-style: normal;
 			font-weight: 500;
+		}
+		.blog-post tt, .blog-post :not(pre) > code {
+			font-family: monospace;
+			border-radius: 3px;
+			font-size: 115%;
+			color: #657b83;
+			padding: .1em;
+			word-wrap: break-word;
+			position: relative;
+			top: -.1.5em;
 		}
 	.article p {
 		margin: 0;
