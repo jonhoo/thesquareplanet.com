@@ -309,7 +309,7 @@ article {
 	text-align: left;
 	margin: 2em auto;
 	margin-top: 0;
-	max-width: 37em;
+	max-width: 40em;
 	width: 90%;
 	line-height: 2;
 }
@@ -329,7 +329,7 @@ footer {
 	font-family: sans-serif;
 	text-align: center;
 	font-size: .9rem;
-	max-width: 35rem;
+	max-width: 38rem;
 	margin: 0 auto;
 	padding: .5rem;
 	color: #888;
