@@ -21,7 +21,11 @@ pedagogical analysis of Raft, you should go read the Instructors' Guide.
 The bottom of this post contains a list of questions commonly asked by
 6.824 students, as well as answers to those questions. If you run into
 an issue that is not listed in the main content of this post, check out
-the [Q&A](post_url raft_qa).
+the [Q&A](post_url raft_qa). The post is quite long, but all the points
+it makes are real problems that a lot of 6.824 students (and TAs) ran
+into. It is a worthwhile read.
+
+### Background
 
 Before we dive into Raft, some context may be useful. 6.824 used to have
 a set of [Paxos-based
