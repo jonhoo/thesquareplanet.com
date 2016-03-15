@@ -74,6 +74,10 @@ a abbr { border-bottom: none; }
 			padding-left: .5em;
 			font-size: 1rem;
 		}
+		.blog-post .reading-time {
+			color: #888;
+			font-size: 1rem;
+		}
 		.blog-post em {
 			color: #800;
 			font-style: normal;
