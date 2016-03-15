@@ -18,10 +18,10 @@ will hopefully be useful to implementers of the Raft protocol and
 students trying to get a better understanding of Raft's internals. If
 you are looking for a Paxos vs Raft comparison, or for a more
 pedagogical analysis of Raft, you should go read the Instructors' Guide.
-Finally, the bottom of this post contains a list of questions commonly
-asked by 6.824 students, as well as answers to those questions. If you
-run into an issue that is not listed in the main content of this post,
-check out the [Q&A]({{ page.url }}/#student-top-raft-qa).
+The bottom of this post contains a list of questions commonly asked by
+6.824 students, as well as answers to those questions. If you run into
+an issue that is not listed in the main content of this post, check out
+the [Q&A]({{ page.url }}/#student-top-raft-qa).
 
 Before we dive into Raft, some context may be useful. 6.824 used to have
 a set of [Paxos-based
@@ -30,20 +30,20 @@ built in [Go](https://golang.org/); Go was chosen both because it is
 easy to learn for students, and because is pretty well-suited for
 writing concurrent, distributed applications (goroutines come in
 particularly handy). Over the course of four labs, students build a
-fault-tolerant, sharded key-value store. The first lab has them build a
-consensus-based log library, the second adds a key value store on top of
-that, and the third shards the key space among multiple fault-tolerant
+fault-tolerant, sharded key-value store. The first lab had them build a
+consensus-based log library, the second added a key value store on top of
+that, and the third sharded the key space among multiple fault-tolerant
 clusters, with a fault-tolerant shard master handling configuration
 changes. We also had a fourth lab in which the students had to handle
 the failure and recovery of machines, both with and without their disks
 intact. This lab was available as a default final project for students.
 
-This year, we decided to rewrite all these labs in Raft. The first three
-labs were all the same, but the fourth lab was dropped as persistence
-and failure recovery is already built into Raft. This article will
-mainly discuss our experiences with the first lab, as it is the one most
-directly related to Raft, although I will also touch on building
-applications on top of Raft (as in the second lab).
+This year, we decided to rewrite all these labs using Raft. The first
+three labs were all the same, but the fourth lab was dropped as
+persistence and failure recovery is already built into Raft. This
+article will mainly discuss our experiences with the first lab, as it is
+the one most directly related to Raft, though I will also touch on
+building applications on top of Raft (as in the second lab).
 
 Raft, for those of you who are just getting to know it, is best
 described by the text on the protocol's [web
@@ -83,14 +83,14 @@ correctness.
 ### Implementing Raft
 
 The ultimate guide to Raft is in Figure 2 of the Raft paper. This figure
-specifies the behavior of every RPC exchanged between Raft servers, and
-also gives various invariant that servers should maintain, and when
+specifies the behavior of every RPC exchanged between Raft servers,
+gives various invariants that servers must maintain, and specifies when
 certain actions should occur. We will be talking about Figure 2 *a lot*
 in the rest of this article. It needs to be followed *to the letter*.
 
 Figure 2 defines what every server should do, in ever state, for every
 incoming RPC, as well as when certain other things should happen (such
-as when it is safe to apply an entry in the log). At first, one might be
+as when it is safe to apply an entry in the log). At first, you might be
 tempted to treat Figure 2 as sort of an informal guide; you read it
 once, and then start coding up an implementation that follows roughly
 what it says to do. Doing this, you will quickly get up and running with
@@ -98,7 +98,7 @@ a mostly working Raft implementation. And then the problems start.
 
 In fact, Figure 2 is extremely precise, and every single statement
 it makes should be treated, in specification terms, as **MUST**, not as
-**SHOULD**. For example, one might reasonably reset a peer's election
+**SHOULD**. For example, you might reasonably reset a peer's election
 timer whenever you receive an `AppendEntries` or `RequestVote` RPC, as
 both indicate that some other peer either thinks it's the leader, or is
 trying to become the leader. Intuitively, this means that we shouldn't
@@ -122,9 +122,9 @@ election. If the leader has no new entries to send to a particular peer,
 the `AppendEntries` RPC contains no entries, and is considered a
 heartbeat.
 
-Many students assumed that heartbeats were somehow "special"; that
-when a peer receives a heartbeat, it should treat it differently from a
-non-heartbeat `AppendEntries` RPC. In particular, many students would
+Many of our students assumed that heartbeats were somehow "special";
+that when a peer receives a heartbeat, it should treat it differently
+from a non-heartbeat `AppendEntries` RPC. In particular, many would
 simply reset their election timer when they received a heartbeat, and
 then return success, without performing any of the checks specified in
 Figure 2. This is *extremely dangerous*. By accepting the RPC, the
@@ -134,11 +134,11 @@ leader's log up to and including the `prevLogIndex` included in the
 then decide (incorrectly) that some entry has been replicated to a
 majority of servers, and start committing it.
 
-Another issue many students had (often immediately after fixing the
-issue above), was that, upon receiving a heartbeat, they would truncate
-the follower's log following `prevLogIndex`, and then append any entries
-included in the `AppendEntries` arguments. This is *also* not correct.
-We can once again turn to Figure 2:
+Another issue many had (often immediately after fixing the issue above),
+was that, upon receiving a heartbeat, they would truncate the follower's
+log following `prevLogIndex`, and then append any entries included in
+the `AppendEntries` arguments. This is *also* not correct.  We can once
+again turn to Figure 2:
 
 > *If* an existing entry conflicts with a new one (same index but
 > different terms), delete the existing entry and all that follow it.
@@ -159,10 +159,10 @@ your bugs will be a result of not faithfully following Figure 2.
 
 When debugging, Raft, there are generally four main sources of bugs:
 livelocks, incorrect or incomplete RPC handlers, failure to follow The
-Rules, and term confusion. Deadlocks are also a common problem, but the
-can generally be debugged by watching all your locks and unlocks, and
-figuring out which locks you aren't releasing. Let us consider each of
-these three in turn:
+Rules, and term confusion. Deadlocks are also a common problem, but they
+can generally be debugged by logging all your locks and unlocks, and
+figuring out which locks you are taking, but not releasing. Let us
+consider each of these in turn:
 
 #### Livelocks
 
@@ -179,10 +179,10 @@ handful of mistakes that we have seen numerous students make:
 
  - Make sure you reset your election timer *exactly* when Figure 2 says
    you should. Specifically, you should *only* restart your election
-   timer a) if you get an `AppendEntries` RPC from the *current* leader
+   timer if a) you get an `AppendEntries` RPC from the *current* leader
    (i.e., if the term in the `AppendEntries` arguments is outdated, you
-   should *not* reset your timer); b) if you are starting an election;
-   or c) if you *grant* a vote to another peer.
+   should *not* reset your timer); b) you are starting an election; or
+   c) you *grant* a vote to another peer.
 
    This last case is especially important in unreliable networks where
    it is likely that followers have different logs; in those situations,
@@ -190,20 +190,21 @@ handful of mistakes that we have seen numerous students make:
    majority of servers are willing to vote for. If you reset the
    election timer whenever someone asks you to vote for them, this makes
    it equally likely for a server with an outdated log to step forward
-   as for a server with a longer log. In fact, because there are so few
-   servers with sufficiently up-to-date logs, those servers are quite
-   unlikely to be able to hold an election in sufficient peace to be
-   elected. If you follow the rule from Figure 2, the servers with the
-   more up-to-date logs won't be interrupted by outdated servers'
-   elections, and so are more likely to complete the election and become
-   the leader.
+   as for a server with a longer log.
+
+   In fact, because there are so few servers with sufficiently
+   up-to-date logs, those servers are quite unlikely to be able to hold
+   an election in sufficient peace to be elected. If you follow the rule
+   from Figure 2, the servers with the more up-to-date logs won't be
+   interrupted by outdated servers' elections, and so are more likely to
+   complete the election and become the leader.
  - Follow Figure 2's directions as to when you should start an election.
    In particular, note that if you are a candidate (i.e., you are
    currently running an election), but the election timer fires, you
    should start *another* election. This is important to avoid the
    system stalling due to delayed or dropped RPCs.
- - Ensure that you follow the second "Rules for Servers" *before*
-   handling an incoming RPC. The second rule states:
+ - Ensure that you follow the second rule in "Rules for Servers"
+   *before* handling an incoming RPC. The second rule states:
 
    > If RPC request or response contains term `T > currentTerm`: set
    > `currentTerm = T`, convert to follower (§5.1)
@@ -218,7 +219,8 @@ handful of mistakes that we have seen numerous students make:
 
 Even though Figure 2 spells out exactly what each RPC handler should do,
 some subtleties are still easy to miss. Here are a handful that we kept
-seeing over and over again:
+seeing over and over again, and that you should keep an eye out for in
+your implementation:
 
  - If a step says "reply false", this means you should *reply
    immediately*, and not perform any of the subsequent steps.
@@ -258,7 +260,13 @@ application very carefully so that it does not violate The Rules:
    "applier", or to lock around these applies, so that some other
    routine doesn't also detect that entries need to be applied and also
    tries to apply.
- - If a leader sends out an `AppendEntries` RPC and it is rejected, but
+ - Make sure that you check for `commitIndex > lastApplied` either
+   periodically, or after `commitIndex` is updated (i.e., after
+   `matchIndex` is updated). For example, if you check `commitIndex` at
+   the same time as sending out `AppendEntries` to peers, you may have
+   to wait until the *next* entry is appended to the log before applying
+   the entry you just sent out and got acknowledged.
+ - If a leader sends out an `AppendEntries` RPC, and it is rejected, but
    *not because of log inconsistency* (this can only happen if our term
    has passed), then you should immediately step down, and *not* update
    `nextIndex`. If you do, you could race with the resetting of
@@ -266,26 +274,31 @@ application very carefully so that it does not violate The Rules:
  - A leader is not allowed to update `commitIndex` to somewhere in a
    *previous* term (or, for that matter, a future term). Thus, as the
    rule says, you specifically need to check that `log[N].term ==
-   currentTerm`.
+   currentTerm`. This is because Raft leaders cannot be sure an entry is
+   actually committed (and will not ever be changed in the future) if
+   it's not from their current term. This is illustrated by Figure 8 in
+   the paper.
 
 One common source of confusion is the difference between `nextIndex` and
-`matchIndex`. In particular, students often observe that `matchIndex =
-nextIndex - 1`, and will initially simply not implement `matchIndex`.
-This is not safe. While `nextIndex` and `matchIndex` are generally
-updated at the same time to a similar value (specifically, `nextIndex =
-matchIndex + 1`), the two serve quite different purposes. `nextIndex` is
-a *guess* as to what prefix the leader shares with a given follower. It
-is generally quite optimistic (we share everything), and is moved
-backwards only on negative responses. For example, when a leader has
-just been elected, `nextIndex` is set to be index index at the end of
-the log. In a way, `nextIndex` is used for performance -- you only need
-to send these things to this peer. `matchIndex` is used for safety. It
-is a conservative *measurement* of what prefix of the log the leader
-shares with a given follower. `matchIndex` cannot ever be set to a value
-that is too high, as this may cause the `commitIndex` to be moved too
-far forward. This is why `matchIndex` is initialized to -1 (i.e., we
-agree on no prefix), and only updated when a follower *positively
-acknowledges* an `AppendEntries` RPC.
+`matchIndex`. In particular, you may observe that `matchIndex =
+nextIndex - 1`, and simply not implement `matchIndex`. This is not safe.
+While `nextIndex` and `matchIndex` are generally updated at the same
+time to a similar value (specifically, `nextIndex = matchIndex + 1`),
+the two serve quite different purposes. `nextIndex` is a *guess* as to
+what prefix the leader shares with a given follower. It is generally
+quite optimistic (we share everything), and is moved backwards only on
+negative responses. For example, when a leader has just been elected,
+`nextIndex` is set to be index index at the end of the log. In a way,
+`nextIndex` is used for performance -- you only need to send these
+things to this peer.
+
+`matchIndex` is used for safety. It is a conservative *measurement* of
+what prefix of the log the leader shares with a given follower.
+`matchIndex` cannot ever be set to a value that is too high, as this may
+cause the `commitIndex` to be moved too far forward. This is why
+`matchIndex` is initialized to -1 (i.e., we agree on no prefix), and
+only updated when a follower *positively acknowledges* an
+`AppendEntries` RPC.
 
 #### Term confusion
 
@@ -323,9 +336,9 @@ the latter is useful for bringing stale followers up to date quickly.
 These features are not a part of "core Raft", and so do not receive as
 much attention in the paper as the main consensus protocol. Log
 compaction is covered fairly thoroughly (in Figure 13), but leaves out
-some design details that are easy for a reader to get wrong:
+some design details that you might miss if you read it too casually:
 
- - When snapshotting application state, Raft needs to make sure that the
+ - When snapshotting application state, you need to make sure that the
    application state corresponds to the state following some known index
    in the Raft log. This means that the application either needs to
    communicate to Raft what index the snapshot corresponds to, or that
@@ -354,16 +367,15 @@ The accelerated log backtracking optimization is very underspecified,
 probably because the authors do not see it as being necessary for most
 deployments. It is not clear from the text exactly how the conflicting
 index and term sent back from the client should be used by the leader to
-determine what `nextIndex` to use. After some deliberation, the 6.824
-staff have decided that what the authors *probably* intended, was the
-following:
+determine what `nextIndex` to use. We believe the protocol the authors
+*probably* want you to follow is:
 
- - If the follower does not have `prevLogIndex` in its log, it should
+ - If a follower does not have `prevLogIndex` in its log, it should
    return with `conflictIndex = len(log)` and `conflictTerm = None`.
- - If the follower does have `prevLogIndex` in its log, but the term
-   does not match, it should return `conflictTerm =
-   log[prevLogIndex].Term`, and then search its log for the first index
-   whose entry has term equal to `conflictTerm`.
+ - If a follower does have `prevLogIndex` in its log, but the term does
+   not match, it should return `conflictTerm = log[prevLogIndex].Term`,
+   and then search its log for the first index whose entry has term
+   equal to `conflictTerm`.
  - Upon receiving a conflict response, the leader should first search
    its log for `conflictTerm`. If it finds an entry in its log with that
    term, it should set `nextIndex` to be the one beyond the index of the
@@ -371,10 +383,10 @@ following:
  - If it does not find an entry with that term, it should set `nextIndex
    = conflictIndex`.
 
-A half-way solution is to just use `conflictIndex`, which simplifies the
-implementation, but then the leader will sometimes end up sending more
-log entries to the follower than is strictly necessary to bring them up
-to date.
+A half-way solution is to just use `conflictIndex` (and ignore
+`conflictTerm`), which simplifies the implementation, but then the
+leader will sometimes end up sending more log entries to the follower
+than is strictly necessary to bring them up to date.
 
 ### Applications on top of Raft
 
@@ -383,40 +395,38 @@ the [second 6.824 Raft
 lab](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html), the
 interaction between the service and the Raft log can be tricky to get
 right. This section details some aspects of the development process that
-we have found students to be confused about.
+you may find useful when building your application.
 
 #### Applying client operations
 
-The first point of confusion is usually how one would even implement an
-application in terms of a replicated log. Students will often start by
-having their service, whenever it receives a client request, send that
-request to the leader, wait for Raft to apply something, do the
-operation the client asked for, and then return to the client. While
-this would be fine in a single-client system, it does not work for
-concurrent clients.
+You may be confused about how you would even implement an application in
+terms of a replicated log. You might start off by having your service,
+whenever it receives a client request, send that request to the leader,
+wait for Raft to apply something, do the operation the client asked for,
+and then return to the client. While this would be fine in a
+single-client system, it does not work for concurrent clients.
 
-Instead, the service should be constructed as a state machine where
-client operations transition the machine from one state to another.
-There's a loop somewhere that takes one client operation at the time (in
-the same order on all servers -- this is where Raft comes in), and
+Instead, the service should be constructed as a *state machine* where
+client operations transition the machine from one state to another. You
+should have a loop somewhere that takes one client operation at the time
+(in the same order on all servers -- this is where Raft comes in), and
 applies each one to the state machine in order. This loop should be the
 *only* part of your code that touches the application state (the
-key/value mapping in our case). This means that your client-facing RPC
+key/value mapping in 6.824). This means that your client-facing RPC
 methods should simply submit the client's operation to Raft, and then
 *wait* for that operation to be applied by this "applier loop". Only
 when the client's command comes up should it be executed, and any return
 values read out. Note that *this includes read requests*!
 
-This brings up another issue that many students faced: how do you know
-when a client operation has completed? In the case of no failures, this
-is simple -- you just wait for the thing you put into the log to come
-back out (i.e., be passed to `apply()`). When that happens, you return
-the result to the client. However, what happens if there are failures?
-For example, you may have been the leader when the client initially
-contacted you, but someone else has since been elected, and the client
-request you put in the log has been discarded. Clearly you need to have
-the client try again, but how do you know when to tell them about the
-error?
+This brings up another question: how do you know when a client operation
+has completed? In the case of no failures, this is simple -- you just
+wait for the thing you put into the log to come back out (i.e., be
+passed to `apply()`). When that happens, you return the result to the
+client. However, what happens if there are failures? For example, you
+may have been the leader when the client initially contacted you, but
+someone else has since been elected, and the client request you put in
+the log has been discarded. Clearly you need to have the client try
+again, but how do you know when to tell them about the error?
 
 One simple way to solve this problem is to record where in the Raft log
 the client's operation appears when you insert it. Once the operation at
@@ -429,13 +439,20 @@ has happened and an error can be returned to the client.
 
 As soon as you have clients retry operations in the face of errors, you
 need some kind of duplicate detection scheme -- if a client sends an
-`APPEND` to your server, doesn't hear back, and so re-sends it to the
-next server, your `apply()` function needs to ensure that the `APPEND`
-isn't executed twice. To do so, you need some kind of unique identifier
-for each client request, so that you can recognize if you have seen, and
+`APPEND` to your server, doesn't hear back, and re-sends it to the next
+server, your `apply()` function needs to ensure that the `APPEND` isn't
+executed twice. To do so, you need some kind of unique identifier for
+each client request, so that you can recognize if you have seen, and
 more importantly, applied, a particular operation in the past.
 Furthermore, this state needs to be a part of your state machine so that
 all your Raft servers eliminate the *same* duplicates.
+
+There are many ways of assigning such identifiers. One simple and fairly
+efficient one is to give each client a unique identifier, and then have
+them tag each request with a monotonically increasing sequence number.
+If a client re-sends a request, it re-uses the same sequence number.
+Your server keeps track of the latest sequence number it has seen for
+each client, and simply ignores any operation that it has already seen.
 
 #### Hairy corner-cases
 
@@ -450,31 +467,42 @@ command, and return the index at which that command was placed in the
 log (so that you know when to return to the client, as discussed above).
 You might assume that you will never see `Start()` return the same index
 twice, or at the very least, that if you see the same index again, the
-command that first returned that index must have failed. Neither of
-these things are true.
+command that first returned that index must have failed. It turns out
+that neither of these things are true, even if no servers crash.
 
-Consider the following scenario:
-You have five servers, S1 through S5. Initially, S1 is the leader, and
-its log is empty. Two client operations (C1 and C2) arrive on S1, and
-`Start()` return 1 for the first, and 2 for the second. S1 sends out an
-`AppendEntries` to S2 containing C1 and C2, but all its other messages
-are lost. Next, S3 steps forward as a candidate. S1 and S2 won't vote
-for S3, but S3, S4, and S5 all will, so S3 becomes the leader. Another
-client request, C3 comes in to S3. S3 calls `Start()` (which returns 1),
-and sends an `AppendEntries` to S1, who discards C1 and C2 from its log,
-and adds C3. S3 then fails before sending `AppendEntries` to any other
-servers. Next, S2 steps forward, and because its log is up-to-date, it
-is elected leader. Another client request, C4, arrives at S1, which then
-calls `Start()`. `Start()` returns 2 (which was also returned for
-`Start(C2)`. All of S1's `AppendEntries` are dropped, and S2 steps
-forward. S1 and S3 won't vote for S2, but S2, S4, and S5 all will, so S2
-becomes leader. A client request C5 comes in to S2, `Start()` is called,
-and returns 3. S2 then successfully sends `AppendEntries` to all the
-servers, which S2 reports back to the servers by including an updated
-`leaderCommit = 3` in the next heartbeat. Since S2's log is `[C1 C2
-C5]`, this means that the entry that committed (and was applied at all
-servers, including S1) at index 2 is C2. This despite the fact that C4
-was the last client operation to have returned index 2 at S1.
+Consider the following scenario with five servers, S1 through S5.
+Initially, S1 is the leader, and its log is empty.
+
+ 1.  Two client operations (C1 and C2) arrive on S1
+ 2.  `Start()` return 1 for C1, and 2 for C2.
+ 3.  S1 sends out an `AppendEntries` to S2 containing C1 and C2, but all
+     its other messages are lost.
+ 4.  S3 steps forward as a candidate.
+ 5.  S1 and S2 won't vote for S3, but S3, S4, and S5 all will, so S3
+     becomes the leader.
+ 6.  Another client request, C3 comes in to S3.
+ 7.  S3 calls `Start()` (which returns 1)
+ 8.  S3 sends an `AppendEntries` to S1, who discards C1 and C2 from its
+     log, and adds C3.
+ 9.  S3 fails before sending `AppendEntries` to any other servers.
+ 10. S2 steps forward, and because its log is up-to-date, it is elected
+     leader.
+ 11. Another client request, C4, arrives at S1
+ 12. S1 calls `Start()`, which returns 2 (which was also returned for
+     `Start(C2)`.
+ 13. All of S1's `AppendEntries` are dropped, and S2 steps forward.
+ 14. S1 and S3 won't vote for S2, but S2, S4, and S5 all will, so S2
+     becomes leader.
+ 15. A client request C5 comes in to S2
+ 16. S2 calls `Start()`, which returns 3.
+ 17. S2 successfully sends `AppendEntries` to all the servers, which S2
+     reports back to the servers by including an updated `leaderCommit =
+     3` in the next heartbeat.
+
+Since S2's log is `[C1 C2 C5]`, this means that the entry that committed
+(and was applied at all servers, including S1) at index 2 is C2. This
+despite the fact that C4 was the last client operation to have returned
+index 2 at S1.
 
 **The four-way deadlock**:
 All credit for finding this goes to [Steven
@@ -562,8 +590,8 @@ We now have a deadlock, because:
  - `Raft.Start` can't return until it gets `r.mutex`.
  - `Raft.Start` has to wait for `Raft.AppendEntries`.
 
-There are a couple of ways to get around this problem. The easiest one
-is to take `a.mutex` *after* calling `a.raft.Start` in `App.RPC`.
+There are a couple of ways you can get around this problem. The easiest
+one is to take `a.mutex` *after* calling `a.raft.Start` in `App.RPC`.
 However, this means that `App.apply` may be called for the operation
 that `App.RPC` just called `Raft.Start` on *before* `App.RPC` has a
 chance to record the fact that it wishes to be notified.
