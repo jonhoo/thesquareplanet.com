@@ -4,17 +4,15 @@ title: Raft Q&A
 date: '2016-03-06 16:17:10'
 ---
 
-### Student top Raft Q&A
-
-This post accompanies the [Students' Guide to Raft](post_url
-students-guide-to-raft). You will probably want to read that first.
-
 For 6.824 we are using [Piazza](https://piazza.com/class/igs35ab0zvja8)
 for class communication and Q&A. Over the course of the semester, a
 number of good questions have been asked that may be of use to others
 trying to come to grips with Raft. A selection of the questions and
 answers are given below. These are all adapted from the questions and
 answers given by 6.824 students and TAs.
+
+This post accompanies the [Students' Guide to Raft](post_url
+students-guide-to-raft). You will probably want to read that first.
 
 > Assume we have three servers, and that S0 is elected leader. S0
 > receives some commands from a client and adds them to its log (say,
