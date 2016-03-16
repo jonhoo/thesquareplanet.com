@@ -81,10 +81,10 @@ that, a replicate state machine.
 
 Raft, in contrast to Paxos, provides a full protocol for building a
 distributed, consistent log, including a number of optimizations such as
-leader election, single-round agreement, and snapshotting. Raft is thus
-much more similar to Multi-Paxos, both in terms of feature set,
-performance, and complexity, than to Paxos. Paxos consensus alone (i.e.,
-not Multi-Paxos) is conceptually much simpler than Raft.
+persistence, leader election, single-round agreement, and snapshotting.
+Raft is thus much more similar to Multi-Paxos, both in terms of feature
+set, performance, and complexity, than to Paxos. Paxos consensus alone
+(i.e., not Multi-Paxos) is conceptually much simpler than Raft.
 
 ### Implementing Raft
 
@@ -118,47 +118,60 @@ We don't know how to do that starting with Raft, in part because Raft
 has a fair amount of sophistication and optimization melded into its
 core protocol.
 
-### Did Paxos fare better?
+### What happened when we switched to Raft?
 
 We originally switched to Raft because we believed that it would be
 easier for the students to follow a complete design, than fiddling with
 how to construct their own Paxos RSM protocol out of Paxos' single-value
-agreement. However, judging from the feedback from our students, the
-first Raft lab was considerably more work than the equivalent Paxos RSM
-lab from last year. Students reported that while Raft was fairly easy to
-*understand*, actually *implementing* it in the lab, and getting all the
-corner cases correct, was both hard and extremely time-consuming.
+agreement. Distributed consensus is complicated, and the Raft authors
+have tried very hard to give a complete description of a protocol that
+is relatively easily digestible and understandable.
 
-A natural question to ask then is: is Raft still "better" than Paxos
-(and Paxos RSM) from an educational point of view? Distributed consensus
-is undoubtedly a complicated affair, and the Raft authors have tried
-very hard to make a protocol that is easily digestible and
-understandable, at least in the general case. And they have succeeded in
-doing so. Students reported that they felt as though they understood
-Raft well, and that the design was easy to follow, including how the
-different pieces fit together.
+Despite having a useful, complete write-up of the algorithm (which we
+did not have for Paxos), it seemed considerably harder for students to
+complete our Raft lab than our previous Paxos lab. We suspect that, as
+previously discussed, this is because Raft is a much more sophisticated
+protocol than our previous, naïve, Paxos-based RSM. In addition, since
+we did not anticipate the additional work required due to the increased
+complexity ahead of time, we did not give the students additional time
+to complete the new labs, which added to the lab difficulty.
 
-One might argue that the stripped-down Paxos RSM approach we took with
-the previous set of labs were overly simplistic. That exposing them
-to a well though-through, end-to-end algorithm like Raft or Multi-Paxos
-teaches them about all the things you need to consider if you really
-want correct behavior in every case, and that that is the "right" thing
-to teach them in a class on distributed systems. And maybe the added
-implementation complexity is the price we have to pay for that.
+The story is similar when it comes to the students *understanding* what
+they are building -- understanding the naïve Paxos RSM design in the old
+labs was easy, as you did not have to reason about things like rolling
+back logs on leader re-election, or what guarantees that committed
+entries aren't lost when doing so. Because each log entry is determined
+by a completely separate Paxos instance, and single-agreement Paxos is
+dramatically simpler than Raft, the overall complexity was moderately
+low.
+
+Raft is "easy" in the sense that you can translate Figure 2 directly
+into code, and get a working system without having to think too deeply
+about why everything works. However, it is not easy to understand
+exactly *why* it works, and thus an intuitive implementation approach
+(i.e., not slavishly following Figure 2) is unlikely to work. In many
+ways, the key advantage of Raft is that, while it may be complex and
+hard to fully understand, it is written down and explained in a paper.
 
 ### Going forward
 
 Despite the increased perceived difficulty of our labs after switching
 to Raft, we are going to continue using Raft for 6.824 labs in the
-coming years. This is for two main reasons. First, we feel as though it
-is important that students are exposed to mature, complete, and correct
-distributed algorithms; while having them come up with their own scheme
-for building Paxos RSM is certainly an interesting intellectual
-challenge, it is not clear that it makes them "better" at building
-distributed systems. Second, it is arguably more important that the
-students feel as though they understand the workings of the algorithm,
-than to test whether they can quickly and correctly translate the
-textual description of an algorithm into bug-free code.
+coming years. This is for a couple of reasons. First, there exists a
+paper that contains a *good, complete description* of Raft (namely, the
+Raft paper). This was not the case for the old lab. Second, Raft
+*eliminates annoying corner cases* that students were forced to deal
+with in the Paxos-based labs, such as holes in the log or entries
+committing out of order. Third, Raft has *persistence built-in*, which
+we believe is important for students to understand, and which allows for
+more rigorous testing (by crashing servers).
+
+One might also argue that the stripped-down Paxos RSM we had the
+students build in the previous set of labs was overly simplistic.
+Exposing the students to a well thought-through, optimized, end-to-end
+algorithm like Raft arguably gives them more experience with what
+building useful, production-ready consensus-based distributed systems is
+like.
 
 In an attempt to improve the situation for future years, and to help
 other students of Raft (academic or otherwise), we have also written the
