@@ -72,6 +72,7 @@ a abbr { border-bottom: none; }
 			}
 		.article h3 i, .site h3 i, .blog-post h3 i {
 			color: #888;
+			float: right;
 			padding-left: .5em;
 			font-size: 1rem;
 		}
