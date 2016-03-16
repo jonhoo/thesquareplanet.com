@@ -12,7 +12,7 @@ layout: default
 		{% assign words = content | number_of_words %}
 		{% if words >= 360 %}
 		<span class="reading-time">
-			(a {{ words | divided_by:180 }} min read)
+			({{ words | divided_by:180 }} min. read)
 		</span>
 		{% endif %}
 		<i itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</i>

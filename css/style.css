@@ -101,19 +101,21 @@ a abbr { border-bottom: none; }
 	/* https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/ */
 	.blog-post blockquote {
 		background: #f9f9f9;
+		border: 3px solid #f4f4f4;
 		border-left: 10px solid #c76c0c;
-		margin: 1.5em 10px;
-		padding: 0.5em 10px;
+		margin: 1.5em 1em;
+		padding: 0.7em;
 	}
 	.blog-post blockquote:before {
 		font-family: serif;
 		color: #ccc;
 		content: open-quote;
-		font-size: 4em;
-		line-height: 0.1em;
-		margin-right: 0.1em;
-		vertical-align: -0.4em;
-		content: "\201C";
+		font-size: 6em;
+		line-height: 1rem;
+		float: right;
+		margin-left: 1rem;
+		margin-top: 2rem;
+		content: "\201D";
 	}
 	.blog-post blockquote p {
 		display: inline;
