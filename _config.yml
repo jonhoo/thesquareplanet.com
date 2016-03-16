@@ -2,7 +2,7 @@ title: Jon Gjengset
 email: jon@thesquareplanet.com
 description: >
   PhD Student, Software Engineer and problem solver
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: ""
 url: "https://thesquareplanet.com"
 permalink: /blog/:title/
 include: [".well-known"]
