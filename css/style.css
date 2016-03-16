@@ -48,9 +48,11 @@ a abbr { border-bottom: none; }
 		line-height: 2;
 		color: black;
 	}
+@media screen and (min-width: 50em) {
 	.blog-post h3 {
 		margin-top: 3em;
 	}
+}
 	.blog-post h4 {
 		font-weight: bold;
 		font-size: 100%;
@@ -70,14 +72,19 @@ a abbr { border-bottom: none; }
 			}
 		.article h3 i, .site h3 i, .blog-post h3 i {
 			color: #888;
-			float: right;
 			padding-left: .5em;
 			font-size: 1rem;
 		}
 		.blog-post .reading-time {
 			color: #888;
 			font-size: 1rem;
+			display: none;
 		}
+@media screen and (min-width: 50em) {
+		.blog-post .reading-time {
+			display: inline;
+		}
+}
 		.blog-post em {
 			color: #800;
 			font-style: normal;
