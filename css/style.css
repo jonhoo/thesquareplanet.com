@@ -119,6 +119,13 @@ a abbr { border-bottom: none; }
 		display: inline;
 		font-size: 90%;
 	}
+	.blog-post .hyphenate {
+		-ms-hyphens: auto;
+		-moz-hyphens: auto;
+		-webkit-hyphens: auto;
+		hyphens: auto;
+		text-align: justify;
+	}
 	.article .award {
 		float: left;
 		padding-right: .5em;
@@ -332,7 +339,6 @@ article {
 	width: 90%;
 	line-height: 2;
 }
-	article p { text-align: left; }
 	article a {
 		color: inherit;
 		text-decoration: none;
