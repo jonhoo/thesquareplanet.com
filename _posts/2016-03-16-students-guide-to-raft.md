@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Students' Guide to Raft
-date: '2016-03-06 16:17:10'
+date: '2016-03-16 12:39:10'
 ---
 
 For the past few months, I have been a Teaching Assistant for MIT's
@@ -12,18 +12,18 @@ consensus algorithm, but this year, we decided to make the move to
 understand", and our hope was that the change might make the students'
 lives easier.
 
-This post, and the accompanying [Instructors' Guide to Raft](post_url
-instructors-guide-to-raft) post, chronicles our journey with Raft, and
-will hopefully be useful to implementers of the Raft protocol and
-students trying to get a better understanding of Raft's internals. If
-you are looking for a Paxos vs Raft comparison, or for a more
-pedagogical analysis of Raft, you should go read the Instructors' Guide.
-The bottom of this post contains a list of questions commonly asked by
-6.824 students, as well as answers to those questions. If you run into
-an issue that is not listed in the main content of this post, check out
-the [Q&A](post_url raft_qa). The post is quite long, but all the points
-it makes are real problems that a lot of 6.824 students (and TAs) ran
-into. It is a worthwhile read.
+This post, and the accompanying [Instructors' Guide to Raft]({% post_url
+2016-03-16-instructors-guide-to-raft %}) post, chronicles our journey
+with Raft, and will hopefully be useful to implementers of the Raft
+protocol and students trying to get a better understanding of Raft's
+internals. If you are looking for a Paxos vs Raft comparison, or for a
+more pedagogical analysis of Raft, you should go read the Instructors'
+Guide.  The bottom of this post contains a list of questions commonly
+asked by 6.824 students, as well as answers to those questions. If you
+run into an issue that is not listed in the main content of this post,
+check out the [Q&A]({% post_url 2016-03-16-raft-qa %}). The post is
+quite long, but all the points it makes are real problems that a lot of
+6.824 students (and TAs) ran into. It is a worthwhile read.
 
 ### Background
 

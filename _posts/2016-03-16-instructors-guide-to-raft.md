@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Instructors' Guide to Raft
-date: '2016-03-06 16:17:10'
+date: '2016-03-16 12:39:10'
 ---
 
 For the past few months, I have been a Teaching Assistant for MIT's
@@ -12,11 +12,11 @@ consensus algorithm. This year, we decided to make the move to
 goal of being easy to understand, in the hope that this would make the
 students' lives easier.
 
-This post, and the accompanying [Students' Guide to Raft](post_url
-students-guide-to-raft), chronicles our journey with Raft this past
-semester. Our hope in sharing this is that it might be useful to other
-educators looking to add Raft to their curriculum. If you want to
-*build* or *understand* Raft, you should look at the Students' Guide
+This post, and the accompanying [Students' Guide to Raft]({% post_url
+2016-03-16-students-guide-to-raft %}), chronicles our journey with Raft
+this past semester. Our hope in sharing this is that it might be useful
+to other educators looking to add Raft to their curriculum. If you want
+to *build* or *understand* Raft, you should look at the Students' Guide
 linked to above instead.
 
 Before we dive into Raft, some context may be useful. 6.824 used to have
@@ -174,7 +174,7 @@ like.
 
 In an attempt to improve the situation for future years, and to help
 other students of Raft (academic or otherwise), we have also written the
-[Students' Guide to Raft](post_url students-guide-to-raft). It
-gives a more implementation-oriented description of the Raft protocol,
-discusses common questions and pitfalls, and gives(/will eventually
-give) pseudocode for a correct implementation.
+[Students' Guide to Raft]({% post_url 2016-03-16-students-guide-to-raft
+%}). It gives a more implementation-oriented description of the Raft
+protocol, discusses common questions and pitfalls, and gives(/will
+eventually give) pseudocode for a correct implementation.
