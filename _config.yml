@@ -10,3 +10,7 @@ include: [".well-known"]
 # Build settings
 markdown: kramdown
 exclude: [Gemfile, Gemfile.lock, vendor, _site, public]
+compress_html:
+   clippings: all
+   comments: all
+   endings: all
