@@ -6,38 +6,37 @@ date: '2016-03-06 16:17:10'
 
 For the past few months, I have been a Teaching Assistant for MIT's
 [6.824 Distributed Systems](https://pdos.csail.mit.edu/6.824/) class.
-The class has traditionally had a number of labs building on the Paxos
-consensus algorithm, but this year, we decided to make the move to
-[Raft](https://raft.github.io/). Raft was designed to be easy to
-understand, and our hope was that the change might make the students'
-lives easier.
+In the past, the class has had several labs building on the Paxos
+consensus algorithm. This year, we decided to make the move to
+[Raft](https://raft.github.io/). Raft was designed with the explicit
+goal of being easy to understand, in the hope that this would make the
+students' lives easier.
 
 This post, and the accompanying [Students' Guide to Raft](post_url
-students-guide-to-raft) post, chronicles our journey with Raft, and will
-hopefully be useful to teachers looking to add Raft to their curriculum.
-This post is aimed mainly at Raft from an educational perspective, and
-might be useful to you if you are considering using Raft in your class.
-If you want to *build* or *understand* Raft, you should look at the
-Students' Guide linked to above instead.
+students-guide-to-raft), chronicles our journey with Raft this past
+semester. Our hope in sharing this is that it might be useful to other
+educators looking to add Raft to their curriculum. If you want to
+*build* or *understand* Raft, you should look at the Students' Guide
+linked to above instead.
 
 Before we dive into Raft, some context may be useful. 6.824 used to have
 a set of [Paxos-based
 labs](http://nil.csail.mit.edu/6.824/2015/labs/lab-3.html) that were
-built in [Go](https://golang.org/); Go was chosen both because it is
-easy to learn for students, and because is pretty well-suited for
-writing concurrent, distributed applications (goroutines come in
-particularly handy). Over the course of several labs, students build a
-fault-tolerant, sharded key-value store. The first lab had them build a
-consensus-based log library, the second added a key value store on top of
-that, and the third sharded the key space among multiple fault-tolerant
-clusters, with a fault-tolerant shard master handling configuration
-changes. This article will discuss our experiences with rewriting the
-first lab, as it is the one most directly related to Raft.
+built in [Go](https://golang.org/). Go was chosen because it is a simple
+language, and because it is well-suited for writing concurrent,
+distributed applications. Over the course of several labs, students
+built a fault-tolerant, sharded key-value store. The first lab had them
+build a consensus-based log library. The second added a key/value store
+replicated state machine (RSM) on top of that. The third sharded the key
+space among many fault-tolerant clusters, with a fault-tolerant shard
+master handling configuration changes. This article will discuss our
+experiences with rewriting the first lab, as it is the one most related
+to Raft.
 
 ### Explaining Raft
 
-The Raft protocol is, as it purports to be, a fairly straightforward
-algorithm to explain at a high level. Visualizations like [this
+The Raft protocol is a fairly straightforward algorithm to explain at a
+high level. Visualizations like [this
 one](http://thesecretlivesofdata.com/raft/) give a good overview of the
 principal components of the protocol, and the paper gives good intuition
 for why the various pieces are needed. If you haven't already read the
@@ -53,12 +52,12 @@ to the leader will be applied by the followers in the right order.
 
 As with all distributed consensus protocols, the devil is in the
 details. When networks delay RPCs, networks are partitioned, and servers
-fail, some fairly sophisticated reasoning about the exact rules dictated
-by the specification (the paper) is required to explain why Raft behaves
+fail, sophisticated reasoning about the exact rules dictated by the
+specification (i.e., the paper) is required to explain why Raft behaves
 correctly. The ultimate guide to Raft is in Figure 2 of the Raft paper,
 which specifies the behavior of every RPC exchanged between Raft
-servers, gives invariants that servers should maintain, and dictate when
-certain actions should occur. Both your teaching, the students
+servers, gives invariants that servers should maintain, and dictates
+when certain actions should occur. Both your teaching, the students
 attention, and the rest of this article will be centered around Figure
 2.
 
@@ -66,46 +65,46 @@ attention, and the rest of this article will be centered around Figure
 
 An important difference between our Paxos and Raft labs is that our
 Paxos labs were based on Paxos, the single-value consensus algorithm,
-not Multi-Paxos, which adds features such a single-round soft leader
-commits. The latter is quite often also referred to simply as Paxos.
+not Multi-Paxos. The latter adds features such a single-round soft leader
+commits, and is also commonly referred to as just Paxos.
 
-The general idea when building a replicate state machine on top of Paxos
-is that you run multiple instances of Paxos consensus, where the
-messages for each instance is "tagged" with the index of that value in
-the global log. Multi-Paxos adds a number of optimizations on top of
-this, which adds a fair amount of complexity. For 6.824, we decided the
+The basic idea when building a replicate state machine on top of Paxos
+is that you run multiple instances of Paxos consensus. The messages for
+each instance are then "tagged" with the index in the global log they
+belong to. Multi-Paxos adds several optimizations on top of this, which
+also adds to the protocol's complexity. For 6.824, we decided the
 increased performance was not worth the added complexity for the
 purposes of teaching. Instead, we had the students design their own
 simple protocol for keeping a replicated log on top of Paxos, and from
-that, a replicate state machine.
+that, a replicated state machine.
 
-Raft, in contrast to Paxos, provides a full protocol for building a
-distributed, consistent log, including a number of optimizations such as
-persistence, leader election, single-round agreement, and snapshotting.
-Raft is thus more similar to Multi-Paxos, both in terms of feature set,
-performance, and complexity, than to Paxos. Paxos consensus alone (i.e.,
-not Multi-Paxos) is conceptually simpler than Raft.
+In contrast, Raft provides a full protocol for building a distributed,
+consistent log, including a number of optimizations such as persistence,
+leader election, single-round agreement, and snapshotting.  Raft is thus
+more similar to Multi-Paxos than Paxos, both in terms of feature set,
+performance, and complexity. Paxos consensus alone (i.e., not
+Multi-Paxos) is conceptually simpler than Raft.
 
 ### Implementing Raft
 
 The go-to guide for implementing Raft is Figure 2 of the extended Raft
-paper. At first, both you and the students might be tempted to treat
-Figure 2 as sort of an informal guide; you read it once, and then start
-coding up an implementation that follows roughly what it says to do.
-Doing this, you will quickly get up and running with a mostly working
-Raft implementation. However, Figure 2 is, in reality, closer to a
-formal specification, where every clause is a **MUST**, not a
-**SHOULD**. The Students' Guide to Raft goes into a great deal of depth
-about this. Failure to follow Figure 2 *to the letter* often leads to
-complex bugs, and errors in one part of the algorithm (e.g.,
-snapshotting) can often adversely impact seemingly unrelated parts of
-the protocol (e.g., leader election).
+paper. At first, both you and the students will be tempted to treat
+Figure 2 as an informal guide; you read it once, and then start coding
+up an implementation that follows roughly what it says to do. Doing
+this, you will quickly get up and running with a mostly working Raft
+implementation. However, Figure 2 is, in reality, a formal
+specification, where every clause is a **MUST**, not a **SHOULD**. The
+Students' Guide to Raft goes into a great deal of depth about this.
+Failure to follow Figure 2 *to the letter* often leads to complex bugs,
+and errors in one part of the algorithm (e.g., snapshotting) can often
+adversely impact seemingly unrelated parts of the protocol (e.g., leader
+election).
 
-This is not, in and of itself, a problem. It is to be expected that a
-consensus algorithm specification is precise, and that if you don't
-follow it exactly, things break. However, the fact that Raft bakes in a
-number of optimizations into the consensus algorithm, means that there
-are many more things that can go wrong than for a "simple" RSM
+In and of itself, this is not a problem. A consensus algorithm
+specification must necessarily be precise, and it is reasonable that
+things break if you don't follow it exactly. However, since Raft bakes
+in a number of optimizations into the consensus algorithm, there are
+many more things that can go wrong than for a "simple" RSM
 implementation on top of Paxos.
 
 If you want to assign a stripped-down, low-performance RSM to students
@@ -114,14 +113,14 @@ how to do that starting with Paxos. If you forego the optimizations
 implemented by Multi-Paxos, and instead use simple multi-round Paxos
 agreement for each value in the log, you get a design that seems to us
 to be simpler than both Raft and current practice for Paxos-derived RSM.
-We don't know how to do that starting with Raft, in part because Raft
+We don't know how to do that starting with Raft. This is because Raft
 has a fair amount of sophistication and optimization melded into its
-core protocol.
+core protocol, and it is not clear how to cleanly separate them out.
 
 ### What happened when we switched to Raft?
 
 We originally switched to Raft because we believed that it would be
-easier for the students to follow a complete design, than fiddling with
+easier for the students to follow a complete design than fiddling with
 how to construct their own Paxos RSM protocol out of Paxos' single-value
 agreement. Distributed consensus is complicated, and the Raft authors
 have tried hard to give a complete description of a protocol that is
@@ -129,7 +128,7 @@ relatively easily digestible and understandable.
 
 Despite having a useful, complete write-up of the algorithm (which we
 did not have for Paxos), it seemed considerably harder for students to
-complete our Raft lab than our previous Paxos lab. We suspect that, as
+complete our Raft lab than the previous Paxos lab. We suspect that, as
 previously discussed, this is because Raft is a more sophisticated
 protocol than our previous, naïve, Paxos-based RSM. In addition, since
 we did not anticipate the additional work required due to the increased
@@ -138,10 +137,10 @@ to complete the new labs, which added to the lab difficulty.
 
 The story is similar when it comes to the students *understanding* what
 they are building -- understanding the naïve Paxos RSM design in the old
-labs was easy, as you did not have to reason about things like rolling
-back logs on leader re-election, or what guarantees that committed
-entries aren't lost when doing so. Because each log entry is determined
-by a completely separate Paxos instance, and single-agreement Paxos is
+labs was easy; you did not have to reason about things like rolling back
+logs on leader re-election, or what guarantees that committed entries
+aren't lost when doing so. Because each log entry is determined by a
+completely separate Paxos instance, and single-agreement Paxos is
 dramatically simpler than Raft, the overall complexity was moderately
 low.
 
