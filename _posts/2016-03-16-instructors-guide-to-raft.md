@@ -113,9 +113,14 @@ how to do that starting with Paxos. If you forego the optimizations
 implemented by Multi-Paxos, and instead use simple multi-round Paxos
 agreement for each value in the log, you get a design that seems to us
 to be simpler than both Raft and current practice for Paxos-derived RSM.
+
 We don't know how to do that starting with Raft. This is because Raft
-has a fair amount of sophistication and optimization melded into its
-core protocol, and it is not clear how to cleanly separate them out.
+has a fair amount of sophistication and optimization build into its core
+protocol, and it is not clear how to cleanly separate them out. The Raft
+paper does a good job of separately describing each of the protocol's
+main components, which helps gradually build the students' understanding
+of Raft at a high level, but this decomposition does not easily
+translate into strict isolation in the implementation.
 
 ### What happened when we switched to Raft?
 
