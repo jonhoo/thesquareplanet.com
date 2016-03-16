@@ -51,14 +51,14 @@ it is simple to see from the visualizations that, assuming no failures,
 a leader will eventually be elected, and eventually all operations sent
 to the leader will be applied by the followers in the right order.
 
-As with all distributed consensus protocols, the devil is very much in
-the details. When networks delay RPCs, networks are partitioned, and
-servers fail, some fairly sophisticated reasoning about the exact rules
-dictated by the specification (the paper) is required to explain why
-Raft behaves correctly. The ultimate guide to Raft is in Figure 2 of the
-Raft paper, which specifies the behavior of every RPC exchanged between
-Raft servers, gives invariants that servers should maintain, and dictate
-when certain actions should occur. Both your teaching, the students
+As with all distributed consensus protocols, the devil is in the
+details. When networks delay RPCs, networks are partitioned, and servers
+fail, some fairly sophisticated reasoning about the exact rules dictated
+by the specification (the paper) is required to explain why Raft behaves
+correctly. The ultimate guide to Raft is in Figure 2 of the Raft paper,
+which specifies the behavior of every RPC exchanged between Raft
+servers, gives invariants that servers should maintain, and dictate when
+certain actions should occur. Both your teaching, the students
 attention, and the rest of this article will be centered around Figure
 2.
 
@@ -82,9 +82,9 @@ that, a replicate state machine.
 Raft, in contrast to Paxos, provides a full protocol for building a
 distributed, consistent log, including a number of optimizations such as
 persistence, leader election, single-round agreement, and snapshotting.
-Raft is thus much more similar to Multi-Paxos, both in terms of feature
-set, performance, and complexity, than to Paxos. Paxos consensus alone
-(i.e., not Multi-Paxos) is conceptually much simpler than Raft.
+Raft is thus more similar to Multi-Paxos, both in terms of feature set,
+performance, and complexity, than to Paxos. Paxos consensus alone (i.e.,
+not Multi-Paxos) is conceptually simpler than Raft.
 
 ### Implementing Raft
 
@@ -93,11 +93,11 @@ paper. At first, both you and the students might be tempted to treat
 Figure 2 as sort of an informal guide; you read it once, and then start
 coding up an implementation that follows roughly what it says to do.
 Doing this, you will quickly get up and running with a mostly working
-Raft implementation. However, Figure 2 is, in reality, much closer to a
+Raft implementation. However, Figure 2 is, in reality, closer to a
 formal specification, where every clause is a **MUST**, not a
 **SHOULD**. The Students' Guide to Raft goes into a great deal of depth
-about this. Failure to follow Figure 2 *to the letter* very often leads
-to complex bugs, and errors in one part of the algorithm (e.g.,
+about this. Failure to follow Figure 2 *to the letter* often leads to
+complex bugs, and errors in one part of the algorithm (e.g.,
 snapshotting) can often adversely impact seemingly unrelated parts of
 the protocol (e.g., leader election).
 
@@ -124,13 +124,13 @@ We originally switched to Raft because we believed that it would be
 easier for the students to follow a complete design, than fiddling with
 how to construct their own Paxos RSM protocol out of Paxos' single-value
 agreement. Distributed consensus is complicated, and the Raft authors
-have tried very hard to give a complete description of a protocol that
-is relatively easily digestible and understandable.
+have tried hard to give a complete description of a protocol that is
+relatively easily digestible and understandable.
 
 Despite having a useful, complete write-up of the algorithm (which we
 did not have for Paxos), it seemed considerably harder for students to
 complete our Raft lab than our previous Paxos lab. We suspect that, as
-previously discussed, this is because Raft is a much more sophisticated
+previously discussed, this is because Raft is a more sophisticated
 protocol than our previous, naïve, Paxos-based RSM. In addition, since
 we did not anticipate the additional work required due to the increased
 complexity ahead of time, we did not give the students additional time
