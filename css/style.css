@@ -387,11 +387,17 @@ footer {
 
 @media print {
 	.header nav { display: none; }
-	.header h1 { font-size: 2em; }
-	.header h2 { font-size: 1em; }
+	.header h1 { font-size: 2em; page-break-after: avoid; }
+	.header h2 { font-size: 1em; page-break-after: avoid; }
+	.blog-post h3 { font-size: 1.1em; page-break-after: avoid; }
+	.blog-post h4 { page-break-after: avoid; }
+	.blog-post h5 { page-break-after: avoid; }
 	.article p { color: black; }
 	.site .thumb { display: none; }
+	article { max-width: 50em; }
 	footer { display: none; }
+	html { font-size: 0.80em; }
+	@page { margin: 1.5cm 2cm; }
 }
 
 .highlight  { background: #ffffff; }
