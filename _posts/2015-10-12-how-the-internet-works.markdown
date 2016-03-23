@@ -2,6 +2,9 @@
 layout: post
 title: How the Internet works
 date: '2015-10-12 17:03:02'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=10375762
+  Twitter: https://twitter.com/Jonhoo/status/653622545082617856
 ---
 
 The Internet has become a critical part of almost every part of our society --- it provides information, communication, and entertainment to billions of people every day, and enables coordination and collaboration between people and business across the globe. Unfortunately, this crucial piece of infrastructure is poorly understood by a large majority of the population; the myriad of technologies (both hard and soft) that let your laptop connect to your bank or to your mom's Skype window could just as well be magic as far as average person in the street is concerned.

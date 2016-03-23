@@ -3,7 +3,7 @@ layout: post
 title: Instructors' Guide to Raft
 date: '2016-03-16 12:39:10'
 shared:
-  HackerNews: https://news.ycombinator.com/item?id=11300428
+  Hacker News: https://news.ycombinator.com/item?id=11300428
   Twitter: https://twitter.com/Jonhoo/status/710216832066691074
 ---
 

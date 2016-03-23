@@ -2,6 +2,9 @@
 layout: post
 title: Resistance is futile
 date: '2015-08-31 00:00:24'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=10148568
+  Twitter: https://twitter.com/Jonhoo/status/638142143329107968
 ---
 
 Recently, online video streaming sites have started to dominate the scene when it comes to watching TV shows online, and is slowly surpassing the use of torrents for a large number of non-technical users. Sites like [Project Free TV](http://projectfreetv.so/) and [Watch Series](http://thewatchseries.to/) index this content, providing users with lists of seasons and episodes, along with multiple mirrors for each video.
