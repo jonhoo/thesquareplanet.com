@@ -2,21 +2,31 @@
 layout: default
 ---
 <article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post">
-	<h3 itemprop="name headline">{{ page.title }}
-		<span style="display:none"
-			itemprop="author"
-			itemscope
-			itemtype="http://schema.org/Person">
-			<span itemprop="name">Jon Gjengset</span>
+	<header>
+		<h3 itemprop="name headline">{{ page.title }}
+			<span style="display:none"
+				itemprop="author"
+				itemscope
+				itemtype="http://schema.org/Person">
+				<span itemprop="name">Jon Gjengset</span>
+			</span>
+			{% assign words = content | number_of_words %}
+			{% if words >= 360 %}
+			<span class="reading-time">
+				({{ words | divided_by:180 }} min. read)
+			</span>
+			{% endif %}
+		</h3>
+		<span class="shared">
+			Posted on <span itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</span>
+			{% if page.shared %}
+				&mdash; shared on
+				{% for share in page.shared %}
+					<a href="{{ share[1] }}">{{ share[0] }}</a>
+				{% endfor %}
+			{% endif %}
 		</span>
-		{% assign words = content | number_of_words %}
-		{% if words >= 360 %}
-		<span class="reading-time">
-			({{ words | divided_by:180 }} min. read)
-		</span>
-		{% endif %}
-		<i itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</i>
-	</h3>
+	</header>
 	<div itemprop="articleBody" class="hyphenate">
 		{{ content }}
 	</div>

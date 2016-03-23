@@ -75,7 +75,24 @@ a abbr { border-bottom: none; }
 			float: right;
 			padding-left: .5em;
 			font-size: 1rem;
+			line-height: 2;
+			font-style: normal;
+			vertical-align: middle;
 		}
+		.blog-post .shared {
+			display: block;
+			font-size: 85%;
+		}
+			.blog-post .shared a:not(:nth-last-of-type(1))::after {
+				content: ",";
+			}
+			.blog-post .shared a:nth-of-type(1):nth-last-child(2)::after {
+				content: "";
+			}
+			.blog-post .shared a + a:nth-last-of-type(1)::before {
+				content: " and ";
+				border-bottom: 1px solid white;
+			}
 		.blog-post .reading-time {
 			color: #888;
 			font-size: 1rem;
@@ -167,7 +184,7 @@ a abbr { border-bottom: none; }
 	.site {
 		position: relative;
 	}
-	.site h3 i, .blog-post h3 i {
+	.site h3 i {
 		display: block;
 		padding: 0;
 		float: none;
