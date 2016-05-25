@@ -108,6 +108,11 @@ a abbr { border-bottom: none; }
 			font-style: normal;
 			font-weight: 500;
 		}
+		.blog-post strong {
+			color: #400;
+			font-style: italic;
+			font-weight: normal;
+		}
 		.blog-post tt, .blog-post :not(pre) > code {
 			font-family: monospace;
 			border-radius: 3px;
@@ -145,6 +150,16 @@ a abbr { border-bottom: none; }
 	.blog-post blockquote p {
 		display: inline;
 		font-size: 90%;
+	}
+	.blog-post blockquote cite::before {
+		content: "— ";
+	}
+	.blog-post blockquote cite {
+		display: block;
+		margin-top: .5em;
+		margin-left: .5em;
+		font-style: normal;
+		color: #800;
 	}
 	.blog-post .hyphenate {
 		-ms-hyphens: auto;
