@@ -2,6 +2,9 @@
 layout: post
 title: The Path to Rust
 date: '2016-05-25 17:34:42'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=11773332
+  Twitter: https://twitter.com/Jonhoo/status/735585362626646017
 ---
 
 About six months ago, I started my first large-scale Rust-based project.
