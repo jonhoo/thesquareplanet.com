@@ -47,7 +47,24 @@ The [Rust](https://www.rust-lang.org/) website has a list of Rust
 "features", but that's not all that helpful if you're trying to decide
 whether the new language is better *for you*.
 
+How is it better?
 
+ - As fast as C (low-level)
+ - Compile-time checks for data races!
+ - Extremely expressive (filter map collect -> HashMap?)
+ - Expressive type system (enums, pattern matching if you missed smtg)
+ - Lifetimes are neat (name(&'a Struct) -> &'a str)
+ - *Awesome* community.
+
+How is it worse?
+
+ - No garbage collection == reference counting
+ - Running code is (often much) harder
+ - Sometimes hard to analyze perf (how efficient are iterators?)
+ - CSP/Goroutines not as nice as in Go
+ - Tools still young
+
+### Tips & Gotchas
 
  - &*
  - flat map collect into iterator
