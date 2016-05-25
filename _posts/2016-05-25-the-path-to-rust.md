@@ -5,6 +5,7 @@ date: '2016-05-25 17:34:42'
 shared:
   Hacker News: https://news.ycombinator.com/item?id=11773332
   Twitter: https://twitter.com/Jonhoo/status/735585362626646017
+  Reddit: https://www.reddit.com/r/rust/comments/4l221l/the_path_to_rust_why_rust_might_be_right_for_you/
 ---
 
 About six months ago, I started my first large-scale Rust-based project.
