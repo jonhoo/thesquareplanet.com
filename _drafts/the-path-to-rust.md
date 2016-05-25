@@ -31,12 +31,14 @@ other, less strict languages.
 
 This post is not meant to be a comprehensive introduction to Rust. If
 you want to learn Rust, you should go read the excellent [Rust
-book](https://doc.rust-lang.org/book/). Instead, I will attempts to give
-some pointers for developers coming from other systems languages (Go and
-C/C++ in particular), and to point out tips, gotcha's, and shortcomings
-along the way.
+book](https://doc.rust-lang.org/book/). Instead, I will attempt to give
+an evaluation of Rust for developers coming from other systems languages
+(Go and C/C++ in particular), and to point out why they may or may not
+want to try Rust. At the end, I'll also point out some tips, gotcha's,
+and shortcomings at the end for those who are interested in that kind of
+stuff.
 
-### How is Rust better for me?
+### Why is Rust better for me?
 
 When researching a new language, developers (like you, dear reader) will
 inevitably focus on how the language in question is different from the
@@ -301,21 +303,124 @@ and thus *can't* modify it.
 
 #### A great build system
 
-- Cargo deps
-- Doc and tests built in (like Go, but better)
-- Good documentation, and getting better (link to relevant comparisons
-  with Go/C++ docs)
+Rust comes with a build tool called
+[Cargo](http://doc.crates.io/guide.html). Cargo is similar to `npm`, `go
+get`, `pip` and friends; it lets you declare dependencies and build
+options, and than automatically fetches and builds those when you build
+your project. This makes it easy for yourself and others to build your
+code, including third-party testing services like Travis.
+
+Cargo is pretty featureful compared to many of its siblings in other
+languages. It has versioned dependencies, supports multiple build
+profiles (e.g., debug vs. release), and can even [link against C
+code](http://doc.crates.io/faq.html#will-cargo-work-with-c-code-or-other-languages).
+It also has built-in support for uploading and updating packages on
+[crates.io](https://crates.io/), generating documentation, and running
+tests.
+
+These latter two points are worth elaborating on. First, Rust makes
+writing documentation very easy. Comments that start with three slashes
+(i.e., `///` instead of `//`) are documentation comments, and are
+automatically associated with the following statement. The contents are
+rendered as Markdown, and code examples are *automatically compiled and
+run as tests*. The idea is that code examples should always build (of
+course, you can override this for any given code block), and if it
+doesn't, that should be considered a test failure. The rendered
+documentation automatically links between different modules (including
+the standard library documentation), and is really easy to use.
+
+Most of the standard library has been very well documented by now, and
+thanks to the ease of writing documentation, most of the available Rust
+crates (the name of Rust packages) are also pretty well covered (have a
+look at the documentation for this [Rust SQL ORM
+crate](http://docs.diesel.rs/diesel/index.html) for example). In many
+cases, the Rust documentation is even better than the documentation for
+similar C++ or Go features --- for example, compare Rust's
+[`Vec`](https://doc.rust-lang.org/std/vec/struct.Vec.html), C++'s
+[`std::vector`](http://www.cplusplus.com/reference/vector/vector/), and
+Go's [slices](https://golang.org/doc/effective_go.html#slices)
+([part2](https://golang.org/ref/spec#Appending_and_copying_slices),
+[part3](https://golang.org/ref/spec#Making_slices_maps_and_channels),
+[part4](https://golang.org/ref/spec#Length_and_capacity)).
 
 ### Why would I not choose Rust?
 
- - Still young, so many things don't exist.
- - No garbage collection == reference counting
- - Getting to running code is often (much) harder
- - Sometimes hard to analyze perf (how efficient are iterators?)
- - CSP/Goroutines not as nice as in Go
- - Tools still young
+By now, I hope I have convinced you that Rust has some pretty attractive
+features. However, I bet you are still thinking "okay, but it can't all
+be rainbows and roses". And you are right. There are some things that
+you might dislike about Rust.
 
-### Tips & Gotchas
+First, Rust is still [fairly
+young](http://blog.rust-lang.org/2016/05/16/rust-at-one-year.html), and
+so is its ecosystem. The Rust team has done an excellent job at building
+a welcoming community, and the languages is [improving
+constantly](https://github.com/rust-lang/rfcs), but Rome wasn't built in
+a day. There are still some
+[unfinished](https://github.com/rust-lang/rust/issues/27800)
+[features](https://github.com/rust-lang/rust/issues/27700) in the
+language itself (although [surprisingly
+few](https://github.com/rust-lang/rust/search?utf8=✓&q=unstable+path%3A%2Fsrc%2Flibstd&type=Code)),
+and some documentation [is still
+missing](https://github.com/rust-lang/rust/issues/29329) (though
+this is being [rapidly
+addressed](https://guillaumegomez.github.io/this-week-in-rust-docs/)). A
+number of [useful](https://github.com/aturon/crossbeam)
+[libraries](https://github.com/japaric/criterion.rs) are still in their
+early stages, and the tools for the ecosystem are still
+[being](https://github.com/rust-lang-nursery/rustfmt)
+[developed](https://github.com/rust-lang-nursery/rustup.rs). There is a
+lot of interest and engagement from developers though, so the situation
+is improving daily.
+
+Second, since Rust is not garbage collected, there will be times when
+you have to fall back to [reference
+counting](https://doc.rust-lang.org/std/sync/struct.Arc.html),
+[atomics](https://doc.rust-lang.org/std/sync/atomic/index.html) and
+[locks](https://doc.rust-lang.org/std/sync/struct.Mutex.html), just like
+you have to do in C/C++. Closely related is the fact that Rust does not
+have **green threads** similar to Go's goroutines. Rust
+[dropped](https://github.com/rust-lang/rfcs/pull/230) green threads
+early on in favor of moving this to an [external
+crate](https://doc.rust-lang.org/0.11.0/green/), which means the
+integration is not as neat as it is in Go. You can still spawn threads,
+and the borrow checker will prevent your from much of the nastiness of
+concurrency bugs, but these will essentially be pthreads, not CSP-style
+co-routines.
+
+Third, Rust is a fairly complex language compared to C or Go (it's
+more comparable to C++), and the compiler is a lot pickier. It can be
+tricky for a newcomer to the language to get even relatively simple
+programs to compile, and the learning curve remains steep for quite some
+time. However, the compiler usually gives extremely helpful feedback
+when your code doesn't compile, and the community is very friendly and
+responsive (I suggest visiting
+[#rust-beginners](https://client00.chat.mibbit.com/?server=irc.mozilla.org&channel=%23rust-beginners)
+when you're starting out). Furthermore, once your code compiles, you'll
+find (at least I have) that it is much more likely to be correct (i.e.,
+do the right thing) than if you tried to write similar C, C++, or Go
+code.
+
+Finally, compared to C (and to some extent C++), Rust's complexity can
+also make it harder to
+[understand](https://github.com/rust-lang/rust/issues/33038)
+[exactly](https://github.com/rust-lang/rust/labels/I-slow) what the
+runtime behavior of your code is. That said, as long as you write
+idiomatic Rust code, you'll probably find that your code turns out to be
+as fast as you can expect in most cases. With time and practice,
+estimating the performance of your code also becomes easier, but it is
+certainly trickier than in simpler languages like C.
+
+### Concluding remarks
+
+I've given you what I believe to be a pretty fair and comprehensive
+overview of Rust compared to C and Go, based on my experience from the
+past six months. Rust has impressed me immensely, and I urge you to give
+it a shot. This is especially true if you tried it a while ago and
+didn't like it --- the language has matured *a lot* over the past year!
+If you can think of additional pros and cons for switching to Rust,
+please let me know either in HN comments, on Twitter, or by e-mail!
+
+### Appendix A: Tips & Gotchas
 
  - &*
  - flat map collect into iterator
@@ -324,3 +429,4 @@ and thus *can't* modify it.
  - if let else unreachable
  - chain some into iterator
  - impl on only one enum variant
+ - thread::scoped gone :( https://github.com/rust-lang/rust/issues/24292
