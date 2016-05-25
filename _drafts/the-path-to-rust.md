@@ -34,9 +34,8 @@ you want to learn Rust, you should go read the excellent [Rust
 book](https://doc.rust-lang.org/book/). Instead, I will attempt to give
 an evaluation of Rust for developers coming from other systems languages
 (Go and C/C++ in particular), and to point out why they may or may not
-want to try Rust. At the end, I'll also point out some tips, gotcha's,
-and shortcomings at the end for those who are interested in that kind of
-stuff.
+want to try Rust. At the end, I'll also point out some tips and
+gotcha's, at the end for those who are interested in that kind of stuff.
 
 ### Why is Rust better for me?
 
@@ -125,8 +124,9 @@ writes.
 Some of the bugs found by the Tor developers are handled in other
 higher-level languages as well. Unfortunately, higher-level languages
 are often not a great fit for systems code. Systems code is often
-performance critical (e.g., kernels, databases), so the developer wants
-predictable performance, and tight control over memory
+performance critical (e.g.,
+[kernels](http://www.redox-os.org/index.html), databases), so the
+developer wants predictable performance, and tight control over memory
 allocation/de-allocation and data layout. This can be hard to achieve in
 higher-level languages or when using a garbage collector.
 
@@ -134,9 +134,9 @@ Rust provides features that are often associated with high-level
 languages (such as automatic memory `free`-ing when values go out of
 scope, pattern matching, functional programming abstractions, a powerful
 type system), as well as powerful features like the borrow checker, with
-*no runtime cost*. This might seem too good to be true (and it
-admittedly still feels that way to me), but Rust's claim to achieve
-performance comparable to that of C++ seems to be supported in
+*no runtime cost*. This might seem unbelievable (and it admittedly still
+feels that way to me), but Rust's claim to achieve performance
+comparable to that of C++ seems to be supported in
 [multiple](https://benchmarksgame.alioth.debian.org/u64q/compare.php?lang=rust&lang2=gpp)
 [benchmarks](http://cantrip.org/rust-vs-c++.html).
 
@@ -422,11 +422,82 @@ please let me know either in HN comments, on Twitter, or by e-mail!
 
 ### Appendix A: Tips & Gotchas
 
- - &*
- - flat map collect into iterator
- - iterate on sources
- - iterator count
- - if let else unreachable
- - chain some into iterator
- - impl on only one enum variant
- - thread::scoped gone :( https://github.com/rust-lang/rust/issues/24292
+- `String` [deref](https://doc.rust-lang.org/std/ops/trait.Deref.html)s
+  to `&str`, and through [**deref
+  coercion**](https://doc.rust-lang.org/book/deref-coercions.html) you
+  can call all the methods on `&str` directly on a `String`. This is
+  neat, but there is one case where it doesn't work as you'd hope: if
+  you use a `String` to index into a `HashMap` where the keys are
+  `&str`. This is because `Deref` is defined on `&String`, not `String`.
+  You can prefix your `String` with a `&` when using it inside `[]` to
+  overcome this. In general, you can also get a `&str` of a `String` by
+  prefixing it with `&*`, which comes in handy at times.
+
+- If you ever use `flat_map`, you may get weird lifetime complains from
+  the compiler about the thing you are iterating over inside the
+  `flat_map` closure not living long enough. This is usually because you
+  have an `IntoIter` (i.e., an iterator that owns what it's iterating
+  over), and since iterators are lazily evaluated, the owned value may
+  no longer exist by the time the closure runs. The easiest (though not
+  most efficient) way to overcome this is to write your code like this:
+
+  ```rust
+  // ...
+  .flat_map(|e| {
+    e.into_iter()
+     .map(|ee| {
+       // ...
+     })
+     .collect::<Vec<_>>().into_iter()
+  })
+  // ...
+  ```
+
+  The `collect` forces the iterator to be evaluated immediately,
+  executing the closure. The resulting list is then converted to an
+  iterator with no borrows, which can safely be returned by the
+  `flat_map` closure without lifetime issues.
+
+- If you have an iterator and you want to add an element (say `1`) to
+  the end, you can do this using the following trick:
+
+  ```rust
+  for x in iter.chain(Some(1).into_iter()) {}
+  ```
+
+  This exploits the fact that an `Option` can be turned into an
+  iterator, and chains that single-element iterator onto the existing
+  one, giving you an iterator that yields an extra element after the
+  original iterator ends.
+
+- Since the
+  [removal](https://doc.rust-lang.org/book/deref-coercions.html) of
+  `thread::scoped`, it has become tricky to spawn threads that borrow
+  from their environment. This is often useful if you want to run a pool
+  of workers that need to share access to some resource. You can often
+  get around this using reference counting, but that's not always a
+  desirable option. Instead, you should use the [threadpool
+  crate](https://github.com/frewsxcv/rust-threadpool), which
+  [supports](https://github.com/frewsxcv/rust-threadpool/pull/1) scoped
+  workers, or
+  [`crossbeam::spawn`](https://aturon.github.io/crossbeam-doc/crossbeam/struct.Scope.html#method.spawn)
+  which provides the same functionality without requiring a pool.
+
+- Rust currently (as far as I'm aware) does not have a nice way of
+  talking about only one variant within an enum. That is, you cannot
+  write a function that operates on only a particular enum variant, or
+  have a variable that Rust *knows* is of a particular variant. This
+  can lead to a bunch of code along the lines of:
+
+  ```rust
+  if let MyEnum::ThisVariant(x) = x {
+    // do something with x
+  } else {
+    unreachable!();
+  }
+  ```
+
+  The `try!` macro and the `unwrap()`/`expect()` methods mitigate this
+  pain when working with `Result` or `Option` types, but do not
+  generalize. If anyone knows of a cleaner way of dealing with this,
+  please let me know!
