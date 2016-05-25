@@ -151,6 +151,10 @@ a abbr { border-bottom: none; }
 		display: inline;
 		font-size: 90%;
 	}
+	.blog-post blockquote ul,
+	.blog-post blockquote ol {
+		font-size: 90%;
+	}
 	.blog-post blockquote cite::before {
 		content: "— ";
 	}
