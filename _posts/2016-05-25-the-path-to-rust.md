@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Path to Rust
-date: '2016-05-23 13:29:42'
+date: '2016-05-25 17:34:42'
 ---
 
 About six months ago, I started my first large-scale Rust-based project.
