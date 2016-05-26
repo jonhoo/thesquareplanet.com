@@ -3,7 +3,7 @@ layout: post
 title: The Path to Rust
 date: '2016-05-25 17:34:42'
 shared:
-  Hacker News: https://news.ycombinator.com/item?id=11773332
+  Hacker News: https://news.ycombinator.com/item?id=11774850
   Twitter: https://twitter.com/Jonhoo/status/735585362626646017
   Reddit: https://www.reddit.com/r/rust/comments/4l221l/the_path_to_rust_why_rust_might_be_right_for_you/
 ---
