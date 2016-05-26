@@ -165,8 +165,8 @@ are examples in other languages there too).
 
 Let's have a look at how you might implement something similar in Rust.
 Note that it's not actually the same as the C++ example, since that also
-implements a Trie.
-[this](http://pastebin.com/cSJSNWMa)
+implements a Trie. For a more apples-to-apples comparison, consider
+[this](http://pastebin.com/VwMT38Tg)
 C++ variant written by a
 [Redditor](https://www.reddit.com/r/programming/comments/4l3uhn/the_path_to_rust/d3kffvk).
 
