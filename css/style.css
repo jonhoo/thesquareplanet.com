@@ -172,6 +172,19 @@ a abbr { border-bottom: none; }
 		hyphens: auto;
 		text-align: justify;
 	}
+	.blog-post footer {
+		text-align: center;
+		padding-top: 5em;
+		padding-bottom: 4em;
+		font-size: 85%;
+	}
+		.blog-post footer .revision {
+			font-style: italic;
+			border-bottom-style: none;
+		}
+		.blog-post footer .revision:hover {
+			border-bottom-style: dashed;
+		}
 	.article .award {
 		float: left;
 		padding-right: .5em;
@@ -395,7 +408,7 @@ article {
 			border-bottom-color: #C00;
 			color: #C00;
 		}
-footer {
+.footer {
 	border-top: 1px solid #888;
 	font-family: sans-serif;
 	text-align: center;
@@ -405,18 +418,18 @@ footer {
 	padding: .5rem;
 	color: #888;
 }
-	footer a {
+	.footer a {
 		color: #555;
 		text-decoration: none;
 		border-bottom: 1px dotted #555;
 	}
-	footer a:hover {
+	.footer a:hover {
 		color: #111;
 		border-color: #111;
 		border-bottom-style: solid;
 	}
-	footer abbr { border: none; }
-	footer p {
+	.footer abbr { border: none; }
+	.footer p {
 		margin: .5rem 0;
 	}
 
@@ -431,7 +444,7 @@ footer {
 	.article p { color: black; }
 	.site .thumb { display: none; }
 	article { max-width: 50em; }
-	footer { display: none; }
+	.footer { display: none; }
 	html { font-size: 0.80em; }
 	@page { margin: 1.5cm 2cm; }
 }
