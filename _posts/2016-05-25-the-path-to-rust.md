@@ -241,10 +241,9 @@ expression starting at `let idx =` above with:
 let mut idx = HashMap::new();
 for fname in &args {
   let f = match fs::File::open(fname) {
-    Ok(f) => f,
+    Ok(f) => io::BufReader::new(f),
     Err(e) => panic!("input file {} could not be opened: {}", fname, e),
   };
-  let f = io::BufReader::new(f);
   let mut words = HashSet::new();
   for line in f.lines() {
     for w in line.unwrap().split_whitespace() {
