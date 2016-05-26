@@ -96,7 +96,7 @@ races between Goroutines, which are non-existent in Rust.
 #### Safe concurrency
 
 This latter point is particularly interesting; the Rust compiler *will
-not* compile a program that has a potential race condition in it. Unless
+not* compile a program that has a potential data race in it. Unless
 you explicitly mark your code as `unsafe` (which you rarely, if ever,
 need to do), your code simply cannot have data races. Rust checks this
 using the **borrow checker**, which enforces [two simple
@@ -160,8 +160,10 @@ One of the reasons developers often report to be more productive in
 higher-level languages is the availability of higher-level primitives.
 Consider the case of constructing an inverted index for a given string.
 In C (or C++), you might write something like
-[this](https://www.rosettacode.org/wiki/Inverted_index#C.2B.2B). Let's
-have a look at the same code in Rust:
+[this](https://www.rosettacode.org/wiki/Inverted_index#C.2B.2B) (there
+are examples in other languages there too).
+
+Let's have a look at how you might implement the same thing in Rust:
 
 ```rust
 fn main() {
@@ -193,6 +195,9 @@ fn main() {
         .flat_map(|line| {
           line.unwrap().split_whitespace()
             .map(|w| w.to_string()).collect::<Vec<_>>().into_iter()
+	    // NOTE: the collect+into_iter here is icky
+	    // have a look at the flat_map entry
+	    // in the Appendix for why it's here
         })
       // prune duplicates
       .collect::<HashSet<_>>()
@@ -222,9 +227,37 @@ fn main() {
 }
 ```
 
-Not only is this very readable, it is also reasonably efficient (each
-file is processed as a stream), terminates nicely with an error if a
-file could not be opened, and exits cleanly if the user closes the input
+If you are familiar with functional programming, you might find the above
+both readable and straightforward. If you aren't, you [can
+substitute](https://news.ycombinator.com/item?id=11775860) the
+expression starting at `let idx =` above with:
+
+```rust
+let mut idx = HashMap::new();
+for fname in &args {
+  let f = match fs::File::open(fname) {
+    Ok(f) => f,
+    Err(e) => panic!("input file {} could not be opened: {}", fname, e),
+  };
+  let f = io::BufReader::new(f);
+  let mut words = HashSet::new();
+  for line in f.lines() {
+    for w in line.unwrap().split_whitespace() {
+      if words.insert(w.to_string()) {
+          // new word seen
+          idx.entry(w.to_string()).or_insert(Vec::new()).push(fname);
+      }
+    }
+  }
+}
+```
+
+Crucially, these are *both* valid Rust programs, and you can mix and
+match between the different styles as you want (you can see more
+examples in the Hacker News discussion linked to at the top of this
+post). Furthermore, both result in reasonably efficient code (each file
+is processed as a stream), terminate nicely with an error if a file
+could not be opened, and exit cleanly if the user closes the input
 stream (e.g., with `^D`).
 
 The code above shows examples of functional programming and pattern
@@ -310,7 +343,7 @@ and thus *can't* modify it.
 Rust comes with a build tool called
 [Cargo](http://doc.crates.io/guide.html). Cargo is similar to `npm`, `go
 get`, `pip` and friends; it lets you declare dependencies and build
-options, and than automatically fetches and builds those when you build
+options, and then automatically fetches and builds those when you build
 your project. This makes it easy for yourself and others to build your
 code, including third-party testing services like Travis.
 
