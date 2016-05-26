@@ -163,7 +163,12 @@ In C (or C++), you might write something like
 [this](https://www.rosettacode.org/wiki/Inverted_index#C.2B.2B) (there
 are examples in other languages there too).
 
-Let's have a look at how you might implement the same thing in Rust:
+Let's have a look at how you might implement something similar in Rust.
+Note that it's not actually the same as the C++ example, since that also
+implements a Trie. For a more apples-to-apples comparison, consider
+[this](https://gist.github.com/jcelerier/28c3d159d8fa52a741667d21f18870e8)
+C++ variant written by a
+[Redditor](https://www.reddit.com/r/programming/comments/4l3uhn/the_path_to_rust/d3k8rbx).
 
 ```rust
 fn main() {
@@ -411,9 +416,7 @@ is improving daily.
 
 Second, since Rust is not garbage collected, there will be times when
 you have to fall back to [reference
-counting](https://doc.rust-lang.org/std/sync/struct.Arc.html),
-[atomics](https://doc.rust-lang.org/std/sync/atomic/index.html) and
-[locks](https://doc.rust-lang.org/std/sync/struct.Mutex.html), just like
+counting](https://doc.rust-lang.org/std/sync/struct.Arc.html), just like
 you have to do in C/C++. Closely related is the fact that Rust does not
 have **green threads** similar to Go's goroutines. Rust
 [dropped](https://github.com/rust-lang/rfcs/pull/230) green threads
@@ -513,10 +516,9 @@ please let me know either in HN comments, on Twitter, or by e-mail!
   from their environment. This is often useful if you want to run a pool
   of workers that need to share access to some resource. You can often
   get around this using reference counting, but that's not always a
-  desirable option. Instead, you should use the [threadpool
-  crate](https://github.com/frewsxcv/rust-threadpool), which
-  [supports](https://github.com/frewsxcv/rust-threadpool/pull/1) scoped
-  workers, or
+  desirable option. Instead, you should use the [scoped-pool
+  crate](https://github.com/reem/rust-scoped-pool), which supports
+  scoped workers, or
   [`crossbeam::spawn`](https://aturon.github.io/crossbeam-doc/crossbeam/struct.Scope.html#method.spawn)
   which provides the same functionality without requiring a pool.
 
