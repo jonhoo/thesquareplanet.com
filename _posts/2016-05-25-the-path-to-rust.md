@@ -165,10 +165,10 @@ are examples in other languages there too).
 
 Let's have a look at how you might implement something similar in Rust.
 Note that it's not actually the same as the C++ example, since that also
-implements a Trie. For a more apples-to-apples comparison, consider
-[this](https://gist.github.com/jcelerier/28c3d159d8fa52a741667d21f18870e8)
+implements a Trie.
+[this](http://pastebin.com/cSJSNWMa)
 C++ variant written by a
-[Redditor](https://www.reddit.com/r/programming/comments/4l3uhn/the_path_to_rust/d3k8rbx).
+[Redditor](https://www.reddit.com/r/programming/comments/4l3uhn/the_path_to_rust/d3kffvk).
 
 ```rust
 fn main() {
