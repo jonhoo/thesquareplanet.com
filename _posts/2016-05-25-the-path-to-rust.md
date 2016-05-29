@@ -290,7 +290,7 @@ char* last_name(struct User *u) {
 }
 
 int main() {
-  struct User u;
+  struct User *u = malloc(sizeof(struct User));
   strcpy(u.full_name, "Jon Gjengset");
   char* last = last_name(&u);
   char* first = first_name(&u);
