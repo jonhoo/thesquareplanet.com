@@ -2,6 +2,10 @@
 layout: post
 title: Choosing a Programming Language
 date: '2016-06-06 16:48:42'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=11850257
+  Twitter: https://twitter.com/Jonhoo/status/739922998019248129
+  Reddit: https://www.reddit.com/r/programming/comments/4mv7ob/choosing_a_programming_language/
 ---
 
 One of the first decisions one has to make when learning to program is
