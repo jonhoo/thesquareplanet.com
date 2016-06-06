@@ -250,7 +250,10 @@ So, in order from less to more strict:
   to circumvent many of the checks (see `interface{}` in Go, `void*` in
   C, and `Object` in Java), but in general force you to write sensible
   code. Examples of these languages are Go, C, C++, and Java. These are
-  often referred to as *statically typed*.
+  often referred to as *statically and strongly typed*. There is a
+  difference between statically typed and strongly typed, which you can
+  read up on elsewhere, but they both belong in this tier. The higher
+  tiers require both.
 
 - **No cheating.** Now we're getting into the land of "no shenanigans".
   Not only do you have to convince the compiler that your program
