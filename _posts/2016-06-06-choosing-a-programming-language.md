@@ -119,7 +119,7 @@ scale, and examples of what languages fit in each tier.
   keywords). These often allow you to express your code in a more
   concise way, and offloads some of the tedious step-by-step enumeration
   to the compiler. Examples of well-known languages in this category are
-  C++, C#, and Rust.
+  C++, Swift, and Rust.
 
 - **Languages with runtimes.** Languages in this tier also include a
   *runtime* --- when your program is running, some other code that's
@@ -137,7 +137,7 @@ scale, and examples of what languages fit in each tier.
   matrix multiplications are often implemented in FORTRAN or C, and it
   can be difficult to take advantage of those kinds of libraries when
   you are in a language with a runtime. Popular languages in this
-  category are Java, Scala, Go, and Swift.
+  category are Java, Scala, Go, and C# (along with all of .NET).
 
 - **Interpreted languages.** Programs written using languages in this
   tier are generally much slower than those in the categories above, but
@@ -261,7 +261,7 @@ So, in order from less to more strict:
   wiped. There are many different approaches to this, such as
   disallowing mutable data altogether (Haskell), or checking these
   properties at compile time (Rust). Other languages in this category
-  are Erlang, Prolog, and F#.
+  are Prolog, Swift, and F#.
 
 - **Show me proof.** In these languages, it is no longer sufficient to
   show that your program isn't wrong. You have to show that it in fact
