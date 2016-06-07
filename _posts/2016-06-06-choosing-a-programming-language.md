@@ -285,6 +285,22 @@ So, in order from less to more strict:
   increasingly complex applications. Languages such as Coq, Agda, Dafny,
   Isabelle, and `F*`.
 
+## Does it matter where I start?
+
+If you just want to learn how to program, with few or no use-cases in
+mind, it can be hard to pick any of these categories. If you're in this
+position, you should ask yourself what you're more interested in
+learning. Starting with a lower-level language will force you to learn
+more about how the computer's CPU and memory works, which provides a
+solid foundation on which to build if you want to make things go fast,
+if you want to build something like an Operating System, a device
+driver, or a resource-intensive game. On the other hand, starting with a
+higher-level language will let you dive right into algorithms and data
+structures, without worrying too much about the low-level details. This
+might be what you want if your background is more math-y, or if you have
+some problem you'd like to solve quickly (e.g., data analytics, small
+convenience tools, or a website).
+
 ## Switching languages
 
 The descriptions I've given above will hopefully help you make a good
