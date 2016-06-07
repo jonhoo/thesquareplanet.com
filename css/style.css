@@ -104,14 +104,13 @@ a abbr { border-bottom: none; }
 		}
 }
 		.blog-post em {
-			color: #800;
+			color: #080;
 			font-style: normal;
-			font-weight: 500;
+			font-weight: normal;
 		}
 		.blog-post strong {
-			color: #400;
-			font-style: italic;
-			font-weight: normal;
+			font-style: normal;
+			font-weight: 800;
 		}
 		.blog-post tt, .blog-post :not(pre) > code {
 			font-family: monospace;
