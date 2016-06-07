@@ -9,18 +9,25 @@ shared:
 ---
 
 One of the first decisions one has to make when learning to program is
-which programming language to learn. In many cases, the choice is made
-for you, dictated either by the language used in a particular class, or
-by a particular function you would like to perform, but often you will
-have at least a few options.
+which programming language to learn. In some cases, the choice is made
+for you, dictated either by the language used in a class, or by a
+framework you need to use, but often you will have at least a few
+options.
 
 Picking your first (and second) language can be daunting, as there are
-so many candidates out there, and it's not always clear how they differ,
-and which are "better". This post will try to give a high-level overview
-of the choices that are available, and what differentiates them, to aid
-you in making an informed decision. It is not a "review" of any of these
-languages, nor does it aim to find the "best" programming language out
-there.
+so many candidates out there. It's not always clear how they differ,
+and much less which are "better" for what you are wanting to do. This
+post will try to give a high-level overview of the choices that are
+available, and what differentiates them, to aid you in making an
+informed decision.
+
+Note that this post is not a review of any of these languages, nor does
+it aim to find the "best" programming language out there. I will
+describe different *types* of languages, and give examples for each one,
+but the choice of category, and language within that category, is yours.
+My hope is that this post will provide you with enough context and
+terminology to let you continue a more informed and restricted search on
+your own.
 
 ## Choosing a language
 
@@ -28,8 +35,9 @@ Programming languages generally belong to a number of different
 categories. These are often referred to as "paradigms" in the
 literature. As we'll see shortly, the lines between different paradigms
 are often blurred, especially when it comes to more modern languages.
-Nevertheless, they can be useful for limiting the number of languages to
-look at in more detail.
+Many languages are so similar that they differ mostly in syntax,
+ecosystem, and conventions, not in features. Nevertheless, they can be
+useful for limiting the number of languages to look at in more detail.
 
 Through all of this, it is important to keep in mind that these
 languages *can all do the same things* --- they all let you print to the
