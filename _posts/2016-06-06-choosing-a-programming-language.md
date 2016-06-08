@@ -184,9 +184,9 @@ scale, and examples of what languages fit in each tier.
   want to use these languages if you are trying to do exactly what they
   are built for. Common examples here are R (for statistical
   computations), MATLAB (for math-heavy computations), SQL (for database
-  querying), and Prolog (for logic-based inference). We will not be
-  talking a lot about specialized languages, since you generally know if
-  you should be using them.
+  querying), Coq (for writing proofs about programs), and Prolog (for
+  logic-based inference). We will not be talking a lot about specialized
+  languages, since you generally know if you should be using them.
 
 - **High-level languages.** These languages often depart significantly
   from the computational model used by the languages we have discussed
@@ -273,17 +273,6 @@ So, in order from less to more strict:
   disallowing mutable data altogether (Haskell), or checking these
   properties at compile time (Rust). Other languages in this category
   are Scala, Swift, and F#.
-
-- **Show me proof.** In these languages, it is no longer sufficient to
-  show that your program isn't wrong. You have to show that it in fact
-  does the right thing. This usually involves writing a proof that the
-  code you've written changes the state of the world in some way, or
-  that there doesn't exist an input that causes your program to do
-  something incorrect. I don't have much experience with these
-  languages, but they have seen a surge of popularity over the past few
-  years, with people trying to formally verify the behavior of
-  increasingly complex applications. Languages such as Coq, Agda, Dafny,
-  Isabelle, and `F*`.
 
 ## Does it matter where I start?
 
