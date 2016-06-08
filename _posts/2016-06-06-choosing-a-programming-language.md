@@ -272,7 +272,7 @@ So, in order from less to more strict:
   wiped. There are many different approaches to this, such as
   disallowing mutable data altogether (Haskell), or checking these
   properties at compile time (Rust). Other languages in this category
-  are Prolog, Swift, and F#.
+  are Scala, Swift, and F#.
 
 - **Show me proof.** In these languages, it is no longer sufficient to
   show that your program isn't wrong. You have to show that it in fact
