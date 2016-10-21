@@ -317,7 +317,10 @@ match foo() {
 
 Notice that the last pattern is a catch-all, which simply returns
 anything not captured by the previous patterns as-is. We've also gotten
-rid of the `v` variable entirely. Pretty neat!
+rid of the `v` variable entirely. Pretty neat! This example isn't
+*exactly* the same as the one above (we are potentially allocating a new
+`Enum::` in the first two arms), but in most cases the two are
+interchangeable.
 
 `match` can also do things like convert all non-`Bar`s into `Bar`s by
 binding a variable to an entire pattern:
