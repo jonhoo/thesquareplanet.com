@@ -311,7 +311,7 @@ But `match` can make this much nicer:
 match foo() {
     Enum::Bar(x) => Enum::Bar(x + 1),
     Enum::Baz(x) => Enum::Baz(x - 1),
-    v => v,
+    e => e,
 }
 ```
 
