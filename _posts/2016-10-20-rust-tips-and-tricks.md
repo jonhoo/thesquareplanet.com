@@ -32,7 +32,7 @@ return the value of their last expression. Thus, instead of this:
 
 ```rust
 impl Bar {
-    fn get_baz(&self) -> &str {
+    fn get_baz(&self) -> u64 {
         return self.baz;
     }
 }
@@ -42,7 +42,7 @@ You can use:
 
 ```rust
 impl Bar {
-    fn get_baz(&self) -> &str {
+    fn get_baz(&self) -> u64 {
         self.baz
     }
 }
