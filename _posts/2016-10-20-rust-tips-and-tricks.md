@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rust tips &amp; tricks
+title: Rust tips and tricks
 date: '2016-10-20 20:16:20'
 ---
 
