@@ -153,7 +153,7 @@ might write code like:
 
 ```rust
 let mut map: HashMap<_, Vec<_>> = HashMap::new();
-for (key, val) in vals {
+for (key, val) in list {
     if let Some(mut vals) = map.get_mut(&key) {
         vals.push(val);
         continue;
@@ -167,7 +167,7 @@ API](https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html).
 
 ```rust
 let mut map = HashMap::new();
-for (key, val) in vals {
+for (key, val) in list {
     map.entry(key).or_insert_with(Vec::new).push(val);
 }
 ```
