@@ -1,8 +1,9 @@
 ---
 layout: post
-title: Rust tips and tricks
+title: Rust Tips and Tricks
 date: '2016-10-20 20:16:20'
 shared:
+  Hacker News: https://news.ycombinator.com/item?id=12758107
   Twitter: https://twitter.com/Jonhoo/status/789261507360153604
   Reddit: https://www.reddit.com/r/rust/comments/58kea2/rust_tips_and_tricks/
 ---
