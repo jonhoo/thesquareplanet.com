@@ -2,6 +2,9 @@
 layout: post
 title: Rust tips and tricks
 date: '2016-10-20 20:16:20'
+shared:
+  Twitter: https://twitter.com/Jonhoo/status/789261507360153604
+  Reddit: https://www.reddit.com/r/rust/comments/58kea2/rust_tips_and_tricks/
 ---
 
 Rust has been seeing increased adoption, both in academia and industry,
