@@ -404,6 +404,19 @@ crate entry point (probably `src/lib.rs`):
 #![deny(missing_docs)]
 ```
 
+### Clippy and other bags of tricks
+
+If you haven't found it already, you should go check out
+[Clippy](https://github.com/Manishearth/rust-clippy), which is a linter
+for Rust code. It suggests changes (such as many of the above) to your
+code to make it more idiomatic, as well as pointing out common errors
+and their fixes.
+
+If you want more of these kinds of tricks, you might also want to check
+out llogiq's post [Rustic
+Bits](https://llogiq.github.io/2016/02/11/rustic.html) which has a
+similar flavor to this one.
+
 ### Other things?
 
 Some neat points have already been brought up in the [Reddit
