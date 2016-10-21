@@ -63,6 +63,16 @@ let words = vec!["hello", "world"];
 let word_len = words.into_iter().map(|w| w.len()).collect();
 ```
 
+[In
+fact](https://www.reddit.com/r/rust/comments/58kea2/rust_tips_and_tricks/d9150py/),
+you can get rid of the closure altogether, and pass the `str::len`
+method directly to `map` instead:
+
+```rust
+let words = vec!["hello", "world"];
+let word_len = words.into_iter().map(str::len).collect();
+```
+
 ### Things that can't happen (yet)
 
 While writing code, you often reach an edge case (or maybe even a common
@@ -87,7 +97,6 @@ tutorials told me that I can just use `unwrap()`:
 struct Bar { opt: Option<String> };
 impl Bar {
     fn baz(&self) {
-        assert!(self.opt.is_some());
 	let s = self.opt.unwrap();
     }
 }
@@ -102,7 +111,10 @@ error[E0507]: cannot move out of borrowed content
 
 Damn. You are only borrowing the `Option` (i.e., you have an `&Option`),
 so you can't call `unwrap()` (which moves the value out of the option).
-Fine fine, you say. I'll use `unreachable!()` like you taught me:
+Fine fine, you say. I'll use `unreachable!()` like you taught me along
+with the neat [`if let` single pattern
+matching](https://doc.rust-lang.org/book/if-let.html) construct that
+Rust provides:
 
 ```rust
 impl Bar {
@@ -123,7 +135,6 @@ asked:
 ```rust
 impl Bar {
     fn baz(&self) {
-        assert!(self.opt.is_some());
 	let s = self.opt.as_ref().unwrap();
     }
 }
@@ -141,7 +152,7 @@ might write code like:
 
 ```rust
 let mut map: HashMap<_, Vec<_>> = HashMap::new();
-for (key, val) in vals.into_iter() {
+for (key, val) in vals {
     if let Some(mut vals) = map.get_mut(&key) {
         vals.push(val);
         continue;
@@ -155,7 +166,7 @@ API](https://doc.rust-lang.org/std/collections/hash_map/enum.Entry.html).
 
 ```rust
 let mut map = HashMap::new();
-for (key, val) in vals.into_iter() {
+for (key, val) in vals {
     map.entry(key).or_insert_with(Vec::new).push(val);
 }
 ```
@@ -360,9 +371,17 @@ impl Foo for Bar {
 The first version above is *usually* what you want. However, assigning
 to `_` actually [immediately drops the
 value](https://github.com/rust-lang/rust/issues/10488). If this is not
-what you want, you can instead silence the warning for the function in
-question. However, bear in mind this will also silence the warning for
-any other unused variables in the function's body.
+what you want, you can instead silence the warning for individual
+variables by prefixing their names with a `_`, like so
+
+```rust
+impl Foo for Bar {
+    fn hello(x: &str, _y: bool) { // ...
+```
+
+If you want to silence *all* warnings for a particular block or
+function, you can use a compiler directive instead (though you probably
+shouldn't be doing this)
 
 ```rust
 impl Foo {
@@ -383,7 +402,10 @@ crate entry point (probably `src/lib.rs`):
 
 ### Other things?
 
-If you know of other tricks that should go in this post, feel free to
-get in touch, or send a [GitHub
+Some neat points have already been brought up in the [Reddit
+thread](https://www.reddit.com/r/rust/comments/58kea2/rust_tips_and_tricks/)
+for this post. I will incorporate new ones as they come. If you know of
+other tricks that should go in this post, feel free to post there, get
+in touch, or send a [GitHub
 PR](https://github.com/jonhoo/thesquareplanet.com/pulls), and I'll be
 happy to take a look.
