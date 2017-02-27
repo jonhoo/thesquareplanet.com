@@ -6,6 +6,7 @@ shared:
   Hacker News: https://news.ycombinator.com/item?id=11774850
   Twitter: https://twitter.com/Jonhoo/status/735585362626646017
   Reddit: https://www.reddit.com/r/rust/comments/4l221l/the_path_to_rust_why_rust_might_be_right_for_you/
+  Lobsters: https://lobste.rs/s/ly3tlt/path_rust
 ---
 
 About six months ago, I started my first large-scale Rust-based project.
