@@ -5,6 +5,7 @@ date: '2016-03-16 12:39:10'
 shared:
   Hacker News: https://news.ycombinator.com/item?id=11300432
   Twitter: https://twitter.com/Jonhoo/status/710217067576827905
+  Lobsters: https://lobste.rs/s/uep8lg/students_guide_raft
 ---
 
 For the past few months, I have been a Teaching Assistant for MIT's
