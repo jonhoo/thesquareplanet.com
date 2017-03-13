@@ -493,7 +493,7 @@ Initially, S1 is the leader, and its log is empty.
  8.  S3 sends an `AppendEntries` to S1, who discards C1 and C2 from its
      log, and adds C3.
  9.  S3 fails before sending `AppendEntries` to any other servers.
- 10. S2 steps forward, and because its log is up-to-date, it is elected
+ 10. S1 steps forward, and because its log is up-to-date, it is elected
      leader.
  11. Another client request, C4, arrives at S1
  12. S1 calls `Start()`, which returns 2 (which was also returned for
