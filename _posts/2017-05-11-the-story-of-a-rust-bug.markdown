@@ -2,6 +2,10 @@
 layout: post
 title: The Story of a Rust Bug
 date: '2017-05-10 23:23:23'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=14313854
+  Twitter: https://twitter.com/Jonhoo/status/862527250817798144
+  Lobsters: https://lobste.rs/s/7bnai0/story_rust_bug
 ---
 
 A while ago, I built a system-tray application in Rust to notify me of
