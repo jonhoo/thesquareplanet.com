@@ -6,6 +6,7 @@ shared:
   Hacker News: https://news.ycombinator.com/item?id=14313854
   Twitter: https://twitter.com/Jonhoo/status/862527250817798144
   Lobsters: https://lobste.rs/s/7bnai0/story_rust_bug
+  Reddit: https://www.reddit.com/r/rust/comments/6ai0ga/the_story_of_a_rust_bug_a_trip_down_a_rabbit_hole/
 ---
 
 A while ago, I built a system-tray application in Rust to notify me of
