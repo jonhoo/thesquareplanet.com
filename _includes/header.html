@@ -12,26 +12,32 @@
 					{% if page.url == my_page.url %}
 						{% assign current = 'active' %}
 					{% endif %}
+					{% if my_page.title != "Webdev" or current == "active" %}
 					<a class="{{ current }}" href="{{ my_page.url }}">{{ my_page.title }}</a>
+					{% endif %}
 				{% endif %}
 			{% endfor %}
 			<a class="" href="cv/">Resumé</a>
 		</div>
 		<div class="contact">
-			<a target="_blank" href="https://www.facebook.com/jonhoo">
-				<img class="icon" src="gfx/icons/facebook.svg" alt="Facebook" />
-			</a>
-			<a target="_blank" href="https://www.linkedin.com/in/jonhoo">
-				<img class="icon" src="gfx/icons/linkedin.svg" alt="LinkedIn" />
+			<a target="_blank" href="https://www.twitter.com/jonhoo">
+				<img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/twitter.svg" alt="Twitter" />
 			</a>
 			<a target="_blank" href="https://www.github.com/jonhoo">
-				<img class="icon" src="gfx/icons/github.svg" alt="GitHub" />
+				<img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg" alt="GitHub" />
 			</a>
-			<a target="_blank" href="https://www.twitter.com/jonhoo">
-				<img class="icon" src="gfx/icons/twitter.svg" alt="Twitter" />
+			<a target="_blank" href="https://www.patreon.com/jonhoo">
+				<img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/patreon.svg" alt="Patreon" />
+			</a>
+			<a target="_blank" href="https://keybase.io/jonhoo">
+				<img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/keybase.svg" alt="Keybase" />
+			</a>
+			<a target="_blank" href="https://www.linkedin.com/in/jonhoo">
+				<img class="icon" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg" alt="LinkedIn" />
 			</a>
 			<a href="mailto:jon@thesquareplanet.com">
-				<img class="icon" src="gfx/icons/mail.svg" alt="Email" />
+				<!-- https://github.com/simple-icons/simple-icons/commit/f7b08414ff7db8f10021c21e46db62bfe5983c1b -->
+				<img class="icon" src="gfx/email.svg" alt="Email" />
 			</a>
 		</div>
 	</nav>

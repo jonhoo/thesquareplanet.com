@@ -4,6 +4,9 @@ html {
 	font-size: 1em;
 	line-height: 1.4;
 }
+body {
+	font-family: sans-serif;
+}
 ::-moz-selection { background: #b3d4fc; text-shadow: none; }
      ::selection { background: #b3d4fc; text-shadow: none; }
 
@@ -16,21 +19,25 @@ a abbr { border-bottom: none; }
 
 #avatar {
 	display: block;
-	border-radius: 10px;
+	border-radius: 5em;
 	overflow: hidden;
 	width: 10em;
 	height: 10em;
 	margin: .5em auto;
 	margin-bottom: 1em;
 }
-@media screen and (min-width: 30em) {
+#index article { position: relative; }
+@media screen and (min-width: 60em) {
 	#avatar {
-		float: right;
-		margin: .5em;
-		margin-left: 1em;
+		position: absolute;
+		right: -16em;
+		top: -5em;
+		margin: 0;
+		width: 13em;
+		height: 13em;
+		border-radius: 6.5em;
 	}
 }
-	#avatar:hover { border: none; }
 	#avatar img {
 		display: inline;
 		height: 100%;
@@ -256,9 +263,12 @@ a abbr { border-bottom: none; }
 
 .header {
 	text-align: center;
-	font-family: Cinzel, serif;
 	font-size: 1rem;
 }
+	.header h1, .header h2 {
+		font-family: serif;
+		font-weight: normal;
+	}
 	nav {
 		display: block;
 		width: 100%;
@@ -326,11 +336,27 @@ a abbr { border-bottom: none; }
 		letter-spacing: normal;
 		background: #F0F0F0;
 		text-align: center;
-		display: none;
+		padding: .5em;
+		vertical-align: middle;
+		display: flex;
+		justify-content: center;
+	}
+		.contact a {
+			margin: 0 1.5em;
+		}
+		.contact .icon {
+			width: 24px;
+			height: 24px;
+			vertical-align: middle;
+		}
+@media screen and (min-width: 40em) {
+	.contact {
 		padding: 1em;
 	}
-@media screen and (min-width: 40em) {
-	.contact { display: block; }
+		.contact .icon {
+			width: 32px;
+			height: 32px;
+		}
 }
 @media screen and (min-width: 60em) {
 	.contact {
@@ -338,14 +364,13 @@ a abbr { border-bottom: none; }
 		line-height: 3.3rem;
 		background: none;
 		padding: 0;
-		right: .2em;
+		right: 1em;
 		top: 1px;
 	}
 }
 		.contact a {
 			vertical-align: middle;
 			display: inline-block;
-			height: 2.5rem;
 			margin-right: .2em;
 			padding: 0;
 		}
@@ -395,7 +420,6 @@ a abbr { border-bottom: none; }
 	#index .header h2 { font-size: 2em; }
 }
 article {
-	font-family: sans-serif;
 	text-align: left;
 	margin: 2em auto;
 	margin-top: 0;
@@ -403,6 +427,11 @@ article {
 	width: 90%;
 	line-height: 2;
 }
+	#index article {
+		hyphens: auto;
+		max-width: 30em;
+		text-align: justify;
+	}
 	article a {
 		color: inherit;
 		text-decoration: none;
@@ -415,7 +444,6 @@ article {
 		}
 .footer {
 	border-top: 1px solid #888;
-	font-family: sans-serif;
 	text-align: center;
 	font-size: .9rem;
 	max-width: 38rem;
