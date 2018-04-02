@@ -354,7 +354,7 @@ some design details that you might miss if you read it too casually:
    snapshot has been completed.
  - The text does not discuss the recovery protocol for when a server
    crashes and comes back up now that snapshots are involved. In
-   particular, since Raft state and snapshots are committed separately,
+   particular, if Raft state and snapshots are committed separately,
    a server could crash between persisting a snapshot and persisting the
    updated Raft state. This is a problem, because step 7 in Figure 13
    dictates that the Raft log covered by the snapshot *must be
