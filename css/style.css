@@ -427,6 +427,7 @@ article {
 	width: 90%;
 	line-height: 2;
 }
+	article.wide { max-width: 50em; }
 	#index article {
 		hyphens: auto;
 		max-width: 30em;
