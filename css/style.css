@@ -483,7 +483,7 @@ article {
 	@page { margin: 1.5cm 2cm; }
 }
 
-.highlight  {
+:not(pre).highlight, pre:not(.highlight)  {
   background: #f7f7f7;
   padding: .5em 1em;
   border-bottom: 1px solid #aaa;

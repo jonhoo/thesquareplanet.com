@@ -10,11 +10,11 @@ overflow attacks work. But the world has changed a lot since then, and
 the original attacks will not generally work on modern 64-bit machines.
 Some of this is due to many new defense mechanisms that are now enabled
 by default (see Paul Makowski's [Smashing the Stack in 2011] for an
-overview), but those can be [disabled](#disabling-modern-defenses) if
+overview), but those can be [disabled][Disabling Modern Defenses] if
 all you want to do is understand how these attacks work. What cannot
 easily be avoided any more though is 64-bit programs.
 
-## The Stack Region
+### The Stack Region
 
 Before we discuss exactly how things change in the 64-bit world, let's
 take a step back and revisit what a (stack) buffer overflow attack is.
@@ -66,7 +66,7 @@ compiler, but in general, stack frames always contain at least two
 things: memory needed for the function's local variables (like `buffer`
 in `copy`), and the address of where the function should return.
 
-## The Calling Convention
+### The Calling Convention
 
 The best way to understand this in more detail is to dig into some
 assembly (using [AT&T syntax]). Specifically, let's look at what happens
@@ -83,108 +83,108 @@ when `main` calls `copy`:
 #   $ cat simple.S
 #
 main:
-	# ... various setup for main() ...
-	# at this point, argv is in %rax
-	# to call copy, we place its 1st argument in the %rdi register
-        movq    %rax, %rdi
+  # ... various setup for main() ...
+  # at this point, argv is in %rax
+  # to call copy, we place its 1st argument in the %rdi register
+  movq    %rax, %rdi
 
-	# and then we call copy. call pushes the "rip", a pointer to the
-	# current instruction, onto the stack, and then jumps to the
-	# address of copy.
-        call    copy(char*)
+  # and then we call copy. call pushes the "rip", a pointer to the
+  # current instruction, onto the stack, and then jumps to the
+  # address of copy.
+  call    copy(char*)
 
-	# this is where copy returns to when it issues the ret
-	# instruction. you should go read the assembly for copy now.
-	# after this point, main just returns, and the program exits
-        leave
-        ret
+  # this is where copy returns to when it issues the ret
+  # instruction. you should go read the assembly for copy now.
+  # after this point, main just returns, and the program exits
+  leave
+  ret
 
 copy(char*):
-	# this is known as the "function prologue", and appears at the
-	# top of pretty much every function. it's not _required_ by x64,
-	# but is something most compilers emit for most functions.
-	# first, we remember where the callers stack frame started
-        pushq   %rbp
+  # this is known as the "function prologue", and appears at the
+  # top of pretty much every function. it's not _required_ by x64,
+  # but is something most compilers emit for most functions.
+  # first, we remember where the callers stack frame started
+  pushq   %rbp
 
-	# then we set that our stack frame starts here
-        movq    %rsp, %rbp
+  # then we set that our stack frame starts here
+  movq    %rsp, %rbp
 
-	# then we make some space on the stack for local variables
-	# in this case, 8 bytes for the %rbp we saved, 8 bytes for the
-	# str pointer, and 16 bytes for the buffer = 32 bytes.
-        subq    $32, %rsp
+  # then we make some space on the stack for local variables
+  # in this case, 8 bytes for the %rbp we saved, 8 bytes for the
+  # str pointer, and 16 bytes for the buffer = 32 bytes.
+  subq    $32, %rsp
 
-	# at this point, our stack frame looks like this:
-	# (every line is 8 bytes wide)
-	#
-	#     .-------0x00-------.
-	#     :                  :
-	#     |                  | <- %rsp
-	#     |       str        |
-	#     |  buffer[ 0-7  ]  |
-	#     |  buffer[ 8-15 ]  |
-	#     | [ main's  %rbp ] | <- %rbp
-	#     | [return address] |
-	#     |------------------|
-	#     :   main's frame   :
-	#     `------------------`
-	#
-	# or, displayed differently:
-	#
-	#   bottom of                                             top of
-	#   memory                                                memory
-	#
-	#           str         buffer         sbp        ret
-	#   <-- [        ][ 0           15 ][        ][        ] main...
-	#   	   
-	#   top of                                             bottom of
-	#   stack                                                  stack
+  # at this point, our stack frame looks like this:
+  # (every line is 8 bytes wide)
+  #
+  #     .-------0x00-------.
+  #     :                  :
+  #     |                  | <- %rsp
+  #     |       str        |
+  #     |  buffer[ 0-7  ]  |
+  #     |  buffer[ 8-15 ]  |
+  #     | [ main's  %rbp ] | <- %rbp
+  #     | [return address] |
+  #     |------------------|
+  #     :   main's frame   :
+  #     `------------------`
+  #
+  # or, displayed differently:
+  #
+  #   bottom of                                             top of
+  #   memory                                                memory
+  #
+  #           str         buffer         sbp        ret
+  #   <-- [        ][ 0           15 ][        ][        ] main...
+  #
+  #   top of                                             bottom of
+  #   stack                                                  stack
 
-	# the x64 calling convention dictates that a function's first
-	# argument resides in the %rdi register. so the assembly code
-	# for copy next stores the value for the str pointer into the
-	# memory for the local variable str
-        movq    %rdi, -24(%rbp)
+  # the x64 calling convention dictates that a function's first
+  # argument resides in the %rdi register. so the assembly code
+  # for copy next stores the value for the str pointer into the
+  # memory for the local variable str
+  movq    %rdi, -24(%rbp)
 
-	# we're now gearing up to call strcpy.
-	# it takes two arguments, the target and the destination
-	# which we need to stick into %rdi and %rsi respectively
-	# (again, as per the x64 calling convention)
+  # we're now gearing up to call strcpy.
+  # it takes two arguments, the target and the destination
+  # which we need to stick into %rdi and %rsi respectively
+  # (again, as per the x64 calling convention)
 
-	# first, put the address of buffer[0], which starts 16 bytes
-	# before %rbp (that is, 16 bytes higher up the stack), into
-	# %rdi. leaq is like movq, but copies the address of its
-	# arguments instead of its contents.
-        leaq    -16(%rbp), %rdi
+  # first, put the address of buffer[0], which starts 16 bytes
+  # before %rbp (that is, 16 bytes higher up the stack), into
+  # %rdi. leaq is like movq, but copies the address of its
+  # arguments instead of its contents.
+  leaq    -16(%rbp), %rdi
 
-	# then, put the value of str into %rsi.
-	#
-	# notice that the compiler _could_ have been cleverer here,
-	# by sticking %rdi directly into %rsi before modifying %rdi
-	# instead of leaving space on the stack for str.
-        movq    -24(%rbp), %rsi
+  # then, put the value of str into %rsi.
+  #
+  # notice that the compiler _could_ have been cleverer here,
+  # by sticking %rdi directly into %rsi before modifying %rdi
+  # instead of leaving space on the stack for str.
+  movq    -24(%rbp), %rsi
 
-	# next, we call strcpy, and the same thing will happen
-	# as when main called us. when it returns, it'll leave the stack
-	# exactly like it was before we called it.
-        call    strcpy
+  # next, we call strcpy, and the same thing will happen
+  # as when main called us. when it returns, it'll leave the stack
+  # exactly like it was before we called it.
+  call    strcpy
 
-	# when strcpy returns, we'll end up here.
-	# we now want to print out the string, so we put the address of
-	# buffer[0] in %rdi as the first argument again
-        leaq    -16(%rbp), %rdi
-	# and then call puts this time, which prints the given buffer
-        call    puts
+  # when strcpy returns, we'll end up here.
+  # we now want to print out the string, so we put the address of
+  # buffer[0] in %rdi as the first argument again
+  leaq    -16(%rbp), %rdi
+  # and then call puts this time, which prints the given buffer
+  call    puts
 
-	# finally, we're ready to return, so we use leave to restore
-	# main's values for %rsp and %rbp. see
-	# https://www.felixcloutier.com/x86/leave for the details of how
-	# this works if you're interested.
-        leave
+  # finally, we're ready to return, so we use leave to restore
+  # main's values for %rsp and %rbp. see
+  # https://www.felixcloutier.com/x86/leave for the details of how
+  # this works if you're interested.
+  leave
 
-	# we then use ret to return to main.
-	# ret pops the return address from the stack and jumps to it.
-        ret
+  # we then use ret to return to main.
+  # ret pops the return address from the stack and jumps to it.
+  ret
 ```
 
 Hopefully that wasn't too painful to follow. If you've read [Smashing
@@ -193,7 +193,7 @@ similarities in how this all worked. You may also notice a crucial
 difference -- arguments to functions are no longer passed on the stack.
 We'll get back to that later.
 
-## Buffer Overflows
+### Buffer Overflows
 
 Now that we have that background, the path to a buffer overflow on the
 stack is pretty short. Specifically, consider what happens if we write
@@ -210,7 +210,7 @@ the buffer in memory. Let's take a look at our horizontal stack diagram:
 ```
   bottom of                                             top of
   memory                                                memory
-  
+
           str         buffer         sbp        ret
   <-- [        ][ 0           15 ][        ][        ] main...
 ```
@@ -227,7 +227,7 @@ somewhere where there _is_ code to run? Code that we, as an attacker,
 want to run? Something that gives us a shell prompt or removes a
 critical file?
 
-## Shell Code
+### Shell Code
 
 The most basic, and easiest to understand, stack overflow attack
 involves injecting some of our own code into the program's memory, and
@@ -238,11 +238,11 @@ diagram:
 ```
   bottom of                                             top of
   memory                                                memory
-  
+
           str         buffer         sbp        ret
   <-- [        ][ 0           15 ][        ][        ] main...
                   ^                              |
-		  |------------------------------|
+                  |------------------------------|
 ```
 
 
@@ -295,7 +295,7 @@ $ cc -m64   -c -o shellcode.o shellcode.S
 $ objcopy -S -O binary -j .text shellcode.o shellcode.bin
 ```
 
-## Writing an Exploit
+### Writing an Exploit
 
 With that background, we're now ready to execute our first attack against
 a real program. We'll make our C program a little more sophisticated to
@@ -308,17 +308,17 @@ prints the first 128 characters of each input it gets:
 #include <unistd.h>
 
 void first128(char *str) {
-	char buffer[128];
-	strcpy(buffer, str);
-	printf("%s\n", buffer);
+  char buffer[128];
+  strcpy(buffer, str);
+  printf("%s\n", buffer);
 }
 
 int main(int argc, char **argv) {
-	static char input[1024];
-	while (read(STDIN_FILENO, input, 1024) > 0) {
-		first128(input);
-	}
-	return 0;
+  static char input[1024];
+  while (read(STDIN_FILENO, input, 1024) > 0) {
+    first128(input);
+  }
+  return 0;
 }
 ```
 
@@ -455,13 +455,13 @@ $ ./exploit.py | env - setarch -R ./vulnerable
 
 Hmm, that looks awfully empty. Is it working? Try typing `ls`...
 
-## 64-bit Considerations
+### 64-bit Considerations
 
 There are two primary difference between buffer overflows in 32-bit and
 64-bit mode that you will have to be aware of, and that _will_ cause you
 issues.
 
-### Zeroes in addresses
+#### Zeroes in addresses
 
 First, most 64-bit addresses have 0x00 in their most significant byte,
 which means we often can't write them out directly; operations like
@@ -484,7 +484,7 @@ This wasn't as much of an issue on 32-bit systems. While an address
 _could_ contain 0x00 by accident, it was relatively less likely. On
 64-bit systems, this happens for pretty much _every_ address!
 
-### Arguments in Registers
+#### Arguments in Registers
 
 On 32-bit systems (i386 in particular), the calling convention for
 functions is a bit of a [free-for-all]. The most common one is
@@ -511,13 +511,13 @@ arguments the libc function would see simply by manipulating the stack
 get around this, for example by using the "[borrowed code chunks]"
 technique, but these attacks are far more difficult to pull off.
 
-## Finding Buffer Overflows
+### Finding Buffer Overflows
 
 Instead of repeating Aleph One's words here, I'll just direct you to the
 "Finding Buffer Overflows" section of [Smashing the Stack for Fun and
 Profit].
 
-## Disabling Modern Defenses
+### <a name="disabling-modern-defenses">Disabling Modern Defenses</a>
 
 When trying to do a buffer-overflow attack on a modern machine, there
 are three primary defenses you'll have to deal with:
@@ -558,7 +558,7 @@ are three primary defenses you'll have to deal with:
    simply refuse to continue. You can disable this feature using
    [`execstack`], or in gcc by linking your program with `-z execstack`.
 
-## Appendix A: 64-bit execve shell code
+### Appendix A: 64-bit execve shell code
 
 ```asm
 #include <sys/syscall.h>
@@ -603,8 +603,8 @@ are three primary defenses you'll have to deal with:
   [`strcpy`]: https://linux.die.net/man/3/strcpy
   [null-terminated strings]: https://en.wikipedia.org/wiki/Null-terminated_string
   [null character]: https://en.wikipedia.org/wiki/Null_character
-  [Appendix A]: #appendix-A-64-bit-execve-shell-code
-  [Disabling Modern Defenses]: #disabling-modern-defenses
+  [Appendix A]: {{page.url}}#appendix-A-64-bit-execve-shell-code
+  [Disabling Modern Defenses]: {{page.url}}#disabling-modern-defenses
   [environment variables]: https://wiki.archlinux.org/index.php/Environment_Variables
   [special value]: https://en.wikipedia.org/wiki/Buffer_overflow_protection#Canaries
   [`execstack`]: https://linux.die.net/man/8/execstack
