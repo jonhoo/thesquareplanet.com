@@ -525,7 +525,7 @@ Profit].
 ### <a name="disabling-modern-defenses">Disabling Modern Defenses</a>
 
 When trying to do a buffer-overflow attack on a modern machine, there
-are three primary defenses you'll have to deal with:
+are four primary defenses you'll have to deal with:
 
  - **Stack Canaries**: The compiler injects pieces of code into the
    binary that puts a [special value] between the local variables of a
@@ -562,6 +562,19 @@ are three primary defenses you'll have to deal with:
    marked as executable. When you try to return to it, the CPU will
    simply refuse to continue. You can disable this feature using
    [`execstack`], or in gcc by linking your program with `-z execstack`.
+
+ - **Fortified Source**: By default, `gcc` enables [source
+   fortification], which wraps functions that are known to be
+   problematic, like `strcpy` or `strcat`, with security checks when
+   `gcc` can figure out the required bounds. When these checks are in
+   place, attempts to overflow a buffer may instead terminate your
+   program with
+
+   ```
+   *** buffer overflow detected ***: ./vulnerable terminated
+   ```
+
+   To work around this, just pass `-D_FORTIFY_SOURCE=0`.
 
 ### Appendix A: 64-bit execve shell code
 
@@ -620,3 +633,4 @@ are three primary defenses you'll have to deal with:
   [System V AMD64 ABI]: https://wiki.osdev.org/System_V_ABI#x86-64
   [borrowed code chunks]: http://users.suse.com/~krahmer/no-nx.pdf
   [return-oriented programming]: https://en.wikipedia.org/wiki/Return-oriented_programming
+  [source fortification]: https://access.redhat.com/blogs/766093/posts/1976213
