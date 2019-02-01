@@ -16,7 +16,7 @@ Some of this is due to many new defense mechanisms that are now enabled
 by default (see Paul Makowski's [Smashing the Stack in 2011] for an
 overview), but those can be [disabled][Disabling Modern Defenses] if
 all you want to do is understand how these attacks work. What cannot
-easily be avoided any more though is 64-bit programs.
+easily be avoided any more though is 64-bit execution environments.
 
 ### The Stack Region
 
@@ -457,7 +457,12 @@ vulnerable program:
 $ ./exploit.py | env - setarch -R ./vulnerable
 ```
 
-Hmm, that looks awfully empty. Is it working? Try typing `ls`...
+Hmm, that looks awfully empty. Is it working? Try typing `ls`... \o/
+
+If you want to try your hands at writing an exploit yourself, I'd
+recommend giving MIT's 6.858 Computer Security's [buffer overflow lab] a
+go. This text was written in part to accompany that lab, so you should
+be well equipped to handle that now. Good luck!
 
 ### 64-bit Considerations
 
@@ -641,3 +646,4 @@ scope of this document.
   [return-oriented programming]: https://en.wikipedia.org/wiki/Return-oriented_programming
   [source fortification]: https://access.redhat.com/blogs/766093/posts/1976213
   [work around these defenses]: https://lobste.rs/s/up2x39/smashing_stack_21st_century#c_v5hama
+  [buffer overflow lab]: http://css.csail.mit.edu/6.858/2019/labs/lab1.html
