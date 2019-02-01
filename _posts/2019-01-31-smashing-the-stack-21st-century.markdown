@@ -2,6 +2,10 @@
 layout: post
 title: Smashing the Stack in the 21st Century
 date: '2019-01-30 11:14:53'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=19055821
+  Twitter: https://twitter.com/Jonhoo/status/1091379338971357185
+  Lobsters: https://lobste.rs/s/up2x39/smashing_stack_21st_century
 ---
 
 Aleph One's excellent [Smashing the Stack for Fun and Profit] article
