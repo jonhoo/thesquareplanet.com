@@ -522,7 +522,7 @@ Instead of repeating Aleph One's words here, I'll just direct you to the
 "Finding Buffer Overflows" section of [Smashing the Stack for Fun and
 Profit].
 
-### <a name="disabling-modern-defenses">Disabling Modern Defenses</a>
+### Disabling Modern Defenses
 
 When trying to do a buffer-overflow attack on a modern machine, there
 are several defenses you'll have to deal with:
@@ -627,7 +627,7 @@ scope of this document.
   [`strcpy`]: https://linux.die.net/man/3/strcpy
   [null-terminated strings]: https://en.wikipedia.org/wiki/Null-terminated_string
   [null character]: https://en.wikipedia.org/wiki/Null_character
-  [Appendix A]: {{page.url}}#appendix-A-64-bit-execve-shell-code
+  [Appendix A]: {{page.url}}#appendix-a-64-bit-execve-shell-code
   [Disabling Modern Defenses]: {{page.url}}#disabling-modern-defenses
   [environment variables]: https://wiki.archlinux.org/index.php/Environment_Variables
   [special value]: https://en.wikipedia.org/wiki/Buffer_overflow_protection#Canaries
