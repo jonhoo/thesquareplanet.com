@@ -525,7 +525,7 @@ Profit].
 ### <a name="disabling-modern-defenses">Disabling Modern Defenses</a>
 
 When trying to do a buffer-overflow attack on a modern machine, there
-are four primary defenses you'll have to deal with:
+are several defenses you'll have to deal with:
 
  - **Stack Canaries**: The compiler injects pieces of code into the
    binary that puts a [special value] between the local variables of a
@@ -575,6 +575,12 @@ are four primary defenses you'll have to deal with:
    ```
 
    To work around this, just pass `-D_FORTIFY_SOURCE=0`.
+
+It may seem like cheating to turn these off, and in some sense it is,
+but it is helpful when trying to teach the underlying ideas behind stack
+smashing. And in fact, it is often possible to [work around these
+defenses] with more advanced attacks, though those are far beyond the
+scope of this document.
 
 ### Appendix A: 64-bit execve shell code
 
@@ -634,3 +640,4 @@ are four primary defenses you'll have to deal with:
   [borrowed code chunks]: http://users.suse.com/~krahmer/no-nx.pdf
   [return-oriented programming]: https://en.wikipedia.org/wiki/Return-oriented_programming
   [source fortification]: https://access.redhat.com/blogs/766093/posts/1976213
+  [work around these defenses]: https://lobste.rs/s/up2x39/smashing_stack_21st_century#c_v5hama
