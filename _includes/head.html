@@ -4,16 +4,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>{% if page.title %}{{ page.title | escape }} :: {{ site.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | xml_escape }}{% else %}{{ site.description }}{% endif %}">
   <meta name="author" content="Jon Gjengset <jon@thesquareplanet.com>" />
 
   <base href="{{ site.baseurl }}/" />
 
-  <meta property="og:image" content="https://secure.gravatar.com/avatar/d4646d0d4f5f724283f4ae05d2792845.jpg?s=800" />
   <meta name="flattr:id" content="e0757j" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@jonhoo" />
   <meta name="twitter:creator" content="@jonhoo" />
+  {% if page.layout == "post" %}
+  <meta property="og:url" content="{{ page.url }}" />
+  <meta property="og:title" content="{{ page.title | strip_html | strip_newlines | xml_escape }}" />
+  <meta property="og:description" content="{{ page.excerpt | strip_html | xml_escape }}" />
+  {% endif %}
   <link rel="stylesheet" href="{{ "css/style.css" }}">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
