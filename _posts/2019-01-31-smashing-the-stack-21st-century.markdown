@@ -330,7 +330,7 @@ We then compile (see [Disabling Modern Defenses] for why we do it this
 way):
 
 ```console
-$ gcc -g -fno-stack-protector -z execstack vulnerable.c
+$ gcc -g -fno-stack-protector -z execstack vulnerable.c -o vulnerable -D_FORTIFY_SOURCE=0
 ```
 
 We now need to construct the right input to that program so that we
@@ -405,7 +405,7 @@ Stack level 0, frame at 0x7fffffffed70:
   rbp at 0x7fffffffed60, rip at 0x7fffffffed68
 ```
 
-Notice how it says `rip at 0x7fffffffed18`? That's the address of the
+Notice how it says `rip at 0x7fffffffed68`? That's the address of the
 stored return address!
 
 Now we have everything we need to write out exploit string. Writing it
