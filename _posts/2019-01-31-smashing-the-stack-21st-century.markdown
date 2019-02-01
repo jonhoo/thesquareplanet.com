@@ -509,7 +509,8 @@ traditional return-to-libc attacks since you can no longer change what
 arguments the libc function would see simply by manipulating the stack
 (which is all you can do with a buffer overflow). There _are_ ways to
 get around this, for example by using the "[borrowed code chunks]"
-technique, but these attacks are far more difficult to pull off.
+technique, and the generalized idea of [return-oriented programming],
+but those attacks are far more difficult to pull off.
 
 ### Finding Buffer Overflows
 
@@ -614,3 +615,4 @@ are three primary defenses you'll have to deal with:
   [visual explanation]: https://eli.thegreenplace.net/2011/09/06/stack-frame-layout-on-x86-64
   [System V AMD64 ABI]: https://wiki.osdev.org/System_V_ABI#x86-64
   [borrowed code chunks]: http://users.suse.com/~krahmer/no-nx.pdf
+  [return-oriented programming]: https://en.wikipedia.org/wiki/Return-oriented_programming
