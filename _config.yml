@@ -1,12 +1,13 @@
 title: Jon Gjengset
+encoding: UTF-8
 email: jon@thesquareplanet.com
 description: >
   PhD Student, Software Engineer and problem solver
-baseurl: ""
 url: "https://thesquareplanet.com"
 permalink: /blog/:title/
 include: [".well-known"]
-
-# Build settings
-markdown: kramdown
-exclude: [Gemfile, Gemfile.lock, vendor, _site, public]
+kramdown:
+  input: GFM
+  hard_wrap: false
+repository: jonhoo/thesquareplanet.com
+baseurl: ""
