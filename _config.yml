@@ -3,7 +3,6 @@ encoding: UTF-8
 email: jon@thesquareplanet.com
 description: >
   PhD Student, Software Engineer and problem solver
-url: "https://thesquareplanet.com"
 permalink: /blog/:title/
 include: [".well-known"]
 kramdown:
