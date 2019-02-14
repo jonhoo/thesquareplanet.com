@@ -59,6 +59,11 @@ a abbr { border-bottom: none; }
 	.blog-post h3 {
 		margin-top: 3em;
 	}
+	.blog-post h3.anchor a:hover:after {
+		content: "🔗";
+		padding-left: 1em;
+		opacity: 0.5;
+	}
 	.blog-post h3:not(:first-child) {
 		margin-top: 3em;
 		border-top: 2px dashed #ddd;
