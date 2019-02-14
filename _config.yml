@@ -9,4 +9,3 @@ kramdown:
   input: GFM
   hard_wrap: false
 repository: jonhoo/thesquareplanet.com
-baseurl: "/"
