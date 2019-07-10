@@ -2,6 +2,9 @@
 layout: post
 title: "My First Podcast: A Tale of a Broken Ecosystem"
 date: '2019-07-10 07:49:37'
+shared:
+  Hacker News: https://news.ycombinator.com/item?id=20402120
+  Twitter: https://twitter.com/Jonhoo/status/1148958976228257793
 ---
 
 I've been playing around with the idea for a new podcast along with a
