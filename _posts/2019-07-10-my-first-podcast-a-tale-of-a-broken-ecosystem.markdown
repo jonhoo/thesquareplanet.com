@@ -33,10 +33,10 @@ podcast rss validator" brings up [Cast Feed
 Validator](http://castfeedvalidator.com/),
 [podbase](https://podba.se/validate/), and [FEED
 validator](http://www.feedvalidator.org/). I guess let's try all three.
-They all complain about slightly different things, like the `atom::link`
-tag not pointing to the right URL, so I do some tweaking to make things
-work on GitHub Pages. Oh, yeah, and apparently iTunes only accepts
-[certain HTTPS
+They all complain about slightly different things, like the
+`<atom::link>` tag not pointing to the right URL, so I do some tweaking
+to make things work on GitHub Pages. Oh, yeah, and apparently iTunes
+only accepts [certain HTTPS
 certificates](https://support.castos.com/article/72-itunes-can-t-read-your-feed),
 and the one used by GitHub Pages isn't one of them. I guess I'll have to
 proxy through CloudFlare or something.
@@ -62,18 +62,18 @@ a full specification somewhere?
 I find Apple's [Podcast best
 practices](https://help.apple.com/itc/podcasts_connect/#/itc2b3780e76),
 which goes into some more details about the difference between different
-tags (like `summary` and `description`). They say that
-`content::encoded` should be _separate_ from `description`, in direct
-contradiction of the feed example. They also recommend `<itunes:type>`,
-except that tag is rejected by the validator as not part of the schema.
+tags (like summary and description). They say that `<content::encoded>`
+should be _separate_ from `<description>`, in direct contradiction of
+the feed example. They also recommend `<itunes:type>`, except that tag
+is rejected by the validator as not part of the schema.
 
 I find Apple's [Podcaster's guide to
 RSS](https://help.apple.com/itc/podcasts_connect/#/itcb54353390). This
 has an official-looking table with "required tags" and "recommended
-tags". Finally! Except here, for `description`, the example shows
-`content:encoded`? The "best practices" document also said that
-`content:encoded` could be used at "episode-level only", whereas this
-document seems to say that _all_ `description` elements should have it?
+tags". Finally! Except here, for `<description>`, the example shows
+`<content:encoded>`? The "best practices" document also said that
+`<content:encoded>` could be used at "episode-level only", whereas this
+document seems to say that _all_ description elements should have it?
 At the bottom, it says "only use markup or HTML contained within
 `<content:encoded>` tags inside of `<description>` tags", reiterating
 that one should be _inside_ the other, even though this seems contrary
@@ -81,8 +81,8 @@ to the [RSS
 spec](http://www.rssboard.org/rss-profile#namespace-elements-content-encoded)
 (see also
 [StackOverflow](https://stackoverflow.com/questions/7220670/difference-between-description-and-contentencoded-tags-in-rss2)).
-The spec also says that if `content:encoded` is present, `description`
-should be used as a summary (so what is `itunes:summary` for?).
+The spec also says that if `<content:encoded>` is present, `<description>`
+should be used as a summary (so what is `<itunes:summary>` for?).
 
 This document also specifies that `<itunes:title>` should be used for
 episode titles, not `<title>`, whereas the same is not true for the
@@ -107,7 +107,7 @@ Unfortunately, their "Sample podcast RSS feed" [doesn't
 validate](http://www.feedvalidator.org/check.cgi?url=https%3A%2F%2Fgist.githubusercontent.com%2Fjonhoo%2F20fbc04ce70c8c4d90c8310cb8327e34%2Fraw%2Fb0f35300937c1ca8807144316431e0b58f4a5d02%2Fgoogleplay-podcast-sample-feed.xml),
 because:
 
-> Use of unknown namespace: > http://www.google.com/schemas/play-podcasts/1.0
+> Use of unknown namespace: http://www.google.com/schemas/play-podcasts/1.0
 
 Great, so the `googleplay` namespace doesn't work, so you can't use a
 different e-mail address for iTunes and Google Play. Fantastic.
