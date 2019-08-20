@@ -114,8 +114,9 @@ copy(char*):
   movq    %rsp, %rbp
 
   # then we make some space on the stack for local variables
-  # in this case, 8 bytes for the %rbp we saved, 8 bytes for the
-  # str pointer, and 16 bytes for the buffer = 32 bytes.
+  # in this case, 8 bytes for the str pointer, 16 bytes for
+  # the buffer, and then the compiler rounds up to 32 bytes
+  # to maintain 16-byte stack alignment.
   subq    $32, %rsp
 
   # at this point, our stack frame looks like this:
@@ -124,10 +125,11 @@ copy(char*):
   #     .-------0x00-------.
   #     :                  :
   #     |                  | <- %rsp
+  #     |     padding      |
   #     |       str        |
   #     |  buffer[ 0-7  ]  |
-  #     |  buffer[ 8-15 ]  |
-  #     | [ main's  %rbp ] | <- %rbp
+  #     |  buffer[ 8-15 ]  | <- %rbp
+  #     | [ main's  %rbp ] |
   #     | [return address] |
   #     |------------------|
   #     :   main's frame   :
