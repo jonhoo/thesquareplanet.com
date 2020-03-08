@@ -106,9 +106,8 @@ All right, so here's what you have to do:
     list disk
     select disk 0 REM this should be your internal disk
     list part
-    REM we're going to _clear_ the install disk, so for each partition:
-    select part N
-    delete part
+    REM this _clears_ the install disk, make sure you want to do this!
+    clean
     REM now, we re-create the two-partition trick on the internal drive:
     REM X below is in MB; use the size of the disk - 10GB
     create part primary size=X
