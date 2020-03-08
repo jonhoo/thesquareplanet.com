@@ -13,6 +13,12 @@ I'll keep this one brief, because if you're trying to do this, you
 probably just want to get the damn thing working. And, like me, you are
 quite possibly already annoyed at why the simple solutions don't work.
 
+**If you are not using Linux and just came here because you got the error:**
+
+> Windows could not prepare the computer to boot into the next phase of installation
+
+**then just skip straight to step 6**.
+
 Depending on what you've tried so far, you may be in any one of these
 stages:
 
