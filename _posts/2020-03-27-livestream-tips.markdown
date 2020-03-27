@@ -147,10 +147,10 @@ the intended audience and planned length.
 
 Remember people in other timezones. I tend to announce all streams in
 UTC time, and then link the exact date/time on
-https://everytimezone.com/ so that people can easily see what that time
-translates into where they are. The 24h reminder also works well for
-that, since people can look at when the post was made their time, and
-then just add 24h.
+[everytimezone.com](https://everytimezone.com/) so that people can
+easily see what that time translates into where they are. The 24h
+reminder also works well for that, since people can look at when the
+post was made their time, and then just add 24h.
 
 Announce the recording when it's ready. After your stream has concluded
 and the recording of it is available online, write another brief post
@@ -206,4 +206,5 @@ live-stream version unlisted, then link to the live-stream version from
 the recorded version for those who want to see chat.
 
 Happy streaming!
+
 Jon
