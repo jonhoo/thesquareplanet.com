@@ -2,6 +2,8 @@
 layout: post
 title: "Livestream tips"
 date: '2020-03-27 12:18:59'
+shared:
+  Twitter: https://twitter.com/jonhoo/status/1243592596724895744
 ---
 
 Now that an increasing number of people are staying at home, more people
