@@ -42,7 +42,7 @@ For drawing things, I use [MyPaint], and it seems to do the job nicely.
 this, it's that. A proper, standalone microphone is _so_ much better,
 and not even all that expensive. I started out with the [Samson Q2U],
 and was very happy with it. You can hear what it sounds like in [one of
-my first videos]. I've since upgraded to the [RØDE Podaster] (which
+my first videos]. I've since upgraded to the [RØDE Podcaster] (which
 sounds [like this]), and I doubt I'll need anything more fancy that that
 ever. I'll add that the step up from the Samson to the RØDE _is_
 noticeable (just see the comments).
