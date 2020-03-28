@@ -44,7 +44,7 @@ high level. Visualizations like [this
 one](http://thesecretlivesofdata.com/raft/) give a good overview of the
 principal components of the protocol, and the paper gives good intuition
 for why the various pieces are needed. If you haven't already read the
-[extended Raft paper](http://ramcloud.stanford.edu/raft.pdf), you should
+[extended Raft paper](https://raft.github.io/raft.pdf), you should
 go read that before continuing this article, as I will assume a decent
 familiarity with Raft.
 
