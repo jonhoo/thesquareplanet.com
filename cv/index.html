@@ -217,6 +217,81 @@ United States</span>
         <h2 class="section-header">Professional experience</h2>
         <div class="content">
           <div class="position first">
+            <div class="listing-title">MIT Teaching Assistant</div>
+
+            <div class="dates">
+              <span class="start-month">February</span>
+              <span class="start-year">2019</span>
+              <span class="date-separator">-</span>
+              <span class="end-month">May</span>
+              <span class="end-year">2019</span>
+            </div>
+
+            <div class="listing-type">6.858 Computer Security</div>
+
+            <div class="listing-description"><p>Helped teach MIT's graduate class on computer security.</p></div>
+          </div>
+          <div class="position">
+            <div class="listing-title">MIT Teaching Assistant</div>
+
+            <div class="dates">
+              <span class="start-month">February</span>
+              <span class="start-year">2017</span>
+              <span class="date-separator">-</span>
+              <span class="end-month">May</span>
+              <span class="end-year">2017</span>
+            </div>
+
+            <div class="listing-type">6.858 Computer Security</div>
+
+            <div class="listing-description"><p>Helped teach MIT's graduate class on computer security.</p></div>
+          </div>
+          <div class="position">
+            <div class="listing-title">MIT Teaching Assistant</div>
+
+            <div class="dates">
+              <span class="start-month">September</span>
+              <span class="start-year">2016</span>
+              <span class="date-separator">-</span>
+              <span class="end-month">December</span>
+              <span class="end-year">2016</span>
+            </div>
+
+            <div class="listing-type">6.828 Operating Systems</div>
+
+            <div class="listing-description"><p>Helped teach MIT's graduate class on operating systems.</p></div>
+          </div>
+          <div class="position">
+            <div class="listing-title">MIT Teaching Assistant</div>
+
+            <div class="dates">
+              <span class="start-month">February</span>
+              <span class="start-year">2016</span>
+              <span class="date-separator">-</span>
+              <span class="end-month">May</span>
+              <span class="end-year">2016</span>
+            </div>
+
+            <div class="listing-type">6.824 Distributed Systems</div>
+
+            <div class="listing-description"><p>Helped teach MIT's graduate class on distributed systems.</p></div>
+          </div>
+          <div class="position">
+            <div class="listing-title">MIT Teaching Assistant</div>
+
+            <div class="dates">
+              <span class="start-month">February</span>
+              <span class="start-year">2015</span>
+              <span class="date-separator">-</span>
+              <span class="end-month">May</span>
+              <span class="end-year">2015</span>
+            </div>
+
+            <div class="listing-type">6.858 Computer Security</div>
+
+            <div class="listing-description"><p>Helped teach MIT's graduate class on computer security.</p></div>
+          </div>
+          <div class="position">
             <div class="listing-title">Aptoma AS</div>
 
             <div class="dates">
@@ -593,7 +668,7 @@ United States</span>
           t = "First in Class";
         }
 
-        if (t == ptitle) {
+        if (t == ptitle && t.indexOf('MIT Teaching') === -1) {
           listings.item(i-1).parentNode.style.display = 'none';
           pgroup++;
         } else {

@@ -102,6 +102,8 @@ body {
       .listing .grouped .count {
         display: block;
         cursor: crosshair;
+	font-weight: bold;
+	font-size: 1em;
         color: #0C6FA9;
       }
     .listing-stats {
