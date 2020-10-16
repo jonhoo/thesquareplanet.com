@@ -174,13 +174,13 @@ and I don't know if the preload trick will work there.
 
 I also found that the signal had a noticeable input lag (probably
 ~500ms). Many people complained that this happened if they connected the
-Cam Link to a USB port that shared a bus with many other devices, but
-that wasn't the case in my setup. However, this lag went away when the
-camera was set to output in 60 fps (and only then). Which is super
-weird, since FHD/30 should send _less_ data over the link, but it also
-had the added latency. Shrug. For the Panasonic G7, this eliminated 4k
-input (which it can only do at 30fps), but I'm okay with that. Hopefully
-one day that'll be fixed.
+Cam Link to a USB port that shared a bus with many other devices (check
+`lsusb -tv`), but that wasn't the case in my setup. However, this lag
+went away when the camera was set to output in 60 fps (and only then).
+Which is super weird, since FHD/30 should send _less_ data over the
+link, but it also had the added latency. Shrug. For the Panasonic G7,
+this eliminated 4k input (which it can only do at 30fps), but I'm okay
+with that. Hopefully one day that'll be fixed.
 
 # Result
 
