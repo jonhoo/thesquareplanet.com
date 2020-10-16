@@ -2,6 +2,8 @@
 layout: post
 title: "Using a real camera as a webcam on Linux"
 date: '2020-10-15 17:50:01'
+shared:
+  Twitter: https://twitter.com/jonhoo/status/1316921179337334784
 ---
 
 I've wanted to upgrade my video setup for a while now. The [Logitech
