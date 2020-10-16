@@ -199,5 +199,3 @@ up side-by-side:
   [this dummy battery]: https://smile.amazon.com/gp/product/B01D69P0UG/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1
   [does not officially support Linux]: https://github.com/xkahn/camlink#this-is-a-cam-link-bug-4k-what-does-elgato-support-say
   [this `LD_PRELOAD` script]: https://github.com/xkahn/camlink
-
-This led me down the perilous road of trying to figure out 
