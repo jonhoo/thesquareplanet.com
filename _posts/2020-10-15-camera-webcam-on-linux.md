@@ -161,10 +161,15 @@ screen. If you're using this setup only in OBS this is fine, since you
 can choose the color mode, but if you also want to use it as a webcam in
 other applications, they will likely choose `NV12` and thus get a bad
 signal. You can work around this using [this `LD_PRELOAD` script], which
-isn't great, but seems to work for me. The source is easy to audit.
+isn't great, but seems to work for me. The source is easy to audit. You
+can test that this'll work with
+
+```console
+$ ffplay -pixel_format yuyv422 /dev/video0
+```
 
 Worse yet, if you try to set the camera to any 4k output, that top
-option is *also* listed as `Y/CbCr 4:2:0`  (which is a different bug),
+option is *also* listed as `Y/CbCr 4:2:0`  (which is a *different* bug),
 and I don't know if the preload trick will work there.
 
 I also found that the signal had a noticeable input lag (probably
