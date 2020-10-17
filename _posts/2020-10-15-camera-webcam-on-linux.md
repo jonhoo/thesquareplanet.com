@@ -127,12 +127,12 @@ actually went to try looking at the webcam output (`ffplay
 
 I'll spare you the journey, and instead give you the conclusions. First,
 I had to change a couple of settings on the camera. The little knob on
-the right had to be set to the little camera with an A! in it, and the
-shooting mode knob on the left had to be set to the single picture
-frame. Other configurations may also work. Then, in settings, "Rec
-Format" had to be set to MP4, and "HDMI Info Display" under "TV
-Connection" had to be set to off. You can set "Rec Quality" to whatever
-you want, though I recommend FHD/60p because:
+the right had to be set to A (others may also work), and the shooting
+mode knob on the left had to be set to the single picture frame. Other
+configurations may also work. Then, in settings, "Rec Format" had to be
+set to MP4, and "HDMI Info Display" under "TV Connection" had to be set
+to off. You can set "Rec Quality" to whatever you want, though I
+recommend FHD/60p because:
 
 Elgato [does not officially support Linux], and so various
 configurations get a little wonky. In particular, the Elgato advertises
