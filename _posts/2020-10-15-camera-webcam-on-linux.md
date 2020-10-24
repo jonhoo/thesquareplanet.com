@@ -127,7 +127,7 @@ actually went to try looking at the webcam output (`ffplay
 
 I'll spare you the journey, and instead give you the conclusions. First,
 I had to change a couple of settings on the camera. The little knob on
-the right had to be set to A (others may also work), and the shooting
+the right had to be set to P (others may also work), and the shooting
 mode knob on the left had to be set to the single picture frame. Other
 configurations may also work. Then, in settings, "Rec Format" had to be
 set to MP4, and "HDMI Info Display" under "TV Connection" had to be set
@@ -181,6 +181,30 @@ Which is super weird, since FHD/30 should send _less_ data over the
 link, but it also had the added latency. Shrug. For the Panasonic G7,
 this eliminated 4k input (which it can only do at 30fps), but I'm okay
 with that. Hopefully one day that'll be fixed.
+
+## Handy USB reset
+
+I've found the Elgato to be really finicky about allowing you to start
+and stop capturing. And it gets old really fast to have to plug it out
+and back in between each time you want to record. It turns out you can
+get around this really easily by doing a "soft" reset using [this
+program](https://marc.info/?l=linux-usb&m=121459435621262&w=2). It looks
+a little intimidating, but it really just issues an `ioctl`. There are
+usage instructions
+[here](https://askubuntu.com/questions/645/how-do-you-reset-a-usb-device-from-the-command-line),
+though after you've compiled it (`cc usbreset.c -o usbreset`), it's
+just:
+
+```console
+$ lsusb | grep Elgato
+Bus 001 Device 002: ID 0fd9:0066 Elgato Systems GmbH Cam Link 4K
+$ sudo ./usbreset /dev/bus/usb/001/002
+```
+
+And then you should be able to capture the video again just fine. I now
+simply re-run this program every time I stop capturing so it'll be ready
+again for next time. I wish I didn't have to, but I haven't had any
+issues since I started doing that.
 
 # Result
 
