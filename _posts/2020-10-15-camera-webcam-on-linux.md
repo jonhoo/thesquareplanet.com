@@ -71,7 +71,11 @@ decision for you. I highly recommend buying used, since cameras tend to
 hold up pretty well, and still come at a significant discount. I ended
 up going with the [Panasonic LUMIX G7], which supports 4k video, has
 clean HDMI, seems to be generally liked and well-tested in the
-community, and had some decent offers on ebay.
+community, and had some decent offers on ebay. Do note that the G7 does
+_not_ focus automatically when it's just monitoring over HDMI, so you'll
+have to hold down the capture button half-way to manually focus. And you
+have to do that each time you turn it on. If you know of a way to avoid
+that, let me know!
 
 You'll also find yourself looking at lenses when you are considering a
 mirrorless camera. Chances are you want one that's wide-angle to
