@@ -202,6 +202,7 @@
           -->
         </div>
       </div>
+      <div class="section page-break"></div>
       <div class="section positions listing">
         <h2 class="section-header">Research experience</h2>
         <div class="content">
@@ -306,6 +307,7 @@
           </div>
         </div>
       </div>
+      <div class="section page-break"></div>
       <div class="section positions listing">
         <h2 class="section-header">Teaching experience</h2>
         <div class="content">
@@ -698,7 +700,7 @@
             var dates = listings.item(i-1).parentNode.getElementsByClassName('dates').item(0);
             var cnt = document.createElement('div');
             cnt.className = "dates count";
-            cnt.textContent = "+ " + pgroup + " more";
+            cnt.textContent = "(" + pgroup + " times)";
             dates.parentNode.insertBefore(cnt, dates);
             console.log(ptitle, pgroup, cnt);
           }

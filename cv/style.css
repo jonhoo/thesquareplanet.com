@@ -79,7 +79,6 @@ body {
   .listing { }
     .resume .listing .content > div + div {
       margin-top: 1.2em;
-      page-break-inside: avoid;
     }
     .listing-title {
       line-height: 1.4;
@@ -190,6 +189,49 @@ body {
   .hobbies-list {
     padding-top: 0;
     margin: 0;
+  }
+}
+@media print {
+  .resume .name {
+    font-size: 2em;
+    margin-bottom: 0;
+  }
+  .resume .headline {
+    display: "none";
+  }
+  .resume .contact + .section {
+    padding-top: 0;
+  }
+  .resume .section h2 {
+    font-size: 1em;
+    margin-top: 1em;
+  }
+  .resume .section {
+    padding-bottom: 0;
+  }
+  .resume .listing .content > div + div {
+    margin-top: 0.5em;
+  }
+  .listing-title {
+    font-size: 1em;
+    color: black;
+  }
+  .listing-type {
+    font-size: .8em;
+  }
+  .listing-description {
+    padding: .5em;
+    margin: 0;
+    max-width: 100%;
+  }
+  .resume .listing .content a {
+    text-decoration: none;
+  }
+  .resume .listing .content a::after {
+    content: " (" attr(href) ")";
+  }
+  .resume .content .position {
+    page-break-inside: avoid;
   }
 }
 @media screen and (max-width: 60em) {
