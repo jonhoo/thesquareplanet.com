@@ -60,8 +60,8 @@ The third problem is not so much a problem as something one must consider. Fixin
 
 During the development of this small set of tools, some unanticipated problems did arise:
 
- - The aforementioned disallowance of running as root in GTK programs</li>
- - The .Xauthority problem</li>
+ - The aforementioned disallowance of running as root in GTK programs
+ - The .Xauthority problem
  - The working directory in .xinitrc (thus the working directory of the new user's session) remaining the unmounted /home/ (see [this forum thread](https://bbs.archlinux.org/viewtopic.php?pid=1178788))
  - The fact that cryptsetup and mount do not work correctly if EUID != RUID != 0, meaning that it is not sufficient to set the EUID of a running process to root in a setuid program
 
@@ -76,7 +76,7 @@ On other distributions, install should not really be all that difficult either. 
 The only action required after installing cryptsetup-gui or running make install is to put a copy of the .xinitrc bootstrap file (which make install puts in `/etc/skel/.xinitrc-cryptsetup-gui`) in the unmounted home directory of the users you want to be able to mount /home on boot. This process is fairly straightforward:
 
  1. Login as root (since /root is not under /home)
- 2. `umount /home
+ 2. `umount /home`
  3. `cp /etc/skel/.xinitrc-cryptsetup-gui /home//.xinitrc`
  4. Repeat above step for every user with a home directory in /home
  5. `mount /home`
