@@ -60,8 +60,8 @@ The third problem is not so much a problem as something one must consider. Fixin
 
 During the development of this small set of tools, some unanticipated problems did arise:
 
- - The aforementioned disallowance of running as root in GTK programs</li>
- - The .Xauthority problem</li>
+ - The aforementioned disallowance of running as root in GTK programs
+ - The .Xauthority problem
  - The working directory in .xinitrc (thus the working directory of the new user's session) remaining the unmounted /home/ (see [this forum thread](https://bbs.archlinux.org/viewtopic.php?pid=1178788))
  - The fact that cryptsetup and mount do not work correctly if EUID != RUID != 0, meaning that it is not sufficient to set the EUID of a running process to root in a setuid program
 
