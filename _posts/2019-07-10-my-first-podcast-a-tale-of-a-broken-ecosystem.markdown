@@ -15,12 +15,11 @@ up to actually release the podcast, and it resulted in perhaps the most
 frustrating few tech-related hours I've had in a few years.
 
 I decided I didn't want anything fancy; I'd just upload the recorded
-episode to [Backblaze
-B2](https://www.backblaze.com/b2/cloud-storage.html), where I already
-have an account for backup purposes, and then use [GitHub
-Pages](https://pages.github.com/) for a super-barebones website and an
-RSS feed for the podcast episodes. Seems simple enough, right? I just
-needed to figure out the feed stuff, and then I'd be good to go.
+episode to [Backblaze B2](https://www.backblaze.com/cloud-storage),
+where I already have an account for backup purposes, and then use
+[GitHub Pages](https://pages.github.com/) for a super-barebones website
+and an RSS feed for the podcast episodes. Seems simple enough, right? I
+just needed to figure out the feed stuff, and then I'd be good to go.
 
 So, as any lazy programmer does, I started by searching for "jekyll
 podcast rss", since GitHub pages is [basically
