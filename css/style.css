@@ -182,6 +182,9 @@ a abbr { border-bottom: none; }
 		font-style: normal;
 		color: #800;
 	}
+	.blog-post blockquote img {
+		max-width: 100%;
+	}
 	.blog-post .hyphenate {
 		-ms-hyphens: auto;
 		-moz-hyphens: auto;
