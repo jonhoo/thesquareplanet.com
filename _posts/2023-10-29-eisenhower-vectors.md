@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Eisenhower vectors"
-date: '2023-10-29 10:04:37'
+date: '2023-10-29T09:04:37Z'
 shared:
 ---
 
