@@ -3,6 +3,9 @@ layout: post
 title: "Eisenhower vectors"
 date: '2023-10-29T09:04:37Z'
 shared:
+  Twitter: https://twitter.com/jonhoo/status/1718558373140897843
+  Mastodon: https://fosstodon.org/@jonhoo/111317563618853558
+  LinkedIn: https://www.linkedin.com/feed/update/urn:li:share:7124324078546542592/
 ---
 
 This past week, during a team off-site at work, I was re-introduced to
