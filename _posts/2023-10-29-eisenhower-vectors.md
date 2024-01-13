@@ -49,7 +49,7 @@ the importance and urgency is expected to change over time. And the
 magnitude dictates how quickly you think the task is likely to develop
 in that direction. For example:
 
-> ![Eisenhower vector for a task whose origin is not urgent or important, but is trending towards important](gfx/eisenhower-vector-more.svg)
+> ![Eisenhower vector for a task whose origin is not urgent or important, but is trending towards important](/gfx/eisenhower-vector-more.svg)
 > An Eisenhower vector for a task that is currently not important or
 > urgent, but is gradually becoming more important.
 
@@ -59,7 +59,7 @@ potentially crossing the boundary into important-but-not-urgent
 territory. And as a result, it may deserve to be scheduled (with a lower
 priority) rather than dropped. Compare that to this task:
 
-> ![Eisenhower vector for a task whose origin is urgent, not important, and rapidly trending towards less urgent](gfx/eisenhower-vector-less.svg)
+> ![Eisenhower vector for a task whose origin is urgent, not important, and rapidly trending towards less urgent](/gfx/eisenhower-vector-less.svg)
 > An Eisenhower vector for a task that is currently quite urgent, not
 > important, and expected to rapidly become less urgent.
 
