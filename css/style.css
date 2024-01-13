@@ -446,6 +446,9 @@ article {
 		text-decoration: none;
 		border-bottom: 1px solid black;
 	}
+		article h1 a {
+			border-bottom: none;
+		}
 		article a:hover {
 			border-bottom-style: dashed;
 			border-bottom-color: #C00;
