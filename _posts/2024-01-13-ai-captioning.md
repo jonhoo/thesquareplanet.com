@@ -2,10 +2,10 @@
 layout: post
 title: "Captioning all my YouTube videos with AI"
 date: '2024-01-13T09:13:14Z'
-# shared:
-#   Twitter: https://twitter.com/jonhoo/status/1718558373140897843
-#   Mastodon: https://fosstodon.org/@jonhoo/111317563618853558
-#   LinkedIn: https://www.linkedin.com/feed/update/urn:li:share:7124324078546542592/
+shared:
+  Twitter: https://twitter.com/jonhoo/status/1746280573998399650
+  Mastodon: https://fosstodon.org/@jonhoo/111750723040665348
+  LinkedIn: https://www.linkedin.com/posts/jonhoo_captioning-all-my-youtube-videos-with-ai-activity-7152046290095239168-I-Tz
 ---
 
 Every month or two, I get an email asking whether I could enable
