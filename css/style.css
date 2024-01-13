@@ -205,6 +205,15 @@ a abbr { border-bottom: none; }
 		.blog-post footer .revision:hover {
 			border-bottom-style: dashed;
 		}
+	.blog-post .footnotes::before {
+		display: block;
+		border-top: 1px solid #AAA;
+		padding-top: .5em;
+		content: "Footnotes:"
+	}
+	.blog-post .footnotes {
+		font-size: 85%;
+	}
 	.article .award {
 		float: left;
 		padding-right: .5em;
