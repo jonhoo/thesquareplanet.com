@@ -6,6 +6,8 @@ shared:
   Twitter: https://twitter.com/jonhoo/status/1746280573998399650
   Mastodon: https://fosstodon.org/@jonhoo/111750723040665348
   LinkedIn: https://www.linkedin.com/posts/jonhoo_captioning-all-my-youtube-videos-with-ai-activity-7152046290095239168-I-Tz
+  YouTube: https://www.youtube.com/post/UgkxusGPCZLkxxJyDo25uelIuGWe0GgAXyJn
+  Discord: https://discord.com/channels/1130889237236027454/1130889954579456110/1195839348185247844
 ---
 
 Every month or two, I get an email asking whether I could enable
