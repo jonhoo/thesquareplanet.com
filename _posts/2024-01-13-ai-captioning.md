@@ -100,18 +100,20 @@ make each segment.
 Then, extract the first segment (of length `seg`) with[^server-split]
 
 ```console
-$ ffmpeg -i "$audiofile" -vn -acodec flac -f flac -t "$seg"
+$ ffmpeg -i "$audiofile" -vn -acodec libvorbis -qscale:a 8 -f ogg -t "$seg"
 ```
 
 > It's tempting to use `-acodec copy` here, but don't --- it leads to
-> [inaccurate cutting]. Instead, we export to the lossless FLAC codec.
-> It makes the extracted audio file larger, but at least it doesn't lose
-> any quality, and we get exactly-accurate cuts of the audio.
+> [inaccurate cutting]. We need to mux to get exactly-accurate cuts of
+> the audio. So, we export to Ogg/Vorbis. It'd be nice to use Opus, but
+> it's [not supported][opus]. FLAC would be nice, but hits the 500MB
+> file size limit too often. I decided against AAC since some AAC
+> encoders are _really_ bad.
 
 Later segments can be extracted with:
 
 ```console
-$ ffmpeg -ss "$start" -i "$audiofile" -vn -acodec flac -f flac -t "$seg"
+$ ffmpeg -ss "$start" -i "$audiofile" -vn -acodec libvorbis -qscale:a 8 -f ogg -t "$seg"
 ```
 
 Note that the _last_ segment has to be extracted without the `-t` flag
@@ -294,6 +296,7 @@ apologize for YouTube auto-captioning's shortcomings 🎉
 [py]: https://github.com/jonhoo/gladia-captions/blob/main/upload-captions.py
 [my videos]: https://www.youtube.com/@jonhoo
 [yt-bump]: https://support.google.com/youtube/contact/yt_api_form?hl=en
+[opus]: https://gladia-stt.nolt.io/35
 
 [^long-captions]: Gladia sometimes returns captions that are overly
     long. I haven't found it to be an outright problem (like YouTube
