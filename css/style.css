@@ -186,10 +186,10 @@ a abbr { border-bottom: none; }
 		max-width: 100%;
 	}
 	.blog-post .hyphenate {
+		hyphens: auto;
 		-ms-hyphens: auto;
 		-moz-hyphens: auto;
 		-webkit-hyphens: auto;
-		hyphens: auto;
 		text-align: justify;
 	}
 	.blog-post footer {
