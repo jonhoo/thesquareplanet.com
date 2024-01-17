@@ -100,20 +100,20 @@ make each segment.
 Then, extract the first segment (of length `seg`) with[^server-split]
 
 ```console
-$ ffmpeg -i "$audiofile" -vn -acodec libvorbis -qscale:a 8 -f ogg -t "$seg"
+$ ffmpeg -i "$audiofile" -vn -c:a libopus -b:a 192k -f ogg -t "$seg"
 ```
 
 > It's tempting to use `-acodec copy` here, but don't --- it leads to
 > [inaccurate cutting]. We need to mux to get exactly-accurate cuts of
-> the audio. So, we export to Ogg/Vorbis. It'd be nice to use Opus, but
-> it's [not supported][opus]. FLAC would be nice, but hits the 500MB
-> file size limit too often. I decided against AAC since some AAC
-> encoders are _really_ bad.
+> the audio. So, we export to Opus audio in an Ogg container --- it is
+> modern, compact, and has good encoders. FLAC would be nice, but hits
+> the 500MB file size limit too often. I decided against AAC since some
+> AAC encoders are _really_ bad.
 
 Later segments can be extracted with:
 
 ```console
-$ ffmpeg -ss "$start" -i "$audiofile" -vn -acodec libvorbis -qscale:a 8 -f ogg -t "$seg"
+$ ffmpeg -ss "$start" -i "$audiofile" -vn -c:a libopus -b:a 192k -f ogg -t "$seg"
 ```
 
 Note that the _last_ segment has to be extracted without the `-t` flag
