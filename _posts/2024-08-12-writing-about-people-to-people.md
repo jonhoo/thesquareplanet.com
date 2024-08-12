@@ -3,9 +3,10 @@ layout: post
 title: "Writing about people, to people"
 date: '2024-08-12T13:57:29Z'
 shared:
-#  Twitter: https://twitter.com/jonhoo/status/1718558373140897843
-#  Mastodon: https://fosstodon.org/@jonhoo/111317563618853558
-#  LinkedIn: https://www.linkedin.com/feed/update/urn:li:share:7124324078546542592/
+  Bluesky: https://bsky.app/profile/jonhoo.bsky.social/post/3kzjpuj4tfn2f
+  Mastodon: https://fosstodon.org/@jonhoo/112949562704492004
+  Twitter/X: https://x.com/jonhoo/status/1823006316815638911
+  LinkedIn: https://www.linkedin.com/posts/jonhoo_writing-about-people-to-people-activity-7228772004160536576-JjI3
 ---
 
 Review season is approaching, as it always is. Peer reviews, self
