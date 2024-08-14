@@ -31,7 +31,7 @@ a abbr { border-bottom: none; }
 @media screen and (min-width: 60em) {
 	#avatar {
 		position: absolute;
-		right: -16em;
+		right: -18em;
 		top: -5em;
 		margin: 0;
 		width: 13em;
@@ -422,8 +422,8 @@ a abbr { border-bottom: none; }
 		margin-top: 1em;
 	}
 	#index .header h2 {
-		margin: 0;
-		font-size: 1em;
+		margin: .5em 0;
+		font-size: 1.5em;
 	}
 @media screen and (min-width: 30em) {
 	.header h1 {
@@ -440,7 +440,10 @@ a abbr { border-bottom: none; }
 	.header h2 {
 		font-size: 2em;
 	}
-	#index .header h2 { font-size: 2em; }
+	#index .header h2 {
+		margin: 1em 0;
+		font-size: 2em;
+	}
 }
 article {
 	text-align: left;
