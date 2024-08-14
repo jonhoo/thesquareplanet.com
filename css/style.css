@@ -44,55 +44,71 @@ a abbr { border-bottom: none; }
 		height: 100%;
 	}
 
-.articles {
+.research {
 	list-style-type: none;
 	padding: 0;
 }
-	.article { position: relative; }
+	.research-item { position: relative; }
 	.blog-post header {
 		padding-bottom: 1em;
 	}
-	.article h3, .site h3, .blog-post h3 {
+	.research-item h1, .site h1, .blog-post h1, .blog-post h2 {
 		margin-bottom: 0;
 		font-weight: normal;
 		font-size: 150%;
 		line-height: 2;
 		color: black;
 	}
-@media screen and (min-width: 50em) {
-	.blog-post h3 {
-		margin-top: 3em;
+	.blog-post-listing .blog-post h1,
+	.blog-post .article-body h1 {
+		font-size: 130%;
 	}
-	.blog-post h3.anchor a:hover:after {
+	.blog-post .article-body h1 {
+		padding-top: 2em;
+	}
+	.blog-post .article-body h2 {
+		font-size: 115%;
+	}
+	.blog-post .article-body h3 {
+		font-size: 100%;
+		font-weight: bold;
+	}
+@media screen and (min-width: 50em) {
+	.blog-post .article-body h1.anchor a:hover:after,
+	.blog-post .article-body h2.anchor a:hover:after {
 		content: "🔗";
-		padding-left: 1em;
+		padding-left: 0.5em;
 		opacity: 0.5;
 	}
-	.blog-post h3:not(:first-child) {
+	.blog-post .article-body h2.anchor a:hover:before {
+		/* to preserve centering */
+		content: "🔗";
+		padding-right: 0.5em;
+		opacity: 0;
+	}
+	.blog-post .article-body h1 {
 		margin-top: 3em;
 		border-top: 2px dashed #ddd;
 		padding-top: 2em;
-		font-size: 110%;
+	}
+	.blog-post .article-body h2 {
+		padding-top: 10em;
+		text-align: center;
+	}
+	.blog-post .article-body h3 {
+		padding-top: 2em;
 	}
 }
-	.blog-post h4 {
-		font-weight: bold;
-		font-size: 100%;
-		line-height: 2;
-		color: black;
-		margin-top: 2em;
-		margin-bottom: -.5em;
-	}
-		.article h3 { font-size: 115%; }
-		.article h3 a, .site h3 a, .blog-post h3 a {
+		.research-item h1 { font-size: 115%; }
+		.research-item h1 a, .site h1 a, .blog-post h1 a, .blog-post h2 a {
 			color: inherit;
 			text-decoration: none;
 			border: none;
 		}
-			.article h3 a:hover, .site h3 a:hover, .blog-post h3 a:hover {
+			.research-item h1 a:hover, .site h1 a:hover, .blog-post h1 a:hover, .blog-post h2 a:hover {
 				border: none;
 			}
-		.article h3 i, .site h3 i, .blog-post h3 i {
+		.research-item h1 i, .site h1 i, .blog-post h1 i {
 			color: #888;
 			float: right;
 			padding-left: .5em;
@@ -144,17 +160,17 @@ a abbr { border-bottom: none; }
 			position: relative;
 			top: -.1.5em;
 		}
-	.article p {
+	.research-item p {
 		margin: 0;
 		padding: 0;
 		color: #666;
 	}
 	.blog-post blockquote {
-		border-left: 1em solid #eee;
+		border-left: 1em solid #eaeaea;
 		margin: 1.5em 0;
 		margin-left: -3em;
 		padding: 0.1em 2em;
-		background: #fafafa;
+		background: #f6f6f6;
 	}
 	.blog-post blockquote cite::before {
 		content: "— ";
@@ -198,28 +214,28 @@ a abbr { border-bottom: none; }
 	.blog-post .footnotes {
 		font-size: 85%;
 	}
-	.article .award {
+	.research-item .award {
 		float: left;
 		padding-right: .5em;
 		position: relative;
 		top: .2em;
 	}
 @media screen and (min-width: 50em) {
-	.article .award {
+	.research-item .award {
 		position: absolute;
 		top: 4px;
 		left: -48px;
 		width: 36px;
 	}
 }
-	.article .authors,
-	.article .journal {
+	.research-item .authors,
+	.research-item .journal {
 		display: block;
 	}
-	.article .authors {
+	.research-item .authors {
 		color: #222;
 	}
-	.article .journal {
+	.research-item .journal {
 	}
 
 .sites {
@@ -229,7 +245,7 @@ a abbr { border-bottom: none; }
 	.site {
 		position: relative;
 	}
-	.site h3 i {
+	.site h1 i {
 		display: block;
 		padding: 0;
 		float: none;
@@ -476,10 +492,10 @@ article {
 	.header nav { display: none; }
 	.header h1 { font-size: 2em; page-break-after: avoid; }
 	.header h2 { font-size: 1em; page-break-after: avoid; }
-	.blog-post h3 { font-size: 1.1em; page-break-after: avoid; }
-	.blog-post h4 { page-break-after: avoid; }
-	.blog-post h5 { page-break-after: avoid; }
-	.article p { color: black; }
+	.blog-post h1 { font-size: 1.1em; page-break-after: avoid; }
+	.blog-post h2 { page-break-after: avoid; }
+	.blog-post h3 { page-break-after: avoid; }
+	.research-item p { color: black; }
 	.site .thumb { display: none; }
 	article { max-width: 50em; }
 	.footer { display: none; }

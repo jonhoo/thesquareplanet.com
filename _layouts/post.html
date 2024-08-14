@@ -3,7 +3,7 @@ layout: default
 ---
 <article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post">
 	<header>
-		<h3 itemprop="name headline">{{ page.title }}
+		<h1 itemprop="name headline">{{ page.title }}
 			<span style="display:none"
 				itemprop="author"
 				itemscope
@@ -16,7 +16,7 @@ layout: default
 				({{ words | divided_by:180 }} min. read)
 			</span>
 			{% endif %}
-		</h3>
+		</h1>
 		<span class="shared">
 			Posted on <span itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</span>
 			{% if page.shared %}
@@ -27,12 +27,12 @@ layout: default
 			{% endif %}
 		</span>
 	</header>
-	<div itemprop="articleBody" class="hyphenate">
+	<div itemprop="articleBody" class="hyphenate article-body">
 		{{ content }}
 	</div>
 	<script>
-		document.querySelectorAll('.blog-post > div').forEach(function(bp) {
-			bp.querySelectorAll('h1,h2,h3,h4').forEach(function(h) {
+		document.querySelectorAll('.article-body').forEach(function(bp) {
+			bp.querySelectorAll('h1,h2').forEach(function(h) {
 				if (h.id && !h.querySelector('a')) {
 					var text = h.textContent;
 					var a = document.createElement('a');

@@ -5,12 +5,12 @@ tagline: Random musings
 permalink: /blog/
 ---
 
-<section>
+<section class="blog-post-listing">
 	{% for post in site.posts %}
 		<article class="blog-post clearfix">
-			<h3><a href="{{ post.url }}">{{ post.title }}</a>
+			<h1><a href="{{ post.url }}">{{ post.title }}</a>
 				<i>{{ post.date | date: "%b %-d, %Y" }}</i>
-			</h3>
+			</h1>
 			<p>{{ post.excerpt }}</p>
 		</article>
 	{% endfor %}
