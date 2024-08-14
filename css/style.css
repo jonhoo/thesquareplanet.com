@@ -49,10 +49,13 @@ a abbr { border-bottom: none; }
 	padding: 0;
 }
 	.article { position: relative; }
+	.blog-post header {
+		padding-bottom: 1em;
+	}
 	.article h3, .site h3, .blog-post h3 {
 		margin-bottom: 0;
 		font-weight: normal;
-		font-size: 125%;
+		font-size: 150%;
 		line-height: 2;
 		color: black;
 	}
@@ -100,7 +103,7 @@ a abbr { border-bottom: none; }
 		}
 		.blog-post .shared {
 			display: block;
-			font-size: 85%;
+			color: #666;
 		}
 			.blog-post .shared a:not(:nth-last-of-type(1))::after {
 				content: ",";
@@ -147,17 +150,11 @@ a abbr { border-bottom: none; }
 		color: #666;
 	}
 	.blog-post blockquote {
-		border-bottom: 2px solid #eee;
-		border-left: .3em solid #c76c0c;
-		margin: 1.5em .3em;
-		padding: 0.1em 1em;
-	}
-	.blog-post blockquote p {
-		font-size: 90%;
-	}
-	.blog-post blockquote ul,
-	.blog-post blockquote ol {
-		font-size: 90%;
+		border-left: 1em solid #eee;
+		margin: 1.5em 0;
+		margin-left: -3em;
+		padding: 0.1em 2em;
+		background: #fafafa;
 	}
 	.blog-post blockquote cite::before {
 		content: "— ";
