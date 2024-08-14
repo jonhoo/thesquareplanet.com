@@ -18,7 +18,7 @@ overview), but those can be [disabled][Disabling Modern Defenses] if
 all you want to do is understand how these attacks work. What cannot
 easily be avoided any more though is 64-bit execution environments.
 
-### The Stack Region
+# The Stack Region
 
 Before we discuss exactly how things change in the 64-bit world, let's
 take a step back and revisit what a (stack) buffer overflow attack is.
@@ -70,7 +70,7 @@ compiler, but in general, stack frames always contain at least two
 things: memory needed for the function's local variables (like `buffer`
 in `copy`), and the address of where the function should return.
 
-### The Calling Convention
+# The Calling Convention
 
 The best way to understand this in more detail is to dig into some
 assembly (using [AT&T syntax]). Specifically, let's look at what happens
@@ -199,7 +199,7 @@ similarities in how this all worked. You may also notice a crucial
 difference -- arguments to functions are no longer passed on the stack.
 We'll get back to that later.
 
-### Buffer Overflows
+# Buffer Overflows
 
 Now that we have that background, the path to a buffer overflow on the
 stack is pretty short. Specifically, consider what happens if we write
@@ -233,7 +233,7 @@ somewhere where there _is_ code to run? Code that we, as an attacker,
 want to run? Something that gives us a shell prompt or removes a
 critical file?
 
-### Shell Code
+# Shell Code
 
 The most basic, and easiest to understand, stack overflow attack
 involves injecting some of our own code into the program's memory, and
@@ -301,7 +301,7 @@ $ cc -m64   -c -o shellcode.o shellcode.S
 $ objcopy -S -O binary -j .text shellcode.o shellcode.bin
 ```
 
-### Writing an Exploit
+# Writing an Exploit
 
 With that background, we're now ready to execute our first attack against
 a real program. We'll make our C program a little more sophisticated to
@@ -466,13 +466,13 @@ recommend giving MIT's 6.858 Computer Security's [buffer overflow lab] a
 go. This text was written in part to accompany that lab, so you should
 be well equipped to handle that now. Good luck!
 
-### 64-bit Considerations
+# 64-bit Considerations
 
 There are two primary difference between buffer overflows in 32-bit and
 64-bit mode that you will have to be aware of, and that _will_ cause you
 issues.
 
-#### Zeroes in addresses
+## Zeroes in addresses
 
 First, most 64-bit addresses have 0x00 in their most significant byte,
 which means we often can't write them out directly; operations like
@@ -495,7 +495,7 @@ This wasn't as much of an issue on 32-bit systems. While an address
 _could_ contain 0x00 by accident, it was relatively less likely. On
 64-bit systems, this happens for pretty much _every_ address!
 
-#### Arguments in Registers
+## Arguments in Registers
 
 On 32-bit systems (i386 in particular), the calling convention for
 functions is a bit of a [free-for-all]. The most common one is
@@ -523,13 +523,13 @@ get around this, for example by using the "[borrowed code chunks]"
 technique, and the generalized idea of [return-oriented programming],
 but those attacks are far more difficult to pull off.
 
-### Finding Buffer Overflows
+# Finding Buffer Overflows
 
 Instead of repeating Aleph One's words here, I'll just direct you to the
 "Finding Buffer Overflows" section of [Smashing the Stack for Fun and
 Profit].
 
-### Disabling Modern Defenses
+# Disabling Modern Defenses
 
 When trying to do a buffer-overflow attack on a modern machine, there
 are several defenses you'll have to deal with:
@@ -589,7 +589,7 @@ smashing. And in fact, it is often possible to [work around these
 defenses] with more advanced attacks, though those are far beyond the
 scope of this document.
 
-### Appendix A: 64-bit execve shell code
+# Appendix A: 64-bit execve shell code
 
 ```asm
 #include <sys/syscall.h>

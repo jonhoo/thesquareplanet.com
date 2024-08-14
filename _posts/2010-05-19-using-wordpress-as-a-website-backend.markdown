@@ -32,7 +32,7 @@ Finally, the list of clients can be implemented using a set of links in a link c
 
 So, how would we go about and convert our static HTML into a fully dynamic site with a complete administration interface? Let's dig into some code.
 
-### Getting access to WordPress from your code
+# Getting access to WordPress from your code
 
 The first step to a well-integrated site is to include the following code at the top of any page that needs to access WordPress functions. Naturally this does not need to be included in included/required files.
 
@@ -43,7 +43,7 @@ require('./wp-blog-header.php');
 
 This gives you access to a whole set of [WordPress functions](http://codex.wordpress.org/Function_Reference) that will aid us in integrating your site with WordPress. Unfortunately, the WordPress API is not very well structured, and naming conventions are a bit all over the place, but we'll make do.
 
-### Getting content from WordPress
+# Getting content from WordPress
 
 From the WordPress function list, there are a couple of terms you need to become accustomed to in order to start using the API. First of all, "The Loop".
 
@@ -59,7 +59,7 @@ Finally, the WordPress API usually returns objects or lists of objects. This is 
 
 Most function that return objects contain all the fields outlined in the appropriate table in this database diagram: http://codex.wordpress.org/Database_Description. Note that almost all models will contain an ID field which comes in very handy. Most other columns are prefixed by the name of the table, and this prefix is also used in the object attributes.
 
-### Getting posts
+# Getting posts
 
 When getting blog posts, the main function to think about is get_posts. This function has [a plethora of configuration options](http://codex.wordpress.org/Template_Tags/get_posts), but usually, you will only need the numposts option, and maybe offset. In the case of the website I was developing, I wanted just the posts in a given category
 
@@ -95,13 +95,13 @@ The most interesting part though is showing an image you've fetched. WordPress "
 
 Anyway, until then, you have a choice of two functions for printing your images: [wp_get_attachment_image](http://codex.wordpress.org/Function_Reference/wp_get_attachment_image) and [wp_get_attachment_image_src](http://codex.wordpress.org/Function_Reference/wp_get_attachment_image_src). They both take the same arguments, but the difference is that the first one prints a full 'img' HTML tag with the alt, title, width and height attributes already set, whereas the second one just returns the image url, the widht and the height as a numerically indexed array that you can decide what to do with. They both take the ID of the image as a first parameter, and the size you want as the second. Here, you can either give a predetermined size such as 'thumbnail', get the full image with 'full' or get a cropped thumbnail that fits inside a certain box by passing an array of two values, width and height as such: `array ( 64, 64 )`. If you want to get the image description and title yourself, those are stored in the object you used to get the ID for `wp_get_attachment_image_*`, i.e. in `$images[$i]`.
 
-### Other attachments (mp3s for instance)
+# Other attachments (mp3s for instance)
 
 When it comes to getting other post attachments, this is actually quite trivial once you know how to fetch images. Instead of using `'post_mime_type' => 'image', you simply use another MIME type. On the site I am developing, I will use the MIME type for mp3 which is 'audio/mpeg' as far as WordPress can tell (you can see this in the WordPress admin panel -&gt; Media). I would therefore substitute  `'post_mime_type' => 'image'` with `'post_mime_type' => 'audio/mpeg'`. Simple as that!
 
 To get the direct URL for a non-image attachment, you can use the [wp_get_attachment_url](http://codex.wordpress.org/Function_Reference/wp_get_attachment_url) function. As for getting the high quality version of a file, this is just a matter of selecting an attachment with the same title (i.e. the name of the file without the extension), but [a different MIME type](http://www.iana.org/assignments/media-types/).
 
-### Dealing with pages/editable content boxes
+# Dealing with pages/editable content boxes
 
 Now, for the boxes on the about page which the administrators of the page should be allowed to edit. This is as easy as just creating two new pages in the WordPress admin and noting down the name you use. Back in your code, you can then use the following snippet to print the content of the box/page:
 
@@ -112,7 +112,7 @@ echo wpautop ( $page -> post_content );
 
 By now this should look familiar. We are simply fetching the pa[by its title](http://codex.wordpress.org/Function_Reference/get_page_by_title), and then passing the pages content through wpautop, and echoing the result.
 
-### Lists of links with descriptions
+# Lists of links with descriptions
 
 Our final challenge for this site will be to fetch the list of clients. We've already determined that we are going to use the WordPress Links library because this provides exactly the fields we need, a title, a URL and a short description. However, if you start looking through the WordPress API for anything related to links, you will come up empty handed. The reason for this is that in their wisdom, WordPress decided to call links "bookmarks" in their API for the sake of clarity. The function we are looking for here is called [get_bookmarks](http://codex.wordpress.org/Function_Reference/get_bookmarks), and again we may specify lots of parameters. In our case, however, we are only concerned with one of them; category. Since we may want to add other links later that should not show up in the clients list, we create a link category from the WordPress admin and note down the category ID. In my setup it was 3, and so my code to get the links/bookmarks becomes:
 
@@ -125,6 +125,6 @@ foreach ( get_bookmarks ( array ( 'category' => 3 ) ) as $link ) {
 
 Of course, this is a simplified version of the end result, but it should give you enough of an idea to get you on your way.
 
-### Final thoughts
+# Final thoughts
 
 As you have now seen, this entire page can now be administered fully through WordPress with its quite good admin panel, and the user won't even think twice about WordPress really being a blogging tool. In fact, neither should you, because as you can see, it is more than flexible enough to be used for quite complex websites. Your users will be happy with a comfortable admin interface, and you won't have to touch a single piece of admin code!

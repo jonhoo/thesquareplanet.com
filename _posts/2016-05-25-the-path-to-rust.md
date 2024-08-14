@@ -42,7 +42,7 @@ an evaluation of Rust for developers coming from other systems languages
 want to try Rust. At the end, I'll also point out some tips and
 gotcha's, at the end for those who are interested in that kind of stuff.
 
-### Why is Rust better for me?
+# Why is Rust better for me?
 
 When researching a new language, developers (like you, dear reader) will
 inevitably focus on how the language in question is different from the
@@ -53,7 +53,7 @@ one they are currently using. In particular, they want to know whether
 whether the new language is better *for you*. So, let's go through some
 of the ways Rust might make your life easier.
 
-#### Fewer runtime bugs
+## Fewer runtime bugs
 
 > If debugging is the process of removing bugs, then programming must be
 > the process of putting them in.
@@ -94,7 +94,7 @@ some of these issues, but far from all. It also introduces its own set
 of issues, such as type-casting from the `interface{}` type or data
 races between Goroutines, which are non-existent in Rust.
 
-#### Safe concurrency
+## Safe concurrency
 
 This latter point is particularly interesting; the Rust compiler *will
 not* compile a program that has a potential data race in it. Unless
@@ -124,7 +124,7 @@ operations](https://doc.rust-lang.org/std/sync/atomic/index.html) to
 implement RCU and other algorithms that allow concurrent reads and
 writes.
 
-#### Performance without sacrifice
+## Performance without sacrifice
 
 Some of the bugs found by the Tor developers are handled in other
 higher-level languages as well. Unfortunately, higher-level languages
@@ -155,7 +155,7 @@ to interact with high-performance libraries like BLAS, or low-level
 toolkits like [DPDK](http://dpdk.org/), which may not be available
 natively in Rust (yet).
 
-#### Expressivity and productivity
+## Expressivity and productivity
 
 One of the reasons developers often report to be more productive in
 higher-level languages is the availability of higher-level primitives.
@@ -343,7 +343,7 @@ calling `first_name`. In fact, the caller *knows* that this is safe,
 because `first_name` takes an *immutable* reference (`&`) to the object,
 and thus *can't* modify it.
 
-#### A great build system
+## A great build system
 
 Rust comes with a build tool called
 [Cargo](http://doc.crates.io/guide.html). Cargo is similar to `npm`, `go
@@ -385,7 +385,7 @@ Go's [slices](https://golang.org/doc/effective_go.html#slices)
 [part3](https://golang.org/ref/spec#Making_slices_maps_and_channels),
 [part4](https://golang.org/ref/spec#Length_and_capacity)).
 
-### Why would I not choose Rust?
+# Why would I not choose Rust?
 
 By now, I hope I have convinced you that Rust has some pretty attractive
 features. However, I bet you are still thinking "okay, but it can't all
@@ -450,7 +450,7 @@ as fast as you can expect in most cases. With time and practice,
 estimating the performance of your code also becomes easier, but it is
 certainly trickier than in simpler languages like C.
 
-### Concluding remarks
+# Concluding remarks
 
 I've given you what I believe to be a pretty fair and comprehensive
 overview of Rust compared to C and Go, based on my experience from the
@@ -460,7 +460,7 @@ didn't like it --- the language has matured *a lot* over the past year!
 If you can think of additional pros and cons for switching to Rust,
 please let me know either in HN comments, on Twitter, or by e-mail!
 
-### Appendix A: Tips & Gotchas
+# Appendix A: Tips & Gotchas
 
 - `String` [deref](https://doc.rust-lang.org/std/ops/trait.Deref.html)s
   to `&str`, and through [**deref

@@ -8,7 +8,7 @@ After switching to systemd a while back, I have been annoyed by having to enter 
 
 Before I get into the exact details, let me start off with my base configuration and what I wanted to achieve:
 
-## Configuration
+# Configuration
 
  - Arch Linux (64-bit)
  - Unencrypted /root, /boot, /var, etc.
@@ -18,7 +18,7 @@ Before I get into the exact details, let me start off with my base configuration
 
 Note that none of these are requirements for the solution I am going to give below apart from the encrypted home partition. Also, it is worth pointing out that my solution is in no way specific to my login manager, my DE (or lack thereof) or anything else except GTK and dm-crypt (and by extension cryptsetup).
 
-## Target boot process
+# Target boot process
 
  1. System boots
  2. systemd starts all daemons and filesystems EXCEPT /home normally
@@ -29,7 +29,7 @@ Note that none of these are requirements for the solution I am going to give bel
  7. Upon typing the correct password, the encrypted home partition is decrypted and mounted
  8. Any user .xinitrc is executed, starting whatever WM/DE and other applications the user wants
 
-## Solution
+# Solution
 
 OK, so now that we have gotten the prerequisites and our goals out of the way, let us see how we can accomplish this.
 
@@ -42,13 +42,13 @@ Before digging into the nitty-gritty details, here is a high-level sketch of the
  - After running the program, wait for the mount to finish and execute .xinitrc again
  - If the mount succeeded, we're starting the user's .xinitrc, otherwise, we're showing the password prompt again
 
-### Challenges
+## Challenges
 
  - How do we give the program permissions to decrypt and mount?
  - Given that GTK programs [cannot be run as root](http://gtk.org/setuid.html), how do we still display a password prompt?
  - How do we preserve the user's X session when the new /home is mounted, considering the credentials for connecting to it are stored in ~/.Xauthority when X is started?
 
-### The nitty-gritty
+## The nitty-gritty
 
 Although there may be many ways of solving the above, I have decided to solve it by writing two simple applications in C, crypsetup-gui and cryptsetup-gui-gtk. The latter displays a password prompt and, upon the user pressing Enter, prints this password to stdout. The former takes the name of an encrypted partition, looks through /etc/crypttab to find the real disk partition, displays the password prompt by spawning cryptsetup-gui-gtk, calls cryptsetup with the correct parameters to decrypt it, mounts the partition according to /etc/fstab and then returns a value depending on whether all the operation succeeded or not.
 
@@ -67,7 +67,7 @@ During the development of this small set of tools, some unanticipated problems d
 
 Luckily, all of these have been overcome, and they are usually mentioned in the source code.
 
-## Getting it!
+# Getting it!
 
 If you're so lucky you're also running Arch Linux, I've posted all the needed files in the package [cryptsetup-gui](https://aur.archlinux.org/packages.php?ID=63776) in the AUR. This will install everything in the correct places, with the correct permissions, except for the bootstrap .xinitrc which you will need to put in place yourself (instructions are provided on install).
 
@@ -82,13 +82,13 @@ The only action required after installing cryptsetup-gui or running make install
  5. `mount /home`
  6. Reboot and enjoy!
 
-## Shortcomings
+# Shortcomings
 
  - Needs setuid bit...
  - Does not respect any special options in /etc/crypttab (this could be fixed)
  - Provides no clear error messages to end users (merely re-displays the password prompt)
 
-## Final remarks
+# Final remarks
 
 So, that is my little contribution to the world. Hopefully someone will find it useful!
 

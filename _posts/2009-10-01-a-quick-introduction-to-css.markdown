@@ -12,7 +12,7 @@ But can't I do that with HTML tags? Well, you can, but there are two reasons why
 
 First of all, you must realize that with the versatility of CSS comes complexity, and if you start your CSS career by digging into the stylesheets of a large site, you will most likely be very confused at first. Therefore, let us start with the basics:
 
-### CSS from the bottom up
+# CSS from the bottom up
 
 There are several ways to style your web pages through CSS: inline styles, internal style definitions and external stylesheets, where the last one is the recommended and most used one. I will come to why later.
 
@@ -24,11 +24,11 @@ And external stylesheets consist of "pure" CSS in an external file that is inclu
 
 I encourage the use of external stylesheets, because they allow you to share the same styles between several pages ( they all just need the same link tag ), and make it very easy to do site-wide design changes by only editing a single file. Secondly, external stylesheets can be compressed quite easily, and several stylesheets can be combined on any given page to provide styles from different sources.
 
-### Getting down and dirty - selectors and styles
+# Getting down and dirty - selectors and styles
 
 The syntax of CSS itself consists of two parts, selectors and styles. The selectors tell the browser what elements the styles should apply to, and the styles tell how the elements should look.
 
-#### Selectors
+## Selectors
 
 CSS primarily has six types of selectors, though this will likely be expanded in the future:
 
@@ -71,7 +71,7 @@ A common issue one might encounter is, like above, that you want to style the ho
 
 If we describe this chaining as a "and" operation, since it requires that the element matches all of the chained selectors, we soon find ourselves in need of a similar "or" operator. Luckily, CSS provides this as well, the comma. If I wanted a style to apply to, for example, all anchor elements and all strong tags with the class "styleme", I could do that like this: `a, strong.styleme`. *Due note: The comma is an absolute separator, and as such, `div a, strong` would not match all a's and strong's inside a div, but rather all elements that are either a's inside a div OR are simply strong tags!*
 
-#### What about the styles?
+## What about the styles?
 
 As mentioned, CSS consists of styles and selectors, and whereas there are quite few selectors, there is a vast amount of styles.
 

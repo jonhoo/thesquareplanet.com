@@ -37,7 +37,7 @@ master handling configuration changes. This article will discuss our
 experiences with rewriting the first lab, as it is the one most related
 to Raft.
 
-### Explaining Raft
+# Explaining Raft
 
 The Raft protocol is a fairly straightforward algorithm to explain at a
 high level. Visualizations like [this
@@ -65,7 +65,7 @@ when certain actions should occur. Both your teaching, the students
 attention, and the rest of this article will be centered around Figure
 2.
 
-### Raft and Paxos
+# Raft and Paxos
 
 An important difference between our Paxos and Raft labs is that our
 Paxos labs were based on Paxos, the single-value consensus algorithm,
@@ -89,7 +89,7 @@ more similar to Multi-Paxos than Paxos, both in terms of feature set,
 performance, and complexity. Paxos consensus alone (i.e., not
 Multi-Paxos) is conceptually simpler than Raft.
 
-### Implementing Raft
+# Implementing Raft
 
 The go-to guide for implementing Raft is Figure 2 of the extended Raft
 paper. At first, both you and the students will be tempted to treat
@@ -126,7 +126,7 @@ main components, which helps gradually build the students' understanding
 of Raft at a high level, but this decomposition does not easily
 translate into strict isolation in the implementation.
 
-### What happened when we switched to Raft?
+# What happened when we switched to Raft?
 
 We originally switched to Raft because we believed that it would be
 easier for the students to follow a complete design than fiddling with
@@ -161,7 +161,7 @@ exactly *why* it works, and thus an intuitive implementation approach
 ways, the key advantage of Raft is that, while it may be complex and
 hard to fully understand, it is written down and explained in a paper.
 
-### Going forward
+# Going forward
 
 Despite the increased perceived difficulty of our labs after switching
 to Raft, we are going to continue using Raft for 6.824 labs in the

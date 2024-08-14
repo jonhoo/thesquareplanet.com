@@ -38,7 +38,7 @@ to people.
 > you can follow the advice in here quite closely when you're writing
 > self-reviews too, even if it may feel a little odd at first.
 
-### A human will read what you write -- write like it
+# A human will read what you write -- write like it
 
 People reviews are, inherently, *for people*. The review doesn't go into
 a machine that spits out a number on the other end (and hopefully we
@@ -75,7 +75,7 @@ This has two primary implications for how you write reviews:
     this person do better[?",][hacker-style] you have failed to get your
     message across.
 
-### Spend the time to make it short
+# Spend the time to make it short
 
 The more you write, the less attention each words gets. Thus, if you
 want your feedback to not just be glossed over, you have to polish the
@@ -106,7 +106,7 @@ into the final review.
 > need it! Don't exhaustively describe evidence for every point; refer
 > to data concisely and instead supply details as needed.
 
-### Two take-aways is too many
+# Two take-aways is too many
 
 What do you remember of the last review you received? Do you remember
 concretely what learnings or advice you took away from it? Reviews, like
@@ -150,7 +150,7 @@ counter-productive.
 > And before you say anything, yes, I know, this post already makes more
 > than a point and a half.
 
-### Further reading
+# Further reading
 
 Many smart people have written many smart things on many facets of this
 subject. Repeating them all here would be an exercise in futility, but

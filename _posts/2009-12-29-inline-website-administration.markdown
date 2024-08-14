@@ -8,7 +8,7 @@ Almost all modern websites require some sort of administration, and this usually
 
 (Live examples are not available at the moment, but might come later)
 
-## AJAX driven, on-page administration
+# AJAX driven, on-page administration
 
 Here, the user (the person administering the website) is allowed to edit content on the same page as the content through a rich text area in a popup, and the text is then changed afterwards to reflect the users edits.
 
@@ -67,7 +67,7 @@ Next, you will have to make some sort of JavaScript hook to make all editable ar
 
 Upon saving, jQuery sends a AJAX request to the api.php file with the updated contents, and also changes the contents of the block on the page using the .html() method on the element with the same ID as the block name.
 
-## In-line administration
+# In-line administration
 On some sites, popup boxes simply won't cut it. In fact, they might even become a bit cumbersome when working with news articles and such where you might want a live preview of the article as you're typing it. Earlier, one had to have a rich text editor with a "Preview" button, but now we have a much better tool available: `contentEditable`. This awesome attribute allows you to tell the browser to allow the user to change the contents of an element on your page at will. Consider these screenshots that illustrate adding a new news post on a page utilizing this attribute for administration:
 
 ![Before adding the article](/blog/content/images/2015/05/inline-pre.jpg)
@@ -82,5 +82,5 @@ As you can see, this is a very simple way of creating and editing posts - and im
 
 Using `contentEditable` is quite simple. All you have to do is use JavaScript's `setAttribute`/`removeAttribute` functions on any element you want to be editable. Set the attribute to true when you want it turned on, and remove it when you want it off. Apart from this, everything is quite straight-forward and very similar to the previous method of popup administration. JavaScript sends the new content to the backend, which saves it and returns the HTML rendering of the content as it would be displayed when loading the front page regularly. JavaScript then swaps the editable post area with the HTML from the server and disables editing on it.
 
-## Rounding up
+# Rounding up
 Both these techniques provide quite intuitive and easy-to-access administration equivalents to classical admin-panel interfaces. They are not especially complex to build either, though they provide the user with a more comfortable and usable way to manage their sites. If you have any questions regarding these techniques, don't hesitate to use the comment field below or e-mail me at jon `you know what goes here` thesquareplanet `and you know this one as well` com.

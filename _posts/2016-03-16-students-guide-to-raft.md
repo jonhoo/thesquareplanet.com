@@ -29,7 +29,7 @@ check out the [Q&A]({% post_url 2016-03-16-raft-qa %}). The post is
 quite long, but all the points it makes are real problems that a lot of
 6.824 students (and TAs) ran into. It is a worthwhile read.
 
-### Background
+# Background
 
 Before we dive into Raft, some context may be useful. 6.824 used to have
 a set of [Paxos-based
@@ -88,7 +88,7 @@ oversights when reading the paper. This problem is not unique to Raft,
 and is one that comes up in all complex distributed systems that provide
 correctness.
 
-### Implementing Raft
+# Implementing Raft
 
 The ultimate guide to Raft is in Figure 2 of the Raft paper. This figure
 specifies the behavior of every RPC exchanged between Raft servers,
@@ -119,7 +119,7 @@ be interfering. However, if you read Figure 2 carefully, it says:
 The distinction turns out to matter a lot, as the former implementation
 can result in significantly reduced liveness in certain situations.
 
-#### The importance of details
+## The importance of details
 
 To make the discussion more concrete, let us consider an example that
 tripped up a number of 6.824 students. The Raft paper mentions
@@ -158,7 +158,7 @@ because we could be receiving an outdated `AppendEntries` RPC from the
 leader, and truncating the log would mean "taking back" entries that we
 may have already told the leader that we have in our log.
 
-### Debugging Raft
+# Debugging Raft
 
 Inevitably, the first iteration of your Raft implementation will be
 buggy. So will the second. And third. And fourth. In general, each one
@@ -172,7 +172,7 @@ can generally be debugged by logging all your locks and unlocks, and
 figuring out which locks you are taking, but not releasing. Let us
 consider each of these in turn:
 
-#### Livelocks
+## Livelocks
 
 When your system livelocks, every node in your system is doing
 something, but collectively your nodes are in such a state that no
@@ -223,7 +223,7 @@ handful of mistakes that we have seen numerous students make:
    `votedFor`), and *then* handle the RPC, which will result in you
    granting the vote!
 
-#### Incorrect RPC handlers
+## Incorrect RPC handlers
 
 Even though Figure 2 spells out exactly what each RPC handler should do,
 some subtleties are still easy to miss. Here are a handful that we kept
@@ -251,7 +251,7 @@ your implementation:
  - It is important to implement the "up-to-date log" check *exactly* as
    described in section 5.4. No cheating and just checking the length!
 
-#### Failure to follow The Rules
+## Failure to follow The Rules
 
 While the Raft paper is very explicit about how to implement each RPC
 handler, it also leaves the implementation of a number of rules and
@@ -308,7 +308,7 @@ cause the `commitIndex` to be moved too far forward. This is why
 only updated when a follower *positively acknowledges* an
 `AppendEntries` RPC.
 
-#### Term confusion
+## Term confusion
 
 Term confusion refers to servers getting confused by RPCs that come from
 old terms. In general, this is not a problem when receiving an RPC,
@@ -333,7 +333,7 @@ since when you sent the RPC. Instead, the correct thing to do is update
 `matchIndex` to be `prevLogIndex + len(entries[])` from the arguments
 you sent in the RPC originally.
 
-#### An aside on optimizations
+## An aside on optimizations
 
 The Raft paper includes a couple of optional features of interest. In
 6.824, we require the students to implement two of them: log compaction
@@ -396,7 +396,7 @@ A half-way solution is to just use `conflictIndex` (and ignore
 leader will sometimes end up sending more log entries to the follower
 than is strictly necessary to bring them up to date.
 
-### Applications on top of Raft
+# Applications on top of Raft
 
 When building a service on top of Raft (such as the key/value store in
 the [second 6.824 Raft
@@ -405,7 +405,7 @@ interaction between the service and the Raft log can be tricky to get
 right. This section details some aspects of the development process that
 you may find useful when building your application.
 
-#### Applying client operations
+## Applying client operations
 
 You may be confused about how you would even implement an application in
 terms of a replicated log. You might start off by having your service,
@@ -443,7 +443,7 @@ client's operation succeeded based on whether the operation that came up
 for that index is in fact the one you put there. If it isn't, a failure
 has happened and an error can be returned to the client.
 
-#### Duplicate detection
+## Duplicate detection
 
 As soon as you have clients retry operations in the face of errors, you
 need some kind of duplicate detection scheme -- if a client sends an
@@ -462,7 +462,7 @@ If a client re-sends a request, it re-uses the same sequence number.
 Your server keeps track of the latest sequence number it has seen for
 each client, and simply ignores any operation that it has already seen.
 
-#### Hairy corner-cases
+## Hairy corner-cases
 
 If your implementation follows the general outline given above, there
 are at least two subtle issues you are likely to run into that may be

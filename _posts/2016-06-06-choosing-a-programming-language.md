@@ -29,7 +29,7 @@ My hope is that this post will provide you with enough context and
 terminology to let you continue a more informed and restricted search on
 your own.
 
-## Choosing a language
+# Choosing a language
 
 Programming languages generally belong to a number of different
 categories. These are often referred to as "paradigms" in the
@@ -49,7 +49,7 @@ others are better for interacting with hardware. This is part of the
 reason why it's important to ask yourself what *kind* of thing you want
 to do first, and only then start looking for a language.
 
-### Level of abstraction
+## Level of abstraction
 
 Let's start with one of the most discriminatory features of programming
 languages: the level of abstraction from the hardware. Languages that
@@ -214,7 +214,7 @@ scale, and examples of what languages fit in each tier.
   that your code is in fact correct. Well-known languages in this tier
   are Haskell, F#, Coq, LISP, and OCaml.
 
-### Strictness
+## Strictness
 
 Finding the right level of abstraction usually takes you a long way
 towards picking a language. This is particularly true as many of the
@@ -274,7 +274,7 @@ So, in order from less to more strict:
   properties at compile time (Rust). Other languages in this category
   are Scala, Swift, and F#.
 
-## Does it matter where I start?
+# Does it matter where I start?
 
 If you just want to learn how to program, with few or no use-cases in
 mind, it can be hard to pick any of these categories. If you're in this
@@ -290,7 +290,7 @@ might be what you want if your background is more math-y, or if you have
 some problem you'd like to solve quickly (e.g., data analytics, small
 convenience tools, or a website).
 
-## Switching languages
+# Switching languages
 
 The descriptions I've given above will hopefully help you make a good
 decision about what language to dive into. Inevitably, however, you will

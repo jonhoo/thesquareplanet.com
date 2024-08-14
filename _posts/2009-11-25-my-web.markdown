@@ -6,13 +6,13 @@ date: '2009-11-25 12:40:56'
 
 We all use the web differently, and all have the pages we cannot live without. Following is a list of the top websites I cannot live without. What are yours?
 
-#### [Google Apps](http://www.google.com/a)
+# [Google Apps](http://www.google.com/a)
 Google Apps is a service that allows you to manage Google services for your own domains. For instance - I own several domains (thesquareplanet.com, casa-rioja.com, awknard.com, nerd-geek.com ...), and host them all myself. I also used to host my own mail and calendar, but when I discovered Google Apps, I stopped doing that. Not only would I lose all mail that was sent to me if my server or internet connection went down, but I also had to constantly maintain security and other enhancements. With Google Apps, you can add all of your domains into a central system, and manage e-mail addresses, users, calendars and all sorts of other Google hosted services. Best thing is - it's free! (as long as you're non-profit that is)
 
 I now have the GMail and GCalendar interfaces on my own domains, and can use all of their features as if I was using my Google Account.
 
-#### [Facebook](http://facebook.com)
+# [Facebook](http://facebook.com)
 Although Facebook receives quite a bit of critique with regards to privacy issues, and many abandon it entirely because of this, I feel that it is truly an amazing tool on the web that should be taken advantage of. As with everything else one does online, one has to be conscious that everything that is put out can, and probably will, be used against you, but as long as this is clear, Facebook brings a lot to the table. It allows you to organize your social life, and easily stay in touch with everyone you know (and some you don't). By using Facebook, you also create an online presence which is extremely important in this increasingly online world.
 
-#### [Google Reader](http://reader.google.com)
+# [Google Reader](http://reader.google.com)
 If you follow anything online, be it a blog, a forum, a news site, a video feed or [acoolname.com](http://acoolname.com), you should get a feed reader. It allows you to merge feeds from all your article sources, and view them in one grand, unified list; sorted and grouped to heart's desires. Google Reader is an online feed reader which provides a clean online interface for you to check updates in your online world from anywhere, at any time. All you need is a Google account, and you're on your way!

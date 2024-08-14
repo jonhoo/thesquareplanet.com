@@ -25,7 +25,7 @@ learn, we adapt, and we write better code. This post tries to speed up
 that process by showing you some of the Rust shorthands I have
 discovered so far.
 
-### Returning values
+# Returning values
 
 In Rust, functions, conditionals, matches, and blocks all automatically
 return the value of their last expression. Thus, instead of this:
@@ -74,7 +74,7 @@ let words = vec!["hello", "world"];
 let word_len = words.into_iter().map(str::len).collect();
 ```
 
-### Things that can't happen (yet)
+# Things that can't happen (yet)
 
 While writing code, you often reach an edge case (or maybe even a common
 code path) that you aren't ready to deal with just yet. In other
@@ -88,7 +88,7 @@ Similarly, if you have a conditional that simply shouldn't be reachable,
 you can use the semantically appropriate `unreachable!()`, which has a
 similar effect as calling `unimplemented!()`.
 
-### Taming Options
+# Taming Options
 
 Imagine someone just passed you an `Option` that you *know* is `Some`,
 and you want to look at what's inside it. Easy, you say, all the
@@ -145,7 +145,7 @@ The magical method `as_ref()` has the helpful signature `&Option<T> ->
 Option<&T>`. That is, it turns a reference to an `Option` into an
 `Option` that holds a reference. Perfect!
 
-### Updating or inserting into a map
+# Updating or inserting into a map
 
 If you write code that's anything like what I write, you use maps all
 over the place. `HashMap`s in particular. If you're filling the map, you
@@ -174,7 +174,7 @@ for (key, val) in list {
 
 Better? I'd say so.
 
-### Omitting types
+# Omitting types
 
 If you've ever used `.collect()`, you've probably come across this
 error:
@@ -211,9 +211,9 @@ You can even make the code read better by doing:
 let numbers: Vec<_> = (0..10).collect();
 ```
 
-<!-- ### Extra scopes -->
+<!-- #1 Extra scopes -->
 
-### Cloning iterators
+# Cloning iterators
 
 So, you have an iterator, and you want to clone all the things in the
 iterator so that you can operate on owned rather than borrowed values.
@@ -244,7 +244,7 @@ for element in elements.iter().cloned() {
 elements.iter().cloned()
 ```
 
-### Give me the index, please
+# Give me the index, please
 
 You iterate a lot in Rust. And every now and again, it is useful to know
 *where* in the iterator you are. There are *many* ways to do this. If
@@ -279,7 +279,7 @@ for (i, e) in list.iter().enumerate() {
 }
 ```
 
-### Partial matching
+# Partial matching
 
 A very powerful feature that Rust shares with many other functional
 programming languages is pattern matching. This is found in many places
@@ -335,7 +335,7 @@ match foo() {
 You can find a number of other cool `match` tricks in [The
 Book](https://doc.rust-lang.org/book/patterns.html).
 
-### Avoid warnings for unused variables
+# Avoid warnings for unused variables
 
 You're implementing a method for a trait, but you don't need all the
 variables:
@@ -393,7 +393,7 @@ impl Foo {
     fn hello(x: &str, y: bool) { // ...
 ```
 
-### Enforcing documentation
+# Enforcing documentation
 
 Did you know that you can make the Rust compiler yell at you if you've
 forgotten to write documentation for *any* part of your code that is
@@ -404,7 +404,7 @@ crate entry point (probably `src/lib.rs`):
 #![deny(missing_docs)]
 ```
 
-### Clippy and other bags of tricks
+# Clippy and other bags of tricks
 
 If you haven't found it already, you should go check out
 [Clippy](https://github.com/Manishearth/rust-clippy), which is a linter
@@ -417,7 +417,7 @@ out llogiq's post [Rustic
 Bits](https://llogiq.github.io/2016/02/11/rustic.html) which has a
 similar flavor to this one.
 
-### Other things?
+# Other things?
 
 Some neat points have already been brought up in the [Reddit
 thread](https://www.reddit.com/r/rust/comments/58kea2/rust_tips_and_tricks/)

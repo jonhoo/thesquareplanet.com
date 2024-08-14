@@ -10,7 +10,7 @@ Since getting an account with MSDN took a while, I decided to put Arch on the bo
 
 First step was installing Arch.. Usually, this is quite hassle free, but because of the slow internet at the accomodation center at Bond University, I downloaded the Net Install CD so that I could install and download only what I needed. Sounds logical, right? Well, not when I tell you that, as I discovered, you have to login to access the wired network. When opening a browser, you're presented with a login screen though HTTPS, that has to be completed every time your IP changes. Problem is, the netinstall CD has no browser installed as it is command-line only, and as such, I had no way of authenticating with the network, which again lead me to being unable to download any packages for my system. So, what do you do?
 
-### Logging into an HTTPS proxy through command line tools
+# Logging into an HTTPS proxy through command line tools
 
 My first though was to use links or lynx ( text-based unix browsers ), however neither were available on the netinstall CD, and I couldn't compile either from source since the build tools and dependencies were not there. At this point, I was certain I would have to download the full Arch install CD, and start all over again, however, I was not prepared to give up that easily. There is a reason I use Arch - to understand how things work from the ground up, and to force myself into exploring Linux.
 
@@ -47,7 +47,7 @@ Looking at the downloaded HTML file, I soon found that I had successfully been l
 
 Both the installation, and the subsequent configuration ( installation of GNOME, setting up drivers, etc.. ) posed no problem as usual, though it all took quite a while having to download it all though the 1 Mbit/s throttled connection at the student residences. Next morning however, my computer was up and running just the way I wanted it. Windows 7 next...
 
-### Windows 7
+# Windows 7
 
 First of all, I had to download Windows 7 from MSDN, which proved to be impossible from linux. It provided a downloader, which, when run through wine, simply refused to download the file properly.. In the end, I had to download the ISO on my laptop ( running Vista ), and burn the DVD from there. From here, the ride was smooth. Installation of Windows 7 was both painless and fast, and I was up and running in 30 minutes. Great!
 

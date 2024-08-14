@@ -10,9 +10,9 @@ As this was my first attempt at an Android application, I encountered quite a lo
 
 All of this is based on Android 2.1, but I assume most of them apply to any 2.0+ API.
 
-## Quirks and Gotchas
+# Quirks and Gotchas
 
-### View reuse
+## View reuse
 
 Since Android mostly runs on devices that lack in the area of processing power, several optimizations have been implemented in the core of the OS. Unfortunately, these can have some strange side-effects.
 
@@ -41,7 +41,7 @@ The showDialog method will display the answer dialog, which needs to know what q
 
 To achieve the desired effect, you need to store the position or the ID instead, and use something like: `this.getListAdapter ( ).getItem ( this.activeElement )`, which will return the cursor used to fetch the element behind the selected item.
 
-### View reuse and formatting
+## View reuse and formatting
 
 A bi-product of the view reuse of Android is that formatting options on the view are actually kept when a View is reused. So, if you for instance set that a TextView should be painted with a strike-through (see further down), ever time Android reuses that view, the new view will also be striked even though you never explicitly made it so..
 
@@ -78,7 +78,7 @@ this.setListAdapter ( new ArrayAdapter<String> ( this, android.R.layout.simple_l
 
 Now, each view will be drawn correctly.
 
-### Dialog reuse
+## Dialog reuse
 
 Android also reuses dialog boxes, which means that if you, for instance, have an input field in the dialog that the user types something in, closes the dialog, and opens another dialog with the same ID, the text will remain in the field. This can be very annoying if the value in the input field should depend on another action the user has performed (such as what element was clicked to open the dialog).
 
@@ -95,11 +95,11 @@ protected Dialog onCreateDialog ( int id ) {
 
 Turns out, however, that this won't work, since `onCreateDialog` is only run once per dialog ID. The proper way is to also override `onPrepareDialog`, and do any dynamic changes to the dialog there. So, `onCreateDialog` is for setup/format, and `onPrepareDialog` is for manipulating content.
 
-### Dynamic dialog titles/messages
+## Dynamic dialog titles/messages
 
 After reading the above gotcha, you might also be tempted to put the `setTitle` and `setMessage` calls on the `AlertDialog` in `onPrepareDialog` since they might change between invocations of the dialog. The problem is that Android will not display the title or the message if they have not been set in the dialog returned from `onCreateDialog`. So, to use `setTitle` in `onPrepareDialog`, you have to make sure that you run `setTitle` in `onCreateDialog` with some placeholder text as well, otherwise your title/message calls in `onPrepareDialog` will not have any effect!
 
-### Dealing with SQLite
+## Dealing with SQLite
 
 SQLite is not as easy as it could be in Android, but the `SQLiteOpenHelper` class does help quite a bit.
 
@@ -123,7 +123,7 @@ Finally, we have `onCreate`, which is called the first time the database is acce
 
 When accessing your database later, you need to call the method `getReadableDatabase()` or `getWritableDatabase()` on your helper class instance object to actually execute `query()`, `delete()`, `insert()` and `update()` statements.
 
-### SQLite and CursorAdapters - Where the fun starts
+## SQLite and CursorAdapters - Where the fun starts
 
 There is one little quirk that is not very well advertised in the SDK documentation for Android, and that is the fact that all Cursor objects used as source for list adapters MUST have an ID column. And not just any ID column, but one with the name set in `BaseColumns._ID` and a type of `INTEGER PRIMARY KEY AUTOINCREMENT`. So, if you intend to use any table in `SimpleCursorAdapter` or `CursorAdapter`, make sure your `CREATE_TABLE` statement includes the column
 
@@ -131,7 +131,7 @@ There is one little quirk that is not very well advertised in the SDK documentat
 BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT"
 ```
 
-### Handling screen orientation changes
+## Handling screen orientation changes
 
 Android has another quirk that caused me quite a bit of headache when a bug was reported a couple of days ago:
 
@@ -175,9 +175,9 @@ private void setActiveElement ( int element ) {
 }
 ```
 
-## How-tos
+# How-tos
 
-### Strike-through text
+## Strike-through text
 
 Given a TextView view `v`, use:
 
@@ -191,7 +191,7 @@ To undo the strike-through, we use some bitwise magic:
 v.setPaintFlags ( v.getPaintFlags ( ) & ~Paint.STRIKE_THRU_TEXT_FLAG );
 ```
 
-### Redraw all elements in a ListView
+## Redraw all elements in a ListView
 
 If you use an ArrayAdapter a, you can call
 
@@ -211,7 +211,7 @@ If you have a ListView `lv` that uses an adapter that implements CursorAdapter, 
 ((CursorAdapter) lv.getListAdapter()).getCursor().requery();
 ```
 
-### More flexible string handling through resources
+## More flexible string handling through resources
 
 Say you want to output the string `Hint: ` followed by some dynamically fetched hint. Your first thought might be to hard code `"Hint: " + this.getHint()`, but it should be apparent that this is not the right way to do it. Android provides the `strings.xml` file for exactly this purpose. So, we define a string by the name of `hint_text` in `strings.xml` with the content `Hint: `. How do we access this string from our code?
 
