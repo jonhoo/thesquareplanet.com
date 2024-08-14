@@ -310,6 +310,9 @@ a abbr { border-bottom: none; }
 		border-top: 1px solid #FAFAFA;
 		border-bottom: 1px solid #F0F0F0;
 	}
+		.header nav + h2 {
+			padding-bottom: 1em;
+		}
 		nav a {
 			display: inline-block;
 			word-spacing: normal;
@@ -384,6 +387,9 @@ a abbr { border-bottom: none; }
 		right: 1em;
 		top: 1px;
 	}
+		.header nav + h2 {
+			padding-bottom: 2em;
+		}
 }
 		.contact a {
 			vertical-align: middle;
