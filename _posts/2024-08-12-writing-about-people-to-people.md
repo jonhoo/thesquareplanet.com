@@ -68,7 +68,7 @@ This has two primary implications for how you write reviews:
     neither is all that *useful*. In the spirit of "write what you'd
     want to receive", prefer highlighting specific things that the
     person in question could *do something about*. This can be stuff
-    already do that they should double down on or pair back, or it could
+    already do that they should double down on or pare back, or it could
     be things they're not currently doing that would make them more
     impactful if they did. If someone reads your review and still
     wonders afterwards "so what are they good at?" or "but how could
