@@ -18,7 +18,11 @@ layout: default
 			{% endif %}
 		</h1>
 		<span class="shared">
+			{% if page.hidden == true %}
+			Hidden draft from <span itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</span>
+			{% else %}
 			Posted on <span itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</span>
+			{% endif %}
 			{% if page.shared %}
 				&mdash; shared on
 				{% for share in page.shared %}
