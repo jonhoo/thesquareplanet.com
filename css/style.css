@@ -351,7 +351,6 @@ a abbr { border-bottom: none; }
 		.links a { padding: 1rem 2rem; }
 }
 	.contact {
-		white-space: nowrap;
 		word-spacing: normal;
 		letter-spacing: normal;
 		background: #F0F0F0;
@@ -359,8 +358,18 @@ a abbr { border-bottom: none; }
 		padding: .5em;
 		vertical-align: middle;
 		display: flex;
+		justify-content: justify;
+		flex-wrap: wrap;
+		line-height: 2.5;
+	}
+@media screen and (min-width: 34em) {
+	.contact {
+		white-space: nowrap;
+		flex-wrap: nowrap;
+		line-height: inherit;
 		justify-content: center;
 	}
+}
 		.contact a {
 			margin: 0 1.5em;
 		}
