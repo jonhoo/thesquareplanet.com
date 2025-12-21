@@ -1,0 +1,33 @@
+// =============================================================================
+// 11. Footer
+// =============================================================================
+
+.footer {
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+    font-size: 0.9rem;
+    max-width: 38rem;
+    margin: 0 auto;
+    padding: 0.5rem;
+    color: var(--color-muted);
+}
+
+.footer a {
+    color: var(--color-muted);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--color-muted);
+}
+
+.footer a:hover {
+    color: var(--color-text);
+    border-color: var(--color-text);
+    border-bottom-style: solid;
+}
+
+.footer abbr {
+    border: none;
+}
+
+.footer p {
+    margin: 0.5rem 0;
+}

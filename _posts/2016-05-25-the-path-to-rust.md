@@ -59,6 +59,7 @@ of the ways Rust might make your life easier.
 > the process of putting them in.
 >
 > <cite>Edsger W. Dijkstra [citation needed]</cite>
+{:.epigraph}
 
 Code is very rarely correct the first time it is written, especially for
 complex systems code. Even for seasoned developers, a large portion of

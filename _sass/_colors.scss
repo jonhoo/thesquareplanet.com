@@ -1,0 +1,60 @@
+// =============================================================================
+// 0. Colors & Theming
+// =============================================================================
+
+:root {
+    color-scheme: light dark;
+
+    // ==========================================================================
+    // System Colors (auto-adapt to light/dark)
+    // ==========================================================================
+
+    // Primary text and background
+    --color-bg: Canvas;
+    --color-text: CanvasText;
+
+    // Muted/secondary text
+    --color-muted: GrayText;
+
+    // Links
+    --color-link: LinkText;
+    --color-link-visited: VisitedText;
+
+    // Inline code / input fields
+    --color-field-bg: Field;
+    --color-field-text: FieldText;
+
+    // Selection
+    --color-selection-bg: Highlight;
+    --color-selection-text: HighlightText;
+
+    // ==========================================================================
+    // Custom Colors (using light-dark for theme adaptation)
+    // ==========================================================================
+
+    // Accent color (Gruvbox orange) - consistent across themes
+    --color-accent: #d65d0e;
+
+    // Borders - adapt to theme
+    --color-border: light-dark(#888, #666);
+    --color-border-light: light-dark(#ccc, #444);
+    --color-border-lighter: light-dark(#ddd, #3c3836);
+
+    // Nav/header backgrounds
+    --color-nav-bg: light-dark(#f0f0e8, #1d2021);
+    --color-nav-hover: light-dark(#e8e4dc, #3c3836);
+
+    // Code blocks (Gruvbox Dark - stays dark in both modes)
+    --color-code-bg: #282828;
+    --color-code-text: #ebdbb2;
+
+    // Blockquote code bleed background (slightly offset from page bg)
+    --color-code-bleed: light-dark(#e8e4dc, #3c3836);
+}
+
+// Invert black icons in dark mode
+@media (prefers-color-scheme: dark) {
+    .contact .icon {
+        filter: invert(1);
+    }
+}

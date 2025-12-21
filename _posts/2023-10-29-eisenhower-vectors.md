@@ -15,6 +15,7 @@ from US President Dwight D. Eisenhower:
 
 > I have two kinds of problems, the urgent and the important.
 > The urgent are not important, and the important are never urgent.
+{:.epigraph}
 
 (In the speech, Eisenhower in turn attributes it to a "former college
 president", and this general principle is also known by other names like
@@ -49,9 +50,10 @@ the importance and urgency is expected to change over time. And the
 magnitude dictates how quickly you think the task is likely to develop
 in that direction. For example:
 
-> ![Eisenhower vector for a task whose origin is not urgent or important, but is trending towards important](/gfx/eisenhower-vector-more.svg)
-> An Eisenhower vector for a task that is currently not important or
-> urgent, but is gradually becoming more important.
+<figure>
+<img src="/gfx/eisenhower-vector-more.svg" alt="Eisenhower vector for a task whose origin is not urgent or important, but is trending towards important">
+<figcaption>An Eisenhower vector for a task that is currently not important or urgent, but is gradually becoming more important.</figcaption>
+</figure>
 
 This task would normally be dropped, since it's not important or urgent.
 But, we're expecting that it will become more important over time,
@@ -59,9 +61,10 @@ potentially crossing the boundary into important-but-not-urgent
 territory. And as a result, it may deserve to be scheduled (with a lower
 priority) rather than dropped. Compare that to this task:
 
-> ![Eisenhower vector for a task whose origin is urgent, not important, and rapidly trending towards less urgent](/gfx/eisenhower-vector-less.svg)
-> An Eisenhower vector for a task that is currently quite urgent, not
-> important, and expected to rapidly become less urgent.
+<figure>
+<img src="/gfx/eisenhower-vector-less.svg" alt="Eisenhower vector for a task whose origin is urgent, not important, and rapidly trending towards less urgent">
+<figcaption>An Eisenhower vector for a task that is currently quite urgent, not important, and expected to rapidly become less urgent.</figcaption>
+</figure>
 
 It's currently very urgent (a customer has sent you four emails in the
 past five minutes), but you expect that that urgency will fade rather

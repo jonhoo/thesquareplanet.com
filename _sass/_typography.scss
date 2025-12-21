@@ -1,0 +1,29 @@
+// =============================================================================
+// 2. Typography
+// =============================================================================
+
+body {
+    font-family: Georgia, "Palatino Linotype", Palatino, "Book Antiqua", serif;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, "Palatino Linotype", Palatino, "Times New Roman", serif;
+    font-weight: normal;
+    color: var(--color-text);
+}
+
+pre, code, tt, .highlight {
+    font-family: Consolas, "Liberation Mono", Menlo, Monaco, monospace;
+}
+
+// Default paragraph spacing (Tufte CSS style)
+p {
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    padding-right: 0;
+    vertical-align: baseline;
+}
+

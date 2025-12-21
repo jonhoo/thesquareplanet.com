@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post">
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog-post" style="counter-reset: sidenote-counter;">
 	<header>
 		<h1 itemprop="name headline">{{ page.title }}
 			<span style="display:none"
@@ -33,6 +33,9 @@ layout: default
 	</header>
 	<div itemprop="articleBody" class="hyphenate article-body">
 		{{ content }}
+		<footer>
+			<a class="revision" href="https://github.com/jonhoo/thesquareplanet.com/commits/main/{{page.path}}">( revision history )</a>
+		</footer>
 	</div>
 	<script>
 		document.querySelectorAll('.article-body').forEach(function(bp) {
@@ -51,7 +54,4 @@ layout: default
 			})
 		})
 	</script>
-	<footer>
-		<a class="revision" href="https://github.com/jonhoo/thesquareplanet.com/commits/main/{{page.path}}">( revision history )</a>
-	</footer>
 </article>

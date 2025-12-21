@@ -1,0 +1,118 @@
+// =============================================================================
+// 4. Header & Navigation
+// =============================================================================
+
+.header {
+    text-align: center;
+    font-size: 1rem;
+    padding: 0;
+    padding-bottom: 2em;
+}
+
+.header h1, .header h2 {
+    font-family: Georgia, "Palatino Linotype", Palatino, serif;
+    font-weight: normal;
+    padding: 0 5%;
+}
+
+.header h1 {
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+
+nav {
+    display: block;
+    width: 100%;
+    text-align: left;
+    word-spacing: -5px;
+    letter-spacing: -5px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+    position: relative;
+    line-height: 1.3rem;
+}
+
+nav a {
+    display: inline-block;
+    word-spacing: normal;
+    letter-spacing: normal;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.links {
+    background: var(--color-nav-bg);
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.links a {
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 0.5em 1em;
+    margin-bottom: -1px; // Allow active tab to cover border
+}
+
+.links a:hover {
+    background: var(--color-nav-hover);
+    color: var(--color-text);
+}
+
+.links a.active {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-bg); // Cover the border to "connect" to content
+    color: var(--color-text);
+}
+
+.contact {
+    word-spacing: normal;
+    letter-spacing: normal;
+    background: var(--color-nav-bg);
+    text-align: center;
+    padding: 0.3em 0.5em 0 0.5em;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5em 2em;
+}
+
+.contact a {
+    vertical-align: middle;
+    display: inline-block;
+    border-bottom: none;
+    padding: 0;
+}
+
+.contact a:hover {
+    border-bottom: none;
+}
+
+.contact .icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.contact img {
+    display: inline;
+    height: 100%;
+}
+
+// Avatar
+#avatar {
+    display: block;
+    border-radius: 0.75em;
+    overflow: hidden;
+    width: 9em;
+    height: 9em;
+    float: left;
+    margin: 0 2em 1em 0;
+}
+
+#avatar img {
+    display: inline;
+    height: 100%;
+}

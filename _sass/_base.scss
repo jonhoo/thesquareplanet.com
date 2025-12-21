@@ -1,0 +1,38 @@
+// =============================================================================
+// 1. Base & Reset
+// =============================================================================
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    // Prevent horizontal scroll from 100vw elements (full-width code blocks)
+    overflow-x: hidden;
+}
+
+html {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::-moz-selection {
+    background: var(--color-selection-bg);
+    color: var(--color-selection-text);
+    text-shadow: none;
+}
+
+::selection {
+    background: var(--color-selection-bg);
+    color: var(--color-selection-text);
+    text-shadow: none;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}

@@ -1,0 +1,52 @@
+// =============================================================================
+// 6. Sidenotes
+// =============================================================================
+
+.sidenote-number {
+    counter-increment: sidenote-counter;
+}
+
+.sidenote-number::after,
+.sidenote::before {
+    font-size: 0.75rem;
+    position: relative;
+    vertical-align: baseline;
+}
+
+.sidenote-number::after {
+    content: counter(sidenote-counter);
+    top: -0.5rem;
+    left: 0.1rem;
+    color: var(--color-accent);
+}
+
+.sidenote::before {
+    content: counter(sidenote-counter) " ";
+    top: -0.5rem;
+    color: var(--color-accent);
+}
+
+.sidenote {
+    float: right;
+    clear: right;
+    margin-right: -60%;
+    width: 50%;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    vertical-align: baseline;
+    position: relative;
+}
+
+label.sidenote-number {
+    display: inline;
+}
+
+label.margin-toggle:not(.sidenote-number) {
+    display: none;
+}
+
+input.margin-toggle {
+    display: none;
+}

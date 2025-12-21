@@ -1,0 +1,42 @@
+// =============================================================================
+// 7. Figures & Images
+// =============================================================================
+
+figure {
+    margin: 2em 0;
+    position: relative;
+}
+
+// Tufte-style figure captions as margin notes
+figcaption {
+    float: right;
+    clear: right;
+    margin-right: -60%;
+    width: 50%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--color-muted);
+    position: relative;
+}
+
+// Fullwidth figures span the entire content area + margin
+.fullwidth {
+    max-width: 160%;
+    width: 160%;
+    clear: both;
+}
+
+// Fullwidth figure captions stay inline for better readability
+.fullwidth figcaption {
+    float: none;
+    margin-right: 0;
+    width: 100%;
+    margin-top: 0.5em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}

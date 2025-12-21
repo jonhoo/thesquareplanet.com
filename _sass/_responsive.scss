@@ -1,0 +1,306 @@
+// =============================================================================
+// 12. Responsive
+// =============================================================================
+
+// Small adjustments for small screens
+@media screen and (min-width: 21em) {
+    .links a { font-size: 0.8rem; }
+}
+
+@media screen and (min-width: 23em) {
+    .links a { font-size: 0.9rem; }
+}
+
+@media screen and (min-width: 25em) {
+    .links a {
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-bottom: none;
+    }
+}
+
+@media screen and (min-width: 29em) {
+    .links a { padding: 0.75rem 1.5rem; }
+}
+
+@media screen and (min-width: 30em) {
+    .header h1 {
+        font-size: 3em;
+    }
+}
+
+@media screen and (min-width: 34em) {
+    .links a { padding: 1rem 2rem; }
+
+    .contact {
+        white-space: nowrap;
+        flex-wrap: nowrap;
+        line-height: inherit;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 40em) {
+    .contact {
+        padding: 1em;
+    }
+
+    .contact .icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .site .thumb {
+        display: block;
+        float: right;
+        width: 40%;
+        height: auto;
+        border: 3px solid var(--color-border);
+        border-radius: 5px;
+        margin: 0 0 0.5em 2em;
+    }
+}
+
+@media screen and (min-width: 50em) {
+    .header h1, .header h2 {
+        padding: 0;
+    }
+
+    .header h1 {
+        font-size: 5em;
+    }
+
+    .header h2 {
+        font-size: 2em;
+    }
+
+    #index .header h2 {
+        margin: 1em 0;
+        font-size: 2em;
+    }
+
+    .blog-post .article-body h1.anchor a,
+    .blog-post .article-body h2.anchor a {
+        position: relative;
+    }
+
+    .blog-post .article-body h1.anchor a:hover:after,
+    .blog-post .article-body h2.anchor a:hover:after {
+        content: "🔗";
+        position: absolute;
+        left: 100%;
+        padding-left: 0.5em;
+        opacity: 0.5;
+    }
+
+    .blog-post .article-body h1 {
+        margin-top: 4rem;
+        padding-top: 0;
+    }
+
+    .blog-post .reading-time {
+        display: inline;
+    }
+
+    .research-item .award {
+        position: absolute;
+        top: 4px;
+        left: -48px;
+        width: 36px;
+    }
+}
+
+@media screen and (min-width: 65em) {
+    nav {
+        margin-bottom: 2em;
+    }
+
+    .header nav + h2 {
+        padding-bottom: 2em;
+    }
+
+    .contact {
+        position: absolute;
+        line-height: 3.3rem;
+        background: none;
+        padding: 0;
+        right: 1em;
+        top: 1px;
+    }
+
+    .contact img {
+        opacity: 0.6;
+    }
+
+    .contact a:hover img {
+        opacity: 1;
+    }
+
+    #avatar {
+        width: 10em;
+        height: 10em;
+        float: left;
+        margin: 0 2em 1em 0;
+    }
+}
+
+// Tablet-specific adjustments for sidenotes
+@media screen and (min-width: 65em) and (max-width: 80em) {
+    .blog-post .article-body {
+        width: 70%;
+    }
+
+    #index article {
+        width: 70%;
+    }
+
+    #avatar {
+        float: left;
+        margin: 0 1.5em 1em 0;
+    }
+
+    .sidenote {
+        margin-right: -40%;
+        width: 35%;
+    }
+
+    // Adjust figcaptions to match sidenote spacing on tablets
+    figcaption {
+        margin-right: -40%;
+        width: 35%;
+    }
+
+    blockquote.epigraph {
+        // On tablets, .article-body is 70% wide, so: 55% / 70% = 78.57%
+        width: 78.57%;
+        max-width: calc(55vw - 8%);
+    }
+}
+
+// Mobile: sidenotes toggle
+@media (max-width: 65em) {
+    .contact {
+        padding: 1em 0.5em;
+        border-bottom: 2px solid var(--color-border-light);
+        background: var(--color-bg);
+    }
+
+    article {
+        width: 95%;
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+
+    #index article {
+        width: 95%;
+    }
+
+    .header {
+        padding-bottom: 1em;
+    }
+
+    // Blog listing and individual posts - equal left/right padding
+    article.blog-post,
+    .blog-post-listing .blog-post,
+    article:has(.research) {
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+    }
+
+    .blog-post-listing .blog-post h1,
+    .blog-post-listing .blog-post p,
+    .blog-post header,
+    .research {
+        width: 100%;
+    }
+
+    // Date on its own line in blog listings
+    .blog-post-listing .blog-post h1 .date {
+        float: none;
+        display: block;
+        padding-left: 0;
+        margin-top: 0.25em;
+    }
+
+    #avatar {
+        float: none;
+        margin: 0 auto 1.5em;
+    }
+
+    .blog-post .article-body {
+        width: 100%;
+    }
+
+    blockquote {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 1em;
+    }
+
+    blockquote.epigraph {
+        width: 100%;
+        max-width: none;
+        padding: 0 1em;
+    }
+
+    .sidenote {
+        display: none;
+    }
+
+    .margin-toggle:checked + .sidenote {
+        display: block;
+        float: left;
+        left: 1rem;
+        clear: both;
+        width: 95%;
+        margin: 1rem 2.5%;
+        position: relative;
+    }
+
+    label.margin-toggle:not(.sidenote-number) {
+        display: inline;
+        cursor: pointer;
+    }
+
+    // Make sidenote numbers obviously clickable on mobile - pill style
+    label.sidenote-number {
+        cursor: pointer;
+        background: rgba(214, 93, 14, 0.15);
+        padding: 0 0.45em 0.2em;
+        border-radius: 0.6em;
+        margin: 0 0.1em;
+        line-height: 1;
+    }
+
+    label.sidenote-number::after {
+        position: static;
+        font-size: 0.8rem;
+    }
+
+    label.sidenote-number:active {
+        background: rgba(214, 93, 14, 0.3);
+    }
+
+    // On mobile, figcaptions appear inline below the image
+    figcaption {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        margin-top: 0.5em;
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 80em) {
+    .site .thumb {
+        position: absolute;
+        float: none;
+        top: 0.5em;
+        right: 100%;
+        margin: 0;
+        margin-right: 2em;
+    }
+}

@@ -1,0 +1,44 @@
+// =============================================================================
+// 3. Layout
+// =============================================================================
+
+body {
+    counter-reset: sidenote-counter;
+}
+
+article {
+    width: 90%;
+    max-width: 1400px;
+    margin: 2em auto;
+    margin-top: 0;
+    text-align: left;
+}
+
+article.wide {
+    max-width: 1600px;
+}
+
+#index article {
+    hyphens: auto;
+    width: 60%;
+    max-width: 720px;
+    text-align: justify;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    position: relative;
+    overflow: auto;
+}
+
+// Blog posts need asymmetric layout for sidenotes
+article.blog-post {
+    padding-left: 8%;
+}
+
+// Blog listing layout handled in _blog.scss
+
+.blog-post .article-body {
+    width: 60%;
+    max-width: 720px;
+    font-size: 1.125rem;
+    line-height: 1.8;
+}

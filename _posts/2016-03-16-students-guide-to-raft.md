@@ -65,6 +65,7 @@ site](https://raft.github.io/):
 > available to a wider audience, and that this wider audience will be
 > able to develop a variety of higher quality consensus-based systems
 > than are available today.
+{:.epigraph}
 
 Visualizations like [this one](http://thesecretlivesofdata.com/raft/)
 give a good overview of the principal components of the protocol, and

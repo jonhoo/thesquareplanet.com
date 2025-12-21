@@ -1,0 +1,108 @@
+// =============================================================================
+// 5. Content Elements
+// =============================================================================
+
+a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+a:hover {
+    border-bottom-style: solid;
+    border-bottom-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+a abbr {
+    border-bottom: none;
+}
+
+article h1 a {
+    border-bottom: none;
+}
+
+article h1 a:hover {
+    border-bottom-style: dashed;
+    border-bottom-color: var(--color-accent);
+}
+
+// Lists
+ul, ol {
+    padding-left: 2em;
+}
+
+// Blockquotes - default is aside/panel style
+blockquote {
+    margin: 1.5em auto 0 auto;
+    padding: 0;
+    background: none;
+    // Calculate width to be 55% of viewport rather than 55% of .article-body
+    // .article-body is 60% of article width, so we need: 55% / 60% = 91.67%
+    width: 91.67%;
+    max-width: calc(55vw); // 55% of viewport minus article's left padding
+    font-style: normal;
+    font-size: 0.95em;
+    text-align: justify;
+    color: var(--color-muted);
+}
+
+blockquote > p:first-child {
+    margin-top: 0;
+}
+
+blockquote > p:last-child {
+    margin-bottom: 0;
+}
+
+blockquote img {
+    max-width: 100%;
+}
+
+// Epigraph style for actual literary quotes: {:.epigraph}
+blockquote.epigraph {
+    margin: 1.5em 0 0 auto;
+    font-style: italic;
+    text-align: left;
+}
+
+blockquote.epigraph cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.9rem;
+    margin-top: 1em;
+    color: var(--color-muted);
+}
+
+blockquote.epigraph cite::before {
+    content: "— ";
+}
+
+// Emphasis
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.blog-post em {
+    color: var(--color-text);
+    font-style: normal;
+    font-weight: 500;
+}
+
+.blog-post strong {
+    font-style: normal;
+    font-weight: 800;
+}
+
+// Hyphenation
+.blog-post .hyphenate {
+    hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    text-align: justify;
+}
